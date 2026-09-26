@@ -72,15 +72,28 @@ permission are kept.
 
 ## Uninstall
 
+Undo what Omac changed, then remove it:
+
 ```bash
-omac login off; omac quit
+omac theme off        # if you used a theme: restores your wallpaper and recoloured apps
+omac skill uninstall  # if you installed the coding-agent skill
+omac login off
+omac quit
 rm -rf ~/Applications/Omac.app ~/.local/bin/omac
 ```
 
 Then remove Omac from **System Settings → Privacy & Security → Accessibility**.
-Your settings stay in `~/.config/omac` and `~/.local/state/omac` — delete them to
-remove everything. The installer may also have added two lines, starting with
-`# Added by the Omac installer`, to `~/.zshrc`; you can delete them.
+
+To also delete its settings, state and downloaded wallpapers:
+
+```bash
+rm -rf ~/.config/omac ~/.local/state/omac ~/.local/share/omac
+defaults delete com.evanscastonguay.omac
+```
+
+The installer may have added two lines starting with `# Added by the Omac
+installer` to your shell's startup file — `~/.zshrc`, `~/.bash_profile`, or
+`~/.config/fish/config.fish` — which you can delete.
 
 <details>
 <summary><b>What the install command does</b></summary>
@@ -135,6 +148,15 @@ membership. macOS only asks about that for files downloaded with a web browser,
 which is why the Terminal command has no extra step.
 
 </details>
+
+## License
+
+MIT — see [`LICENSE`](LICENSE). Omac includes third-party work, listed in
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md): the wallpapers are
+third-party images, not covered by either MIT license.
+
+Omac is an independent, unofficial project. It is not affiliated with or
+endorsed by Omarchy or its authors.
 
 ---
 

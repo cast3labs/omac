@@ -45,6 +45,8 @@ C++ TOML parser, vendored inside TOMLKit.
 <https://github.com/marzer/tomlplusplus>
 
 ```
+MIT License
+
 Copyright (c) Mark Gillard <mark.gillard@outlook.com.au>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -65,14 +67,27 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 
 ## Omarchy
 
-Theme palettes and templates (`assets/themes`, `assets/themed`), and the
-theme wallpapers and previews bundled at build time, come from Omarchy at commit
-`2fbac0c8e88eca704af1650ce721a494bd11a3d0` (recorded in `assets/UPSTREAM`).
+Theme palettes and templates (`assets/themes`, `assets/themed`) come from Omarchy
+at commit `2fbac0c8e88eca704af1650ce721a494bd11a3d0` (recorded in
+`assets/UPSTREAM`), under Omarchy's MIT license, reproduced below.
 <https://github.com/basecamp/omarchy>
 
-Omarchy distributes its 92 wallpapers in its MIT-licensed repository and does
-not publish separate credits for individual images. If you are the author of one
-of these images and want it credited or removed, please open an issue.
+### Wallpapers and previews
+
+Builds made with an Omarchy checkout also bundle the 92 theme wallpapers and 22
+previews that Omarchy distributes. **These are third-party images of various and
+largely unknown authorship. They are not covered by Omarchy's MIT license, nor by
+Omac's.** Omarchy publishes no per-image credits or licenses for them, and Omac
+redistributes them as Omarchy does.
+
+Names, characters and marks shown in some of them — for example Studio Ghibli's
+Totoro, Lumon and *Severance*, and Edward Hopper's *Nighthawks* — belong to their
+owners. Omac is not affiliated with any of them.
+
+If you hold rights to one of these images and want it credited or removed, open an
+issue: <https://github.com/evanscastonguay/omac/issues>
+
+### Omarchy's license
 
 ```
 Copyright (c) David Heinemeier Hansson
