@@ -72,19 +72,22 @@ at commit `2fbac0c8e88eca704af1650ce721a494bd11a3d0` (recorded in
 `assets/UPSTREAM`), under Omarchy's MIT license, reproduced below.
 <https://github.com/basecamp/omarchy>
 
-### Wallpapers and previews
+### Wallpapers
 
-Builds made with an Omarchy checkout also bundle the 92 theme wallpapers and 22
-previews that Omarchy distributes. **These are third-party images of various and
-largely unknown authorship. They are not covered by Omarchy's MIT license, nor by
-Omac's.** Omarchy publishes no per-image credits or licenses for them, and Omac
-redistributes them as Omarchy does.
+Builds made with an Omarchy checkout bundle 22 theme wallpapers: of the 92 that
+Omarchy distributes, the ones a review found free of anyone else's work. 21 show
+Omarchy's own wordmark or logo on a solid colour from the theme's palette; one,
+Flexoki Light's `1-orb`, is a dithered sphere in two palette colours. They were
+made in Omarchy's repository and come under its MIT license, below. The Omarchy
+name and logo belong to the Omarchy project; Omac is unofficial and not
+affiliated with it.
 
-Names, characters and marks shown in some of them — for example Studio Ghibli's
-Totoro, Lumon and *Severance*, and Edward Hopper's *Nighthawks* — belong to their
-owners. Omac is not affiliated with any of them.
+The other 70 wallpapers and all 22 theme previews are **not** bundled. Omarchy
+publishes no credits or licenses for them, and many are other people's work.
+Every decision and its reason:
+<https://github.com/evanscastonguay/omac/blob/main/docs/wallpaper-review.md>
 
-If you hold rights to one of these images and want it credited or removed, open an
+If you hold rights to an image and want it credited, added or removed, open an
 issue: <https://github.com/evanscastonguay/omac/issues>
 
 ### Omarchy's license
