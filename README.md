@@ -152,8 +152,10 @@ which is why the Terminal command has no extra step.
 ## License
 
 MIT — see [`LICENSE`](LICENSE). Omac includes third-party work, listed in
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md): the wallpapers are
-third-party images, not covered by either MIT license.
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). Of Omarchy's 92 theme
+wallpapers, Omac ships only the 22 it may redistribute — Omarchy's own wordmark
+and logo in each theme's colours; [the review](docs/wallpaper-review.md) gives
+every decision.
 
 Omac is an independent, unofficial project. It is not affiliated with or
 endorsed by Omarchy or its authors.
