@@ -163,5 +163,5 @@ endorsed by Omarchy or its authors.
 ---
 
 <sub>Tested with the exact command above on an Apple-silicon Mac running macOS
-26.3.1, on 2026-09-24: installed 1.4.4, signature verified, `accessibility true`,
-`tap true`.</sub>
+26.3.1, on 2026-09-26: updated 1.4.4 to 1.4.5 after removing an old copy in
+`/Applications`, signature verified, `accessibility true`, `tap true`.</sub>
