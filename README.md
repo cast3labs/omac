@@ -1,8 +1,8 @@
 # Omac
 
 A tiling window manager for macOS. Your windows arrange themselves side by
-side, never overlap, and you move between them with the keyboard. It brings
-[Omarchy](https://omarchy.org)'s window keys to the Mac.
+side, never overlap, and you move between them with the keyboard. It works with
+[Omarchy](https://omarchy.org)'s keybindings.
 
 ## Install
 
@@ -158,7 +158,8 @@ and logo in each theme's colours; [the review](docs/wallpaper-review.md) gives
 every decision.
 
 Omac is an independent, unofficial project. It is not affiliated with or
-endorsed by Omarchy or its authors.
+endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation.
+Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.
 
 ---
 

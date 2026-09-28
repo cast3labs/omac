@@ -4,7 +4,8 @@ Omac is MIT-licensed (see `LICENSE`). It includes the following third-party
 work, each under its own license, reproduced below as required.
 
 Omac is an independent, unofficial project. It is not affiliated with or
-endorsed by Omarchy or its authors.
+endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation.
+Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.
 
 ---
 
