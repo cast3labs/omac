@@ -15,6 +15,8 @@ Homebrew, no developer tools, no GitHub account.
 curl -fsSL https://raw.githubusercontent.com/evanscastonguay/omac/main/install.sh | bash
 ```
 
+Gratuit — conditions d'utilisation : [`EULA.fr.md`](EULA.fr.md) · free to use — terms: [`EULA.md`](EULA.md). Installing means you accept them; the installer prints these links too.
+
 If an old copy of Omac is in `/Applications`, Terminal asks for your Mac
 password to remove it. Two copies conflict.
 
@@ -151,11 +153,16 @@ which is why the Terminal command has no extra step.
 
 ## License
 
-MIT — see [`LICENSE`](LICENSE). Omac includes third-party work, listed in
+From 1.4.8, Omac is free to use under its licence terms,
+[`EULA.md`](EULA.md) (en français, [`EULA.fr.md`](EULA.fr.md)), which come with
+the app. All rights reserved — see [`LICENSE`](LICENSE). Versions 1.4.5, 1.4.6 and
+1.4.7 were released under the MIT License and stay under it
+([`LICENSE-MIT-1.4.5-1.4.7`](LICENSE-MIT-1.4.5-1.4.7)); later versions are not.
+Omac includes third-party work, listed in
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). Of Omarchy's 92 theme
-wallpapers, Omac ships only the 22 it may redistribute — Omarchy's own wordmark
-and logo in each theme's colours; [the review](docs/wallpaper-review.md) gives
-every decision.
+wallpapers, a review found 22 that Omac may redistribute, and 21 of those show
+Omarchy's wordmark or logo, so from 1.4.8 Omac ships one: Flexoki Light's orb.
+[The review](docs/wallpaper-review.md) gives every decision.
 
 Omac is an independent, unofficial project. It is not affiliated with or
 endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation.

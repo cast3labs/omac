@@ -1,21 +1,15 @@
-MIT License
+Omac
 
-Copyright (c) 2026 Evans Castonguay
+Copyright (c) 2026 Evans Castonguay. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Omac is proprietary software. No license to its source code is granted: the
+source code may not be copied, modified, published, distributed or
+sublicensed, in whole or in part, without the copyright holder's prior
+written permission.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Versions 1.4.5, 1.4.6 and 1.4.7 of Omac were released under the MIT License,
+and those three releases remain under it. Its text is kept in
+LICENSE-MIT-1.4.5-1.4.7. No later version is released under the MIT License.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Omac includes third-party work under its own licenses, listed with their full
+texts in THIRD_PARTY_NOTICES.md. Nothing in this file changes those licenses.

@@ -1,6 +1,6 @@
 # Third-party notices
 
-Omac is MIT-licensed (see `LICENSE`). It includes the following third-party
+Omac's own license is in `LICENSE`. It includes the following third-party
 work, each under its own license, reproduced below as required.
 
 Omac is an independent, unofficial project. It is not affiliated with or
