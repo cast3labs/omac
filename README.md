@@ -62,7 +62,7 @@ resume. `omac quit` quits Omac.
 |---|---|
 | Left ⌘ shortcuts do nothing | Omac needs the Accessibility permission (step 2). `omac status` says `accessibility false` until it has it. |
 | `omac: command not found` | Open a **new** Terminal window. The installer set this up for new windows only. |
-| *"Apple could not verify Omac…"* | Omac was downloaded with a web browser. Use the Terminal command in step 1 instead. |
+| *"Omac is an app downloaded from the Internet…"* | macOS asks this once, the first time you open a copy downloaded with a web browser. Click **Open**. |
 | `Omac was not installed: …` | The message says why. Run the command again; if it happens again, send the full output. |
 
 **Reporting a problem:** send the output of `omac status` and what you pressed.
@@ -129,8 +129,8 @@ bash install.sh
 1. Download **`Omac-arm64.zip`** from the
    [latest release](https://github.com/evanscastonguay/omac/releases/latest) and open it.
 2. Drag **`Omac.app`** from the folder that appears into **Applications**.
-3. Open Omac. macOS says it *cannot verify* it — click **Done**, open **System
-   Settings → Privacy & Security**, scroll down and click **Open Anyway**.
+3. Open Omac. macOS asks once whether to open an app downloaded from the
+   internet — click **Open**.
 4. Continue with step 2 above.
 
 This way does not set up the `omac` command or start at login. Choose **Launch
@@ -139,15 +139,16 @@ at login** from Omac's menu-bar icon for that.
 </details>
 
 <details>
-<summary><b>Why "signed but not notarized"?</b></summary>
+<summary><b>Signed and notarized</b></summary>
 
 <br>
 
 Omac is signed with a Developer ID, so macOS knows who built it and that it has
-not been changed since — the installer checks that before installing. It is not
-*notarized*, a separate Apple scan that needs a paid Apple Developer
-membership. macOS only asks about that for files downloaded with a web browser,
-which is why the Terminal command has no extra step.
+not been changed since — the installer checks that before installing. Since
+1.4.8 it is also *notarized*: Apple scanned the build and issued a ticket,
+stapled to the app, so macOS can confirm it even offline. A copy downloaded
+with a web browser opens after macOS's usual first-open confirmation; the
+Terminal command has no extra step.
 
 </details>
 
