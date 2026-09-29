@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>omac.toml reference</title>
+<meta name="description" content="Every key Omac reads from omac.toml: its table, type, an example and what it does.">
+<meta name="generator" content="scripts/build-site.py">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<script defer src="../copy.js"></script>
+</head>
+<body>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../">Omac</a><a href="../install/">Install</a><a href="../features/">Features</a><a href="../compare/">Compare</a><a href="../config/" aria-current="page">omac.toml</a><a href="../docs/">Docs</a><a href="https://github.com/evanscastonguay/omac">GitHub</a></nav></header>
+<main>
+<h1><code>omac.toml</code> reference</h1>
+<p>Every setting lives in one file, <code>~/.config/omac/omac.toml</code>. Omac writes it on first launch with a comment on each setting, and applies a change when you save it. <code>omac default-spec</code> prints the whole default file.</p>
+<section class="config-reference">
+<p class="lede">76 keys in 11 tables. <em>Set</em> means the default omac.toml sets the key; <em>example</em> means it shows the key commented out. For a key the default file sets, the example is the shipped value.</p>
+<nav class="toc"><ul>
+<li><a href="#table-top"><code>Top level (above the first table)</code></a></li>
+<li><a href="#table-settings"><code>[settings]</code></a></li>
+<li><a href="#table-apps-role"><code>[apps] &lt;role&gt; = { … }</code></a></li>
+<li><a href="#table-agent"><code>[agent]</code></a></li>
+<li><a href="#table-clipboard"><code>[clipboard]</code></a></li>
+<li><a href="#table-privacy"><code>[privacy]</code></a></li>
+<li><a href="#table-speech-tts"><code>[speech.tts]</code></a></li>
+<li><a href="#table-speech-asr"><code>[speech.asr]</code></a></li>
+<li><a href="#table-speech-asr-engine"><code>[speech.asr.&lt;engine&gt;]</code></a></li>
+<li><a href="#table-bind"><code>[[bind]]</code></a></li>
+<li><a href="#table-rule"><code>[[rule]]</code></a></li>
+</ul></nav>
+<section id="table-top">
+<h2>Top level (above the first table)</h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="unbind"><td><code>unbind</code></td><td>array of strings</td><td><code>[&quot;SUPER + CTRL + ALT + S&quot;]</code></td><td>example</td><td>the keys of DEFAULT binds to remove (a bind this file still defines stays)</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-settings">
+<h2><code>[settings]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="settings-gaps_in"><td><code>gaps_in</code></td><td>integer</td><td><code>5</code></td><td>set</td><td>px between tiled windows</td></tr>
+<tr class="key" id="settings-gaps_out"><td><code>gaps_out</code></td><td>integer</td><td><code>10</code></td><td>set</td><td>px between windows and the screen edge</td></tr>
+<tr class="key" id="settings-border_size"><td><code>border_size</code></td><td>integer</td><td><code>2</code></td><td>set</td><td>px width of the focused-window border</td></tr>
+<tr class="key" id="settings-border_color"><td><code>border_color</code></td><td>string</td><td><code>&quot;theme&quot;</code></td><td>set</td><td>&quot;theme&quot; = the current theme&#x27;s accent (omac theme set …; #33ccff with none); a hex like &quot;#33ccff&quot; always wins</td></tr>
+<tr class="key" id="settings-theme_chrome"><td><code>theme_chrome</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>with a theme set, the workspace bar takes its background/text from the theme too; false = accent only</td></tr>
+<tr class="key" id="settings-warp_cursor"><td><code>warp_cursor</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>move the pointer to the newly focused window</td></tr>
+<tr class="key" id="settings-focus_follows_mouse"><td><code>focus_follows_mouse</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>the focused display follows the pointer (Super+keys act where you look)</td></tr>
+<tr class="key" id="settings-focus_follows_mouse_window"><td><code>focus_follows_mouse_window</code></td><td>boolean</td><td><code>false</code></td><td>set</td><td>also let the focus BORDER follow the window under the pointer (opt-in; border-only — never activates the app or steals keyboard focus; yields while typing)</td></tr>
+<tr class="key" id="settings-focus_follows_mouse_activate"><td><code>focus_follows_mouse_activate</code></td><td>boolean</td><td><code>false</code></td><td>set</td><td>the third level, &quot;type where you point&quot;: ALSO activate the app under the pointer (opt-in; needs both settings above, else inert — <code>omac status</code> says so). macOS activation raises the app&#x27;s windows and swaps the menu bar, so it stands down for open menus (NOT popovers - they sit at the normal window level), sheets/modals on either app, text fields, the second after a keystroke, anything drawn over the tile, and a display in native full screen; dwindle workspaces only; exclude an app with [[rule]] follow_mouse = false. The menu-bar item&#x27;s &quot;Activate on hover&quot; row edits THIS line, and turning it on there also turns on the two settings above, which it needs</td></tr>
+<tr class="key" id="settings-focus_follows_mouse_activate_delay_ms"><td><code>focus_follows_mouse_activate_delay_ms</code></td><td>integer</td><td><code>250</code></td><td>set</td><td>how long the pointer must rest on the SAME window before it is activated (100-5000). Longer than the border&#x27;s 70 ms on purpose: reaching for the Dock or another display sweeps the pointer across windows</td></tr>
+<tr class="key" id="settings-managed_displays"><td><code>managed_displays</code></td><td>string</td><td><code>&quot;all&quot;</code></td><td>set</td><td>&quot;all&quot;, &quot;main&quot;, or display ids like &quot;1,67&quot; (see <code>omac status</code>)</td></tr>
+<tr class="key" id="settings-managed_apps"><td><code>managed_apps</code></td><td>string</td><td><code>&quot;&quot;</code></td><td>set</td><td>&quot;&quot; = every app, or bundle ids: &quot;com.apple.TextEdit,com.apple.finder&quot;</td></tr>
+<tr class="key" id="settings-workspace_bar"><td><code>workspace_bar</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>on-screen workspace strip per display; click a number to switch</td></tr>
+<tr class="key" id="settings-strict_tiling"><td><code>strict_tiling</code></td><td>boolean</td><td><code>false</code></td><td>set</td><td>never float; every window fills its tile (float rules ignored; toggle_float too unless allowed below). set here — no menu toggle</td></tr>
+<tr class="key" id="settings-strict_tiling_allow_fullscreen"><td><code>strict_tiling_allow_fullscreen</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>(only when strict_tiling) keep Super+Ctrl+F and Super+Alt+F (full width); false = always show the dwindle layout</td></tr>
+<tr class="key" id="settings-strict_tiling_allow_float"><td><code>strict_tiling_allow_float</code></td><td>boolean</td><td><code>false</code></td><td>set</td><td>(only when strict_tiling) let YOU float a window on purpose with Super+Shift+Space; rules/auto-float still never do, and a reload/Reorganize keeps only the floats you made</td></tr>
+<tr class="key" id="settings-focus_yields_to_text_input"><td><code>focus_yields_to_text_input</code></td><td>boolean</td><td><code>false</code></td><td>set</td><td>true = Super+arrow does native ⌘-arrow text motion in text fields; false (Omarchy) = it always moves window focus (use RIGHT ⌘ for text motion)</td></tr>
+<tr class="key" id="settings-scroll_min_width"><td><code>scroll_min_width</code></td><td>integer</td><td><code>500</code></td><td>set</td><td>scrolling layout (SUPER+SHIFT+L): min column width in px — a column never shrinks below this (Chrome&#x27;s floor ~500)</td></tr>
+<tr class="key" id="settings-scroll_peek"><td><code>scroll_peek</code></td><td>integer</td><td><code>32</code></td><td>set</td><td>scrolling layout: px of the nearest off-view column that peeks at each edge (0 = no peek)</td></tr>
+<tr class="key" id="settings-scroll_min_height"><td><code>scroll_min_height</code></td><td>integer</td><td><code>300</code></td><td>set</td><td>scrolling layout: a window is stacked into a column only if every row keeps at least this many px</td></tr>
+<tr class="key" id="settings-ocr_languages"><td><code>ocr_languages</code></td><td>array of strings</td><td><code>[&quot;en-US&quot;]</code></td><td>set</td><td>OCR (Super+Ctrl+T): recognition languages in priority order, the analog of OMARCHY_OCR_LANGS. BCP-47 tags (&quot;en-US&quot;, &quot;fr-FR&quot;, &quot;de-DE&quot;, &quot;zh-Hans&quot;, &quot;ja-JP&quot;); tesseract codes (&quot;eng&quot;, &quot;chi_sim&quot;) are accepted too. An unusable entry is logged and skipped</td></tr>
+<tr class="key" id="settings-ocr_keep_line_breaks"><td><code>ocr_keep_line_breaks</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>OCR: true keeps the recognised layout (an address stays four lines — tesseract&#x27;s preserve_interword_spaces); false folds the selection into ONE line, for a phone number or an address you want in a single field</td></tr>
+<tr class="key" id="settings-pin_reserves_space"><td><code>pin_reserves_space</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>pin (Super+Shift+Ctrl+O) snaps the float to the edge whose band costs the LEAST TILING AREA and reserves that band: managed windows tile around it, so it stays visible whatever you focus. macOS has no honest always-on-top for another app&#x27;s window. A float hugging no edge reserves nothing and stays put. Pop (Super+Ctrl+O) never reserves; false = no snap, no band</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-apps-role">
+<h2><code>[apps] &lt;role&gt; = { … }</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="apps-role-prefer"><td><code>prefer</code></td><td>array of strings</td><td><code>[&quot;com.mitchellh.ghostty&quot;, &quot;com.googlecode.iterm2&quot;, &quot;com.apple.Terminal&quot;]</code></td><td>set</td><td>bundle ids or app paths, in order; the first one installed wins. If none is, terminal/browser/editor/files open their built-in app and any other role tries its path, then its bundle. &quot;system-default&quot; (the macOS default app) counts only for browser and editor; elsewhere it is skipped</td></tr>
+<tr class="key" id="apps-role-new_window"><td><code>new_window</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>open a fresh instance on every launch instead of asking the running app for a window (⌘N)</td></tr>
+<tr class="key" id="apps-role-bundle"><td><code>bundle</code></td><td>string</td><td><code>&quot;com.spotify.client&quot;</code></td><td>example</td><td>exactly this app, by bundle id; no built-in fallback. Tried after path; terminal/browser/editor/files ignore it when they have prefer</td></tr>
+<tr class="key" id="apps-role-path"><td><code>path</code></td><td>string</td><td><code>&quot;/System/Applications/Notes.app&quot;</code></td><td>example</td><td>exactly this app, by path; no built-in fallback. Tried before bundle; terminal/browser/editor/files ignore it when they have prefer</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-agent">
+<h2><code>[agent]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="agent-default"><td><code>default</code></td><td>string</td><td><code>&quot;claude&quot;</code></td><td>set</td><td>the agent SUPER+SHIFT+CTRL+A launches; <code>omac agent use</code> lists the names (&quot;&quot; = ask on first use)</td></tr>
+<tr class="key" id="agent-unattended"><td><code>unattended</code></td><td>boolean</td><td><code>false</code></td><td>set</td><td>true = pass the agent&#x27;s auto-approve flag (a safe mode for most agents; a FULL bypass for cursor-agent, grok, hermes and crush)</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-clipboard">
+<h2><code>[clipboard]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="clipboard-enabled"><td><code>enabled</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>capture + picker on</td></tr>
+<tr class="key" id="clipboard-max_entries"><td><code>max_entries</code></td><td>integer</td><td><code>100</code></td><td>example</td><td>ring size</td></tr>
+<tr class="key" id="clipboard-capture_images"><td><code>capture_images</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>also keep copied images (sha256-deduped)</td></tr>
+<tr class="key" id="clipboard-persist"><td><code>persist</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>keep history across restarts (owner-only on disk)</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-privacy">
+<h2><code>[privacy]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="privacy-check_updates"><td><code>check_updates</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>true = once a day, ask omac.ghostype.ca whether a newer signed Omac exists and offer it; nothing installs without you</td></tr>
+<tr class="key" id="privacy-daily_ping"><td><code>daily_ping</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>true = send one count a day: Omac and macOS versions, display count, first-of-month and first-ever flags; no id, nothing about your windows, apps, files or keys</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-speech-tts">
+<h2><code>[speech.tts]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="speech-tts-enabled"><td><code>enabled</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>the kill switch (off hands Option+Esc back to macOS)</td></tr>
+<tr class="key" id="speech-tts-engine"><td><code>engine</code></td><td>string</td><td><code>&quot;apple-av&quot;</code></td><td>example</td><td>a module in <code>omac speech tts list</code>; empty = the built-in</td></tr>
+<tr class="key" id="speech-tts-voice"><td><code>voice</code></td><td>string</td><td><code>&quot;&quot;</code></td><td>example</td><td>empty = your macOS default voice</td></tr>
+<tr class="key" id="speech-tts-rate"><td><code>rate</code></td><td>integer</td><td><code>0</code></td><td>example</td><td>words per minute, 100-850 (the measured band); 0 = follow the macOS Spoken Content slider. Omac ▸ Speech ▸ Speed</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-speech-asr">
+<h2><code>[speech.asr]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="speech-asr-enabled"><td><code>enabled</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>the kill switch; on means Omac may open the microphone</td></tr>
+<tr class="key" id="speech-asr-engine"><td><code>engine</code></td><td>string</td><td><code>&quot;apple&quot;</code></td><td>example</td><td><code>omac speech asr list</code></td></tr>
+<tr class="key" id="speech-asr-push_to_talk"><td><code>push_to_talk</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>hold the chord below to talk (Omarchy holds F9); false = only the toggle key</td></tr>
+<tr class="key" id="speech-asr-push_to_talk_chord"><td><code>push_to_talk_chord</code></td><td>string</td><td><code>&quot;LCTRL + FN&quot;</code></td><td>example</td><td>the hold gesture, modifiers only: FN, LCTRL, RCTRL, CTRL, SHIFT, ALT, SUPER; &quot;&quot; = none</td></tr>
+<tr class="key" id="speech-asr-max_seconds"><td><code>max_seconds</code></td><td>integer</td><td><code>60</code></td><td>example</td><td>hard stop in seconds (5-300); Omarchy&#x27;s max_duration_secs</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-speech-asr-engine">
+<h2><code>[speech.asr.&lt;engine&gt;]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="speech-asr-engine-model"><td><code>model</code></td><td>string</td><td><code>&quot;en-US&quot;</code></td><td>example</td><td>a locale the engine has installed</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-bind">
+<h2><code>[[bind]]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="bind-keys"><td><code>keys</code></td><td>string</td><td><code>&quot;SUPER + CTRL + ALT + S&quot;</code></td><td>set</td><td>the chord: modifiers (SUPER = Left ⌘, SHIFT, ALT, CTRL) + one key</td></tr>
+<tr class="key" id="bind-desc"><td><code>desc</code></td><td>string</td><td><code>&quot;Screensaver&quot;</code></td><td>set</td><td>the cheatsheet text (Super+K); default: the action</td></tr>
+<tr class="key" id="bind-section"><td><code>section</code></td><td>string</td><td><code>&quot;Utilities&quot;</code></td><td>set</td><td>the cheatsheet group; default: &quot;Other&quot;</td></tr>
+<tr class="key" id="bind-action"><td><code>action</code></td><td>string</td><td><code>&quot;screensaver&quot;</code></td><td>set</td><td>the verb to run</td></tr>
+<tr class="key" id="bind-app"><td><code>app</code></td><td>string</td><td><code>&quot;terminal&quot;</code></td><td>set</td><td>launch, launch_or_focus: a role under [apps]</td></tr>
+<tr class="key" id="bind-mode"><td><code>mode</code></td><td>string</td><td><code>&quot;set&quot;</code></td><td>set</td><td>the verb&#x27;s variant: dictate start|stop|toggle, fullscreen native|maximized|fullscreen, reminder set|show|clear, theme menu|next|bg_next|refresh|off, speak stop</td></tr>
+<tr class="key" id="bind-direction"><td><code>direction</code></td><td>string</td><td><code>&quot;l&quot;</code></td><td>set</td><td>l, r, u or d</td></tr>
+<tr class="key" id="bind-next"><td><code>next</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>true = the next window, false = the previous one</td></tr>
+<tr class="key" id="bind-dx"><td><code>dx</code></td><td>integer</td><td><code>-100</code></td><td>set</td><td>horizontal step in px (Hyprland&#x27;s resizeactive x)</td></tr>
+<tr class="key" id="bind-dy"><td><code>dy</code></td><td>integer</td><td><code>0</code></td><td>set</td><td>vertical step in px (Hyprland&#x27;s resizeactive y)</td></tr>
+<tr class="key" id="bind-workspace"><td><code>workspace</code></td><td>string</td><td><code>&quot;1&quot;</code></td><td>set</td><td>1-10; the <code>workspace</code> verb also takes &quot;previous&quot; (the last one) and &quot;e+1&quot; / &quot;e-1&quot; (the next / previous existing one on this display)</td></tr>
+<tr class="key" id="bind-follow"><td><code>follow</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>true = go there with the window; false = move it silently</td></tr>
+<tr class="key" id="bind-monitor"><td><code>monitor</code></td><td>string</td><td><code>&quot;+1&quot;</code></td><td>set</td><td>&quot;+1&quot; = the next monitor, &quot;-1&quot; = the previous one</td></tr>
+<tr class="key" id="bind-cmd"><td><code>cmd</code></td><td>string</td><td><code>&quot;open -a Calculator&quot;</code></td><td>example</td><td>exec: a shell command, run by /bin/sh -c</td></tr>
+<tr class="key" id="bind-agent"><td><code>agent</code></td><td>string</td><td><code>&quot;codex&quot;</code></td><td>example</td><td>launch_agent: this agent instead of [agent] default</td></tr>
+<tr class="key" id="bind-prompt"><td><code>prompt</code></td><td>string</td><td><code>&quot;review the diff&quot;</code></td><td>example</td><td>launch_agent: the first prompt the agent gets</td></tr>
+<tr class="key" id="bind-send"><td><code>send</code></td><td>string</td><td><code>&quot;SUPER + SHIFT + P&quot;</code></td><td>example</td><td>send_keys: the chord to type into the front app (⌘ goes out as Right ⌘, so Omac does not catch it)</td></tr>
+<tr class="key" id="bind-width"><td><code>width</code></td><td>integer</td><td><code>1000</code></td><td>example</td><td>pop: the popped window&#x27;s width in px (default 1300)</td></tr>
+<tr class="key" id="bind-height"><td><code>height</code></td><td>integer</td><td><code>700</code></td><td>example</td><td>pop: the popped window&#x27;s height in px (default 900)</td></tr>
+<tr class="key" id="bind-name"><td><code>name</code></td><td>string</td><td><code>&quot;tokyo-night&quot;</code></td><td>example</td><td>theme: set this theme (&quot;Tokyo Night&quot; works too) instead of a mode</td></tr>
+<tr class="key" id="bind-release"><td><code>release</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>fire when the key is RELEASED, not pressed (Hyprland&#x27;s bindr)</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-rule">
+<h2><code>[[rule]]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="rule-app"><td><code>app</code></td><td>string</td><td><code>&quot;com.apple.systempreferences&quot;</code></td><td>set</td><td>a bundle id or an app name, matched exactly</td></tr>
+<tr class="key" id="rule-float"><td><code>float</code></td><td>boolean</td><td><code>true</code></td><td>set</td><td>float this app&#x27;s windows instead of tiling them</td></tr>
+<tr class="key" id="rule-size"><td><code>size</code></td><td>array of integers</td><td><code>[900, 700]</code></td><td>example</td><td>a float&#x27;s [width, height] in px</td></tr>
+<tr class="key" id="rule-center"><td><code>center</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>center the float (floats open centered anyway)</td></tr>
+<tr class="key" id="rule-manage"><td><code>manage</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>leave this app&#x27;s windows to macOS: never tiled, parked or moved</td></tr>
+<tr class="key" id="rule-tile"><td><code>tile</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>tile this app&#x27;s windows even where Omac would float them</td></tr>
+<tr class="key" id="rule-follow_mouse"><td><code>follow_mouse</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>focus-follows-mouse skips this app: no border, no activation</td></tr>
+<tr class="key" id="rule-title"><td><code>title</code></td><td>string</td><td><code>&quot;Copy&quot;</code></td><td>set</td><td>part of the window title, any case</td></tr>
+<tr class="key" id="rule-workspace"><td><code>workspace</code></td><td>integer</td><td><code>9</code></td><td>example</td><td>open this app&#x27;s NEW windows on workspace 9 (1-10), without switching there</td></tr>
+</tbody></table></div>
+</section>
+</section>
+</main>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 Evans Castonguay. All rights reserved. Versions 1.4.5–1.4.7 are MIT-licensed and stay so; later versions are not. · <a href="../terms/">Terms</a> · <a href="https://github.com/evanscastonguay/omac">GitHub</a></p></div></footer>
+</body>
+</html>

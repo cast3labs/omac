@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Omac troubleshooting</title>
+<meta name="description" content="What to do when Omac&#x27;s shortcuts do nothing, the command is not found, a window is off screen, or a second copy runs.">
+<meta name="generator" content="scripts/build-site.py">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../style.css">
+<link rel="icon" href="../../favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<script defer src="../../copy.js"></script>
+</head>
+<body>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a href="../../install/">Install</a><a href="../../features/">Features</a><a href="../../compare/">Compare</a><a href="../../config/">omac.toml</a><a href="../../docs/" aria-current="page">Docs</a><a href="https://github.com/evanscastonguay/omac">GitHub</a></nav></header>
+<main class="narrow docs">
+<h1>Troubleshooting</h1>
+<table>
+<thead>
+<tr>
+<th>You see</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left ⌘ shortcuts do nothing</td>
+<td>Omac needs the Accessibility permission (<a href="../../install/#permission">how</a>). <code>omac status</code> says <code>accessibility false</code> until it has it.</td>
+</tr>
+<tr>
+<td><code>omac: command not found</code></td>
+<td>Open a <strong>new</strong> Terminal window. The installer set this up for new windows only.</td>
+</tr>
+<tr>
+<td><em>"Omac is an app downloaded from the Internet…"</em></td>
+<td>macOS asks this once, the first time you open a copy downloaded with a web browser. Click <strong>Open</strong>.</td>
+</tr>
+<tr>
+<td><code>Omac was not installed: …</code></td>
+<td>The message says why. Run the command again; if it happens again, send the full output.</td>
+</tr>
+<tr>
+<td>A window is off screen</td>
+<td><code>omac rescue</code> brings it back.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Support is best effort:</strong> one person maintains Omac. To report a bug,
+<a href="https://github.com/evanscastonguay/omac/issues/new/choose">open an issue</a> with
+the output of <code>omac status</code> and what you pressed. Report a security problem
+privately, as <a href="https://github.com/evanscastonguay/omac/security/policy">SECURITY.md</a> explains, never in an issue.</p>
+<h2 id="two-copies-of-omac">Two copies of Omac</h2>
+<p>Only one Omac may run. If shortcuts stop, or an update seems not to take, a second copy may be
+starting from another folder: the one-line installer keeps Omac in <code>~/Applications/Omac.app</code>,
+and an older copy in <code>/Applications</code> conflicts with it. <code>omac status</code> lists every other copy
+installed on the Mac under <code>other_copies</code>. Quit Omac (<code>omac quit</code>), delete the copy you do not
+want, and open the one you keep. Running the install command again removes the <code>/Applications</code>
+copy for you (it asks for your Mac password to do so).</p>
+<h2 id="pausing-omac">Pausing Omac</h2>
+<p><strong>Left ⌘ Ctrl ⌥ Esc</strong> pauses the tiling: windows stop moving, and the window keys (focus,
+move, resize, split, float) pass through to the app in front. Launch keys, workspace keys and
+the tools (palette, clipboard history, theme menu) keep working. Press it again to resume.
+While paused, the menu-bar icon shows ⏸.</p>
+<h2 id="a-window-you-cannot-reach">A window you cannot reach</h2>
+<p><code>omac rescue</code> moves any window that is off every display back onto one. <strong>Reorganize</strong> in
+Omac's menu (or <code>omac reorganize</code>) re-tiles the workspace. Quitting Omac (<code>omac quit</code>) puts
+every hidden window back on screen.</p>
+<h2 id="after-a-macos-update">After a macOS update</h2>
+<p>If shortcuts do nothing after a macOS update, check the Accessibility permission first: open
+<strong>System Settings → Privacy &amp; Security → Accessibility</strong>, turn <strong>Omac</strong> off and on again, then
+check <code>omac status</code>.</p>
+</main>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 Evans Castonguay. All rights reserved. Versions 1.4.5–1.4.7 are MIT-licensed and stay so; later versions are not. · <a href="../../terms/">Terms</a> · <a href="https://github.com/evanscastonguay/omac">GitHub</a></p></div></footer>
+</body>
+</html>

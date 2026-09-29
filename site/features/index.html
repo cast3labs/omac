@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Omac does</title>
+<meta name="description" content="The 47 features of Omac, a tiling window manager for macOS with Omarchy&#x27;s keys, and the default key of each.">
+<meta name="generator" content="scripts/build-site.py">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<script defer src="../copy.js"></script>
+</head>
+<body>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../">Omac</a><a href="../install/">Install</a><a href="../features/" aria-current="page">Features</a><a href="../compare/">Compare</a><a href="../config/">omac.toml</a><a href="../docs/">Docs</a><a href="https://github.com/evanscastonguay/omac">GitHub</a></nav></header>
+<main>
+<h1>What Omac does</h1>
+<p class="lede">47 features on a Mac: Omarchy's, and a few of Omac's own. Most have a default key.</p>
+<p class="lede-note">Keys are shown as you press them. <kbd>Left ⌘</kbd> is the Omac key, and Right ⌘ stays a normal ⌘. <kbd>⌥</kbd> is Option. Every key can be changed in <a href="../config/"><code>omac.toml</code></a>.</p>
+<ul class="toc">
+<li><a href="#window-manager">Windows and workspaces</a></li>
+<li><a href="#desktop-shell">Desktop tools</a></li>
+<li><a href="#ai-agentic">Coding agents and speech</a></li>
+<li><a href="#appearance">Themes</a></li>
+<li><a href="#system-toggles">System keys</a></li>
+<li><a href="#config-control">Settings and control</a></li>
+<li><a href="#left-to-macos">Left to macOS</a></li>
+</ul>
+<section id="window-manager">
+<h2>Windows and workspaces</h2>
+<div class="features">
+<article class="feature" id="dwindle"><h3>Dwindle tiling</h3><p>Each new window splits the space of the one you are in, so tiled windows sit side by side and never overlap.</p></article>
+<article class="feature" id="ws"><h3>Virtual workspaces</h3><p>Ten workspaces across your displays. Each belongs to a display, and switching to one goes to the display that has it.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>1</kbd> … <kbd>0</kbd></span></p></article>
+<article class="feature" id="focus"><h3>Directional focus</h3><p>Move the focus to the window on the left, right, above or below, and on to the next display at the edge.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd></span></p></article>
+<article class="feature" id="swap"><h3>Move / swap window</h3><p>Swap a window with its neighbour, or move it to the next display when it has no neighbour that way.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd></span></p></article>
+<article class="feature" id="movews"><h3>Move window to workspace</h3><p>Send the window to another workspace, and follow it there or stay where you are.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>1</kbd> … <kbd>0</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>⌥</kbd> <kbd>1</kbd> … <kbd>0</kbd></span></p></article>
+<article class="feature" id="newwin"><h3>New windows open where you are</h3><p>A new window opens on the workspace you are looking at; one opened with a launch key lands where you pressed it.</p></article>
+<article class="feature" id="multimon"><h3>Multiple displays, followed live</h3><p>Plug in, unplug or rearrange displays and Omac follows: each display keeps its workspaces and is tiled again.</p></article>
+<article class="feature" id="resize"><h3>Resize window</h3><p>Make a window wider, narrower, taller or shorter. For the width, add ⌥ for a small step or Ctrl for a big one.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>−</kbd> / <kbd>=</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>−</kbd> / <kbd>=</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>⌥</kbd> <kbd>−</kbd> / <kbd>=</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>−</kbd> / <kbd>=</kbd></span></p></article>
+<article class="feature" id="split"><h3>Split-direction toggle</h3><p>Turn a split from side by side to stacked, and back.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>J</kbd></span></p></article>
+<article class="feature" id="float"><h3>Floating toggle</h3><p>Let a window float freely above the tiles, or put it back in the tiling.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Space</kbd></span></p></article>
+<article class="feature" id="fullscreen"><h3>Full screen and full width</h3><p>macOS full screen in a Space of its own, or full width: the window fills the screen and keeps the outer gaps.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>F</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd></span></p></article>
+<article class="feature" id="wsmon"><h3>Move workspace between monitors</h3><p>Move a whole workspace to the display on the left, right, above or below.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>⌥</kbd> <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd></span></p></article>
+<article class="feature" id="cycle"><h3>Cycle displays / windows</h3><p>Cycle through the windows of a workspace, or move the focus to the next display.</p><p class="keys"><span class="chord"><kbd>⌥</kbd> <kbd>Tab</kbd></span><span class="or">or</span><span class="chord"><kbd>Ctrl</kbd> <kbd>⌥</kbd> <kbd>Tab</kbd></span></p></article>
+<article class="feature" id="scroll"><h3>Scrolling layout</h3><p>Switch a workspace to a scrolling row of columns, where a new window never squeezes the others.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>L</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>R</kbd></span></p></article>
+<article class="feature" id="rules"><h3>Per-app window rules</h3><p>Rules per app in omac.toml: always float it, open it on a given workspace, give it a size, or leave it alone.</p></article>
+<article class="feature" id="fullwidth"><h3>Full width</h3><p>The window fills the screen but keeps the outer gaps; the same key puts it back.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>⌥</kbd> <kbd>F</kbd></span></p></article>
+<article class="feature" id="pin"><h3>Pin (stays visible)</h3><p>Pin a floating window: it stays with you across workspaces, and the tiles make room when it sits against an edge.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Ctrl</kbd> <kbd>O</kbd></span></p></article>
+<article class="feature" id="pop"><h3>Window pop</h3><p>Pop a window out: it floats, centred at 1300×900, and stays with you across workspaces. Press again to tile it.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>O</kbd></span></p></article>
+<article class="feature" id="ffmborder"><h3>Focus border follows the mouse</h3><p>Optional: the focus border follows the window under the pointer, without switching apps.</p></article>
+<article class="feature" id="hover"><h3>Activate on hover</h3><p>Optional, off by default: point at a window and type there, no click. The menu has a quick off switch.</p></article>
+<article class="feature" id="stack"><h3>Column stacking (scrolling layout)</h3><p>In the scrolling layout, stack a window into the column beside it, move through the stack, or pop it out.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Ctrl</kbd> <kbd>←</kbd> / <kbd>→</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>⌥</kbd> <kbd>G</kbd></span></p></article>
+</div>
+</section>
+<section id="desktop-shell">
+<h2>Desktop tools</h2>
+<div class="features">
+<article class="feature" id="launch"><h3>App launch hotkeys</h3><p>Open a terminal, a browser, an editor or the file manager: the apps you prefer, or the ones every Mac has.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Return</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Return</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>N</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>F</kbd></span></p></article>
+<article class="feature" id="palette"><h3>Command palette</h3><p>Search your key bindings by name and run one.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>⌥</kbd> <kbd>Space</kbd></span></p></article>
+<article class="feature" id="cheatsheet"><h3>Keybinding cheatsheet</h3><p>Shows every shortcut your own omac.toml binds.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>K</kbd></span></p></article>
+<article class="feature" id="bar"><h3>On-screen workspace bar</h3><p>A small bar on each display shows its workspaces; click a number to switch.</p></article>
+<article class="feature" id="clip"><h3>Universal clipboard history</h3><p>A searchable history of what you copy, text and images. Copies a password manager marks as secret are never kept.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>V</kbd></span></p></article>
+<article class="feature" id="remcli"><h3>Countdown reminders</h3><p>Set a countdown from the command line. A notification comes when it ends, even if Omac has quit.</p><p class="keys"><code>omac reminder</code></p></article>
+<article class="feature" id="remui"><h3>Reminder keys</h3><p>Set a reminder with a key and a few words, see the ones running, or clear them.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>R</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>⌥</kbd> <kbd>R</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Ctrl</kbd> <kbd>R</kbd></span></p></article>
+</div>
+</section>
+<section id="ai-agentic">
+<h2>Coding agents and speech</h2>
+<div class="features">
+<article class="feature" id="agent"><h3>AI coding-agent harness</h3><p>Opens your AI coding agent in a terminal. Choose the agent from the menu or with omac agent use.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Ctrl</kbd> <kbd>A</kbd></span></p></article>
+<article class="feature" id="skill"><h3>Agent skill: your agent configures Omac</h3><p>Teaches your coding agent how to change Omac&#x27;s settings and use the omac command safely.</p></article>
+<article class="feature" id="skillinst"><h3>Agent skill installer</h3><p>Links Omac&#x27;s skill into the coding agents it finds, such as Claude Code and Codex. Uninstall removes only its links.</p><p class="keys"><code>omac skill install</code></p></article>
+<article class="feature" id="crash"><h3>Crash reports, explained</h3><p>Hands the newest macOS crash report to your coding agent to explain in plain words.</p><p class="keys"><code>omac agent crash</code></p></article>
+<article class="feature" id="tts"><h3>Read aloud</h3><p>Reads the selected text aloud in your macOS voice; press it again to stop.</p><p class="keys"><span class="chord"><kbd>⌥</kbd> <kbd>Esc</kbd></span></p></article>
+<article class="feature" id="asr"><h3>Dictation</h3><p>Hold Left Ctrl and fn, talk, and let go: the words are typed where you were. macOS 26; off until you turn it on.</p><p class="keys"><span class="chord"><kbd>Left Ctrl</kbd> <kbd>fn</kbd></span><span class="or">or</span><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>X</kbd></span></p></article>
+<article class="feature" id="ocr"><h3>OCR text extraction</h3><p>Drag over any part of the screen to copy its text, read on your Mac by macOS&#x27;s own text recognition.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>T</kbd></span></p></article>
+</div>
+</section>
+<section id="appearance">
+<h2>Themes</h2>
+<div class="features">
+<article class="feature" id="theme"><h3>Theme system (22 themes)</h3><p>Omarchy&#x27;s 22 colour themes for Omac, light or dark mode, the wallpaper (20 themes have one) and, if you choose, apps like Ghostty.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Ctrl</kbd> <kbd>Space</kbd></span></p></article>
+<article class="feature" id="bg"><h3>Per-theme backgrounds</h3><p>Cycles the current theme&#x27;s wallpapers, plus any you add, on every display. Most themes ship one; two ship none.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>⌥</kbd> <kbd>Space</kbd></span></p></article>
+</div>
+</section>
+<section id="system-toggles">
+<h2>System keys</h2>
+<div class="features">
+<article class="feature" id="awake"><h3>Keep-awake toggle</h3><p>Keeps the screen from sleeping until you press the key again or quit Omac.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>I</kbd></span></p></article>
+<article class="feature" id="indicators"><h3>Menu-bar mode indicators</h3><p>The menu-bar icon shows when tiling is paused, when keep awake, Night Shift, mic mute or reading aloud is on, and while you dictate.</p></article>
+<article class="feature" id="color"><h3>Color picker → clipboard</h3><p>Click any pixel on the screen to copy its colour as hex, like #1E1E2E.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>P</kbd></span></p></article>
+<article class="feature" id="night"><h3>Night Shift toggle hotkey</h3><p>Turn Night Shift on or off with one key.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>N</kbd></span></p></article>
+<article class="feature" id="micmute"><h3>Mic-mute toggle</h3><p>Mute the microphone for every app at once, with one key.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>M</kbd></span></p></article>
+<article class="feature" id="screensaver"><h3>Screensaver</h3><p>Shows Omarchy&#x27;s ASCII art on every display until you press a key or move the mouse. It starts on a key, not on idle yet.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>⌥</kbd> <kbd>S</kbd></span></p></article>
+</div>
+</section>
+<section id="config-control">
+<h2>Settings and control</h2>
+<div class="features">
+<article class="feature" id="config"><h3>Single editable config + hot-reload</h3><p>Every setting in one commented file, ~/.config/omac/omac.toml. Save it and the change applies at once.</p></article>
+<article class="feature" id="binds"><h3>Configurable keybindings</h3><p>Keys are [[bind]] lines in omac.toml: change one, add your own, or unbind a default.</p></article>
+<article class="feature" id="cli"><h3>CLI control (headless)</h3><p>The omac command controls Omac from a terminal or a script: status, keys, pause, themes and more.</p><p class="keys"><code>omac …</code></p></article>
+<article class="feature" id="panic"><h3>Panic / pause tiling</h3><p>One key pauses the tiling and leaves windows where they are; press it again to resume. Quitting Omac puts hidden windows back.</p><p class="keys"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>⌥</kbd> <kbd>Esc</kbd></span></p></article>
+</div>
+</section>
+<section id="left-to-macos">
+<h2>Left to macOS</h2>
+<p>Omarchy is a whole Linux system. These parts of it are already on your Mac, or are outside what a window manager does.</p>
+<ul class="left-to-macos">
+<li id="launcher"><strong>Application launcher UI.</strong> Left ⌘ Space stays Spotlight, or Raycast if you use it.</li>
+<li id="notices"><strong>Notices (clock / battery / weather).</strong> The macOS menu bar already shows the clock and the battery.</li>
+<li id="multimodel"><strong>Multi-model AI support.</strong> Each coding agent picks its own model; Omac only opens the agent.</li>
+<li id="dnd"><strong>Do Not Disturb toggle hotkey.</strong> A Shortcut that toggles Do Not Disturb can have its own key, set in the Shortcuts app.</li>
+<li id="macosnative"><strong>Reflexes macOS already owns.</strong> Volume, brightness, screenshots, screen lock and the emoji picker keep their macOS keys.</li>
+<li id="devapps"><strong>Bundled dev apps (Neovim, TUIs, …).</strong> Omac bundles no other apps. It arranges the windows of the apps you already use.</li>
+<li id="webapps"><strong>First-class web apps.</strong> Safari can add a website to the Dock as an app.</li>
+<li id="gaming"><strong>Gaming (Steam / Proton / emulation).</strong> Outside a window manager: install games the usual Mac way.</li>
+<li id="windowsvm"><strong>Windows VM.</strong> Outside a window manager: use a Mac virtualization app.</li>
+<li id="packages"><strong>Packages / updates / snapshots.</strong> macOS updates itself. Omac updates when you run its install command again, or through Homebrew.</li>
+<li id="encryption"><strong>Encryption / hardware auth / sleep.</strong> FileVault, Touch ID and sleep are part of macOS.</li>
+<li id="osinstall"><strong>Install / dual-boot / boot branding.</strong> Omac is an app on the macOS you already have: nothing to install at boot.</li>
+</ul>
+</section>
+</main>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 Evans Castonguay. All rights reserved. Versions 1.4.5–1.4.7 are MIT-licensed and stay so; later versions are not. · <a href="../terms/">Terms</a> · <a href="https://github.com/evanscastonguay/omac">GitHub</a></p></div></footer>
+</body>
+</html>
