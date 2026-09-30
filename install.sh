@@ -3,12 +3,13 @@
 #
 #   curl -fsSL https://raw.githubusercontent.com/evanscastonguay/omac/main/install.sh | bash
 #
-# A specific version:  ... | bash -s -- v1.4.4
+# A specific version:  ... | bash -s -- v1.4.8
 #
-# What this does: downloads the release, checks its SHA-256, and runs the
-# installer that ships inside it. That installer checks the app's Developer ID
-# signature, removes any old copy in /Applications, installs to ~/Applications,
-# puts the `omac` command on your PATH and starts Omac.
+# What this does: downloads the release, checks its SHA-256 and the app's
+# Developer ID signature, and runs the installer sealed inside that signed app.
+# That installer checks the signature again, removes any old copy in
+# /Applications, installs to ~/Applications, puts the `omac` command on your
+# PATH and starts Omac.
 #
 # Everything is inside main(), called on the last line, so a download cut off
 # half way runs nothing.
@@ -62,16 +63,41 @@ main() {
   # requirement, evaluated by codesign: Apple-anchored, this bundle id, our team.
   local app req
   app=$(find "$tmp/x" -maxdepth 3 -name Omac.app -type d | head -1)
-  [ -n "$app" ] || fail "the download has no Omac.app in it."
+  # Named Omac.app, not just found: a folder with a newline in its name would
+  # cut find's first line short, at an app under another name, while the
+  # installers below install the Omac.app next to them.
+  { [ -n "$app" ] && [ "${app##*/}" = Omac.app ]; } || fail "the download has no Omac.app in it."
   req='anchor apple generic and identifier "com.evanscastonguay.omac" and certificate leaf[subject.OU] = "5GB46V9555"'
   codesign --verify --deep --strict "$app" 2>/dev/null \
     || fail "the app's signature is broken. Try again."
   codesign --verify --strict -R "=$req" "$app" 2>/dev/null \
     || fail "the app is not signed by Omac's developer."
 
-  local inst
-  inst=$(find "$tmp/x" -maxdepth 2 -name install.sh -type f | head -1)
-  [ -n "$inst" ] || fail "the download has no installer in it."
+  # Then run only an installer checked as strictly as the app. A release made
+  # after 1.4.8 carries it sealed inside the app, as
+  # Contents/Resources/release-install.sh: the signature just verified covers
+  # that file byte for byte, so whoever serves the download can neither change
+  # it nor take it out. The copy of it the zip also carries next to the app,
+  # install.sh, is never run from here: nothing vouches for it.
+  local inst="$app/Contents/Resources/release-install.sh"
+  if [ ! -f "$inst" ] || [ -L "$inst" ]; then
+    # 1.4.5 to 1.4.8 carry only that install.sh. Run it only when it sits next
+    # to the app just checked (it installs the Omac.app next to it) and is, byte
+    # for byte, the one its version was published with. Published releases
+    # never change, so these are final; 1.4.4's files were withdrawn.
+    local version pinned sum
+    version=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app/Contents/Info.plist" 2>/dev/null || echo "?")
+    inst="$(dirname "$app")/install.sh"
+    { [ -f "$inst" ] && [ ! -L "$inst" ]; } || fail "the download has no installer in it."
+    case "$version" in
+      1.4.5|1.4.6|1.4.7) pinned=1807fd9378deced6c3bb017734b2aa3d15364704bee9d0461d5f74bd1b9378a0 ;;
+      1.4.8)             pinned=3dc3a848bad82027b430b3c5dc610261e047ecfb771c0a2f60b6da4112a842ed ;;
+      *)                 pinned="" ;;
+    esac
+    sum=$(shasum -a 256 "$inst" | awk '{ print $1 }')
+    { [ -n "$pinned" ] && [ "$sum" = "$pinned" ]; } \
+      || fail "the installer in the download is not the one published with Omac $version, so it was not run."
+  fi
 
   /bin/bash "$inst"
 }
