@@ -27,8 +27,9 @@ jobs:
     # The same file lives in the private source repo until the source moves
     # here. There it must not run: a private repo has no free hosted minutes,
     # so every push of this file failed (run 36267282232). Skipped, it costs
-    # nothing and reports nothing.
-    if: github.repository == 'evanscastonguay/omac'
+    # nothing and reports nothing. The repository is moving to the cast3labs
+    # organization (2026-09-30): both names deploy until the old one is gone.
+    if: github.repository == 'cast3labs/omac' || github.repository == 'evanscastonguay/omac'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
