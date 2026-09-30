@@ -102,6 +102,8 @@ pre .copy { position: absolute; top: .4rem; right: .4rem; font: inherit; font-si
   padding: .15rem .5rem; border: 1px solid var(--line); border-radius: .3rem; background: var(--bg);
   color: var(--fg); cursor: pointer; }
 pre .copy:hover { border-color: var(--accent); color: var(--accent); }
+/* The copy result, read by screen readers only (copy.js). */
+.sr-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 a.button { display: inline-block; padding: .55rem 1.1rem; border-radius: .4rem; background: var(--accent);
   color: var(--bg); font-weight: 600; text-decoration: none; margin: .25rem .5rem .25rem 0; }
 a.button:hover { filter: brightness(1.1); }

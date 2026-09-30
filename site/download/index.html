@@ -31,9 +31,10 @@
 <p>Omac is signed with the author's Apple Developer ID and notarized by Apple, so macOS asks once, before the first open, whether to open an app downloaded from the internet, and nothing more. If macOS says instead that it <i>cannot verify</i> the app, you do not have a notarized copy (every release since 1.4.8 is one): delete it and download the latest from <a href="https://github.com/evanscastonguay/omac/releases">Omac's releases</a>. <b>Never turn Gatekeeper off</b> for Omac: it does not need it.</p>
 <h2>Afterwards</h2>
 <ul>
-<li><b>The <code>omac</code> command and start at login</b> are not set up by the download. Choose <b>Launch at login</b> from Omac's menu-bar icon, or run the Terminal command above once: it moves Omac to <code>~/Applications</code>, keeps your settings, and sets up both (macOS may ask for the Accessibility permission again).</li>
-<li><b>Update:</b> download the new zip and replace <code>Omac.app</code>.</li>
-<li><b>Uninstall:</b> drag <code>Omac.app</code> to the Trash; <a href="../install/#uninstall">the complete uninstall</a> lists what else Omac wrote.</li>
+<li><b>Start at login</b> is not set up by the download: choose <b>Launch at login</b> from Omac's menu-bar icon.</li>
+<li><b>The <code>omac</code> command</b> is not either: run the Terminal command above once. It moves Omac to <code>~/Applications</code>, keeps your settings, and sets up the command (macOS may ask for the Accessibility permission again). It does not turn on start at login when it replaces a copy in Applications: turn it on afterwards from the menu, or with <code data-cmd>omac login on</code>.</li>
+<li><b>Update:</b> quit Omac, then download the new zip and replace <code>Omac.app</code>.</li>
+<li><b>Uninstall:</b> turn off <strong>Launch at login</strong> in Omac&#x27;s menu (or in <strong>System Settings → General → Login Items</strong>) if it is on, quit Omac, then drag <code>Omac.app</code> to the Trash; <a href="../install/#uninstall">the complete uninstall</a> lists what else Omac wrote.</li>
 <li>Every way to install, side by side: <a href="../install/">Install</a>.</li>
 </ul>
 <p>Omac never sends anything without asking.</p>

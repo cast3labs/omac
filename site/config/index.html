@@ -18,7 +18,7 @@
 <h1><code>omac.toml</code> reference</h1>
 <p>Every setting lives in one file, <code>~/.config/omac/omac.toml</code>. Omac writes it on first launch with a comment on each setting, and applies a change when you save it. <code>omac default-spec</code> prints the whole default file.</p>
 <section class="config-reference">
-<p class="lede">76 keys in 11 tables. <em>Set</em> means the default omac.toml sets the key; <em>example</em> means it shows the key commented out. For a key the default file sets, the example is the shipped value.</p>
+<p class="lede">80 keys in 12 tables. <em>Set</em> means the default omac.toml sets the key; <em>example</em> means it shows the key commented out. For a key the default file sets, the example is the shipped value.</p>
 <nav class="toc"><ul>
 <li><a href="#table-top"><code>Top level (above the first table)</code></a></li>
 <li><a href="#table-settings"><code>[settings]</code></a></li>
@@ -29,6 +29,7 @@
 <li><a href="#table-speech-tts"><code>[speech.tts]</code></a></li>
 <li><a href="#table-speech-asr"><code>[speech.asr]</code></a></li>
 <li><a href="#table-speech-asr-engine"><code>[speech.asr.&lt;engine&gt;]</code></a></li>
+<li><a href="#table-ipc"><code>[ipc]</code></a></li>
 <li><a href="#table-bind"><code>[[bind]]</code></a></li>
 <li><a href="#table-rule"><code>[[rule]]</code></a></li>
 </ul></nav>
@@ -139,6 +140,17 @@
 <thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
 <tbody>
 <tr class="key" id="speech-asr-engine-model"><td><code>model</code></td><td>string</td><td><code>&quot;en-US&quot;</code></td><td>example</td><td>a locale the engine has installed</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-ipc">
+<h2><code>[ipc]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="ipc-allow_exec"><td><code>allow_exec</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>true = omac dispatch exec runs its cmd, as an exec key does (any program you run could then run commands with Omac&#x27;s permissions)</td></tr>
+<tr class="key" id="ipc-allow_send_keys"><td><code>allow_send_keys</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>true = omac dispatch send_keys types its key into the front app (any program you run could then type into any app)</td></tr>
+<tr class="key" id="ipc-allow_dictate"><td><code>allow_dictate</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>true = omac dispatch dictate starts and stops dictation (any program you run could then turn on the microphone and receive what you say)</td></tr>
+<tr class="key" id="ipc-allow_agent_prompt"><td><code>allow_agent_prompt</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>true = a prompt from omac agent or omac dispatch reaches your coding agent while [agent] unattended = true (any program you run could then give it instructions it follows without asking)</td></tr>
 </tbody></table></div>
 </section>
 <section id="table-bind">

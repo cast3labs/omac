@@ -49,14 +49,21 @@
 <p><strong>Support is best effort:</strong> one person maintains Omac. To report a bug,
 <a href="https://github.com/evanscastonguay/omac/issues/new/choose">open an issue</a> with
 the output of <code>omac status</code> and what you pressed. Report a security problem
-privately, as <a href="https://github.com/evanscastonguay/omac/security/policy">SECURITY.md</a> explains, never in an issue.</p>
+privately, through <a href="https://github.com/evanscastonguay/omac/security/advisories/new">GitHub's private vulnerability report form</a>, never in an issue.</p>
 <h2 id="two-copies-of-omac">Two copies of Omac</h2>
-<p>Only one Omac may run. If shortcuts stop, or an update seems not to take, a second copy may be
-starting from another folder: the one-line installer keeps Omac in <code>~/Applications/Omac.app</code>,
-and an older copy in <code>/Applications</code> conflicts with it. <code>omac status</code> lists every other copy
-installed on the Mac under <code>other_copies</code>. Quit Omac (<code>omac quit</code>), delete the copy you do not
-want, and open the one you keep. Running the install command again removes the <code>/Applications</code>
-copy for you (it asks for your Mac password to do so).</p>
+<p>Only one Omac may run. From 1.5.0, when a second copy opens, one of the two says so and asks
+which one to keep: the copy that opens, or, when an older 1.4.x copy opens after it, the copy that
+was already running (a copy that quits does so the normal way, putting back any window it had
+hidden). The suggested answer keeps the copy in your Applications folder over one opened where it
+was downloaded, then the newer version. When the downloaded copy is the newer version, the alert
+also says how to use it: quit Omac, move the downloaded copy to your Applications folder in place of
+the old one, then open it. Two 1.4.x copies do not ask, so quit an old one yourself.
+If shortcuts stop, or an update seems not to take, a second copy may be starting from another
+folder: the one-line installer keeps Omac in <code>~/Applications/Omac.app</code>, and an older copy in
+<code>/Applications</code> conflicts with it. <code>omac status</code> lists every other copy that is running under
+<code>running_copies</code>, and every other copy installed on the Mac under <code>other_copies</code>. Quit Omac
+(<code>omac quit</code>), delete the copy you do not want, and open the one you keep. Running the install
+command again removes the <code>/Applications</code> copy for you (it may ask for your Mac password to do so).</p>
 <h2 id="pausing-omac">Pausing Omac</h2>
 <p><strong>Left ⌘ Ctrl ⌥ Esc</strong> pauses the tiling: windows stop moving, and the window keys (focus,
 move, resize, split, float) pass through to the app in front. Launch keys, workspace keys and
@@ -64,8 +71,9 @@ the tools (palette, clipboard history, theme menu) keep working. Press it again 
 While paused, the menu-bar icon shows ⏸.</p>
 <h2 id="a-window-you-cannot-reach">A window you cannot reach</h2>
 <p><code>omac rescue</code> moves any window that is off every display back onto one. <strong>Reorganize</strong> in
-Omac's menu (or <code>omac reorganize</code>) re-tiles the workspace. Quitting Omac (<code>omac quit</code>) puts
-every hidden window back on screen.</p>
+Omac's menu (or <code>omac reorganize</code>) re-tiles every workspace: it evens out the split sizes and
+resumes tiling if it was paused. Quitting Omac (<code>omac quit</code>) puts every hidden window back on
+screen.</p>
 <h2 id="after-a-macos-update">After a macOS update</h2>
 <p>If shortcuts do nothing after a macOS update, check the Accessibility permission first: open
 <strong>System Settings → Privacy &amp; Security → Accessibility</strong>, turn <strong>Omac</strong> off and on again, then
