@@ -1,15 +1,14 @@
 Omac
 
-Copyright (c) 2026 Evans Castonguay. All rights reserved.
+Copyright (c) 2026 cast3labs (Evans Castonguay). All rights reserved.
 
 Omac is proprietary software. No license to its source code is granted: the
 source code may not be copied, modified, published, distributed or
 sublicensed, in whole or in part, without the copyright holder's prior
 written permission.
 
-Versions 1.4.5, 1.4.6 and 1.4.7 of Omac were released under the MIT License,
-and those three releases remain under it. Its text is kept in
-LICENSE-MIT-1.4.5-1.4.7. No later version is released under the MIT License.
+The preview releases 1.4.5, 1.4.6 and 1.4.7 were once offered under the MIT
+License; no other version is.
 
 Omac includes third-party work under its own licenses, listed with their full
 texts in THIRD_PARTY_NOTICES.md. Nothing in this file changes those licenses.

@@ -1,14 +1,15 @@
 # Contrat de licence d'utilisateur final d'Omac
 
-> **Version 1 — en vigueur à partir d'Omac 1.4.8.** Approuvée par l'auteur le 2026-09-29. Vous pouvez
+> **Version 2 — en vigueur à partir d'Omac 1.0.0.** Approuvée par cast3labs le 2026-10-01. Vous pouvez
 > lire ces conditions avant d'installer Omac : elles sont liées à côté de la commande d'installation et
 > affichées par le programme d'installation.
 
-**Version 1, pour Omac 1.4.8 et chaque version ultérieure accompagnée de ces conditions.**
+**Version 2, pour Omac 1.0.0 et chaque version publiée après elle qui est accompagnée de ces conditions.**
+La version 1 de ces conditions s'appliquait à la version préliminaire 1.4.8.
 **English version:** [EULA.md](EULA.md). Les deux versions disent la même chose (article 13).
 
-Ces conditions constituent une entente entre vous et Evans Castonguay, l'auteur d'Omac
-(« l'auteur »). Elles visent l'application Omac, son outil en ligne de commande `omac` et les
+Ces conditions constituent une entente entre vous et cast3labs (Evans Castonguay), l'auteur
+d'Omac (« l'auteur »). Elles visent l'application Omac, son outil en ligne de commande `omac` et les
 fichiers qui les accompagnent (« Omac »). En installant ou en utilisant Omac, vous les acceptez. Si
 vous ne les acceptez pas, n'installez pas Omac et ne l'utilisez pas.
 
@@ -53,9 +54,8 @@ qu'elles permettent.
 
 ## 5. Les versions 1.4.5, 1.4.6 et 1.4.7
 
-Les versions 1.4.5, 1.4.6 et 1.4.7 d'Omac ont été publiées sous la licence MIT et y demeurent
-(`LICENSE-MIT-1.4.5-1.4.7`). Ces conditions ne changent rien pour ces trois versions. Elles
-s'appliquent à partir de la version 1.4.8.
+Les versions préliminaires 1.4.5, 1.4.6 et 1.4.7 ont autrefois été offertes sous la licence MIT;
+aucune autre version ne l'est. Ces conditions s'appliquent à partir de la version 1.4.8.
 
 ## 6. Les versions ultérieures et Omac Pro
 

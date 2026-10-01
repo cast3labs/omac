@@ -1,12 +1,14 @@
 # Omac end-user licence agreement
 
-> **Version 1 — in force from Omac 1.4.8.** Approved by the author on 2026-09-29. You can read these
+> **Version 2 — in force from Omac 1.0.0.** Approved by cast3labs on 2026-10-01. You can read these
 > terms before installing: they are linked beside the install command and printed by the installer.
 
-**Version 1, for Omac 1.4.8 and each later version that comes with these terms.**
+**Version 2, for Omac 1.0.0 and every version released after it that comes with these terms.**
+Version 1 of these terms applied to the preview release 1.4.8.
 **Version française :** [EULA.fr.md](EULA.fr.md). Both versions say the same thing (section 13).
 
-These terms are an agreement between you and Evans Castonguay, the author of Omac ("the author").
+These terms are an agreement between you and cast3labs (Evans Castonguay), the author of Omac
+("the author").
 They cover the Omac app, its command-line tool `omac` and the files that come with them ("Omac").
 By installing or using Omac, you accept them. If you do not accept them, do not install or use
 Omac.
@@ -49,9 +51,8 @@ parts, and nothing in these terms limits what they allow.
 
 ## 5. Versions 1.4.5, 1.4.6 and 1.4.7
 
-Versions 1.4.5, 1.4.6 and 1.4.7 of Omac were released under the MIT License, and they remain under
-it (`LICENSE-MIT-1.4.5-1.4.7`). These terms change nothing for those three versions. They apply
-from version 1.4.8.
+The preview releases 1.4.5, 1.4.6 and 1.4.7 were once offered under the MIT License; no other
+version is. These terms apply from version 1.4.8.
 
 ## 6. Later versions and Omac Pro
 
