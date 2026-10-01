@@ -13,12 +13,12 @@
 <script defer src="../copy.js"></script>
 </head>
 <body>
-<header class="site-header"><nav aria-label="Site"><a class="brand" href="../">Omac</a><a href="../install/">Install</a><a href="../features/">Features</a><a href="../compare/">Compare</a><a href="../config/" aria-current="page">omac.toml</a><a href="../docs/">Docs</a><a href="https://github.com/evanscastonguay/omac">GitHub</a></nav></header>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../">Omac</a><a href="../install/">Install</a><a href="../features/">Features</a><a href="../compare/">Compare</a><a href="../config/" aria-current="page">omac.toml</a><a href="../docs/">Docs</a><a href="https://github.com/cast3labs/omac">GitHub</a></nav></header>
 <main>
 <h1><code>omac.toml</code> reference</h1>
 <p>Every setting lives in one file, <code>~/.config/omac/omac.toml</code>. Omac writes it on first launch with a comment on each setting, and applies a change when you save it. <code>omac default-spec</code> prints the whole default file.</p>
 <section class="config-reference">
-<p class="lede">80 keys in 12 tables. <em>Set</em> means the default omac.toml sets the key; <em>example</em> means it shows the key commented out. For a key the default file sets, the example is the shipped value.</p>
+<p class="lede">81 keys in 12 tables. <em>Set</em> means the default omac.toml sets the key; <em>example</em> means it shows the key commented out. For a key the default file sets, the example is the shipped value.</p>
 <nav class="toc"><ul>
 <li><a href="#table-top"><code>Top level (above the first table)</code></a></li>
 <li><a href="#table-settings"><code>[settings]</code></a></li>
@@ -109,6 +109,7 @@
 <tbody>
 <tr class="key" id="privacy-check_updates"><td><code>check_updates</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>true = once a day, ask omac.ghostype.ca whether a newer signed Omac exists and offer it; nothing installs without you</td></tr>
 <tr class="key" id="privacy-daily_ping"><td><code>daily_ping</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>true = send one count a day: Omac and macOS versions, display count, first-of-month and first-ever flags; no id, nothing about your windows, apps, files or keys</td></tr>
+<tr class="key" id="privacy-consent_version"><td><code>consent_version</code></td><td>integer</td><td><code>2</code></td><td>example</td><td>written by Omac with your answers: the wording they answer</td></tr>
 </tbody></table></div>
 </section>
 <section id="table-speech-tts">
@@ -116,7 +117,7 @@
 <div class="scroll"><table>
 <thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
 <tbody>
-<tr class="key" id="speech-tts-enabled"><td><code>enabled</code></td><td>boolean</td><td><code>true</code></td><td>example</td><td>the kill switch (off hands Option+Esc back to macOS)</td></tr>
+<tr class="key" id="speech-tts-enabled"><td><code>enabled</code></td><td>boolean</td><td><code>false</code></td><td>example</td><td>the switch: true = Omac answers Option+Esc; false = macOS&#x27;s Speak selection does</td></tr>
 <tr class="key" id="speech-tts-engine"><td><code>engine</code></td><td>string</td><td><code>&quot;apple-av&quot;</code></td><td>example</td><td>a module in <code>omac speech tts list</code>; empty = the built-in</td></tr>
 <tr class="key" id="speech-tts-voice"><td><code>voice</code></td><td>string</td><td><code>&quot;&quot;</code></td><td>example</td><td>empty = your macOS default voice</td></tr>
 <tr class="key" id="speech-tts-rate"><td><code>rate</code></td><td>integer</td><td><code>0</code></td><td>example</td><td>words per minute, 100-850 (the measured band); 0 = follow the macOS Spoken Content slider. Omac ▸ Speech ▸ Speed</td></tr>
@@ -199,6 +200,6 @@
 </section>
 </section>
 </main>
-<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 Evans Castonguay. All rights reserved. Versions 1.4.5–1.4.7 are MIT-licensed and stay so; later versions are not. · <a href="../terms/">Terms</a> · <a href="https://github.com/evanscastonguay/omac">GitHub</a></p></div></footer>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. The preview releases 1.4.5–1.4.7 were once offered under the MIT License; no other version is. · <a href="../terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
 </body>
 </html>

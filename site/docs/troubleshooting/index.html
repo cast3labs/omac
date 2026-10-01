@@ -13,7 +13,7 @@
 <script defer src="../../copy.js"></script>
 </head>
 <body>
-<header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a href="../../install/">Install</a><a href="../../features/">Features</a><a href="../../compare/">Compare</a><a href="../../config/">omac.toml</a><a href="../../docs/" aria-current="page">Docs</a><a href="https://github.com/evanscastonguay/omac">GitHub</a></nav></header>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a href="../../install/">Install</a><a href="../../features/">Features</a><a href="../../compare/">Compare</a><a href="../../config/">omac.toml</a><a href="../../docs/" aria-current="page">Docs</a><a href="https://github.com/cast3labs/omac">GitHub</a></nav></header>
 <main class="narrow docs">
 <h1>Troubleshooting</h1>
 <table>
@@ -47,11 +47,11 @@
 </tbody>
 </table>
 <p><strong>Support is best effort:</strong> one person maintains Omac. To report a bug,
-<a href="https://github.com/evanscastonguay/omac/issues/new/choose">open an issue</a> with
+<a href="https://github.com/cast3labs/omac/issues/new/choose">open an issue</a> with
 the output of <code>omac status</code> and what you pressed. Report a security problem
-privately, through <a href="https://github.com/evanscastonguay/omac/security/advisories/new">GitHub's private vulnerability report form</a>, never in an issue.</p>
+privately, through <a href="https://github.com/cast3labs/omac/security/advisories/new">GitHub's private vulnerability report form</a>, never in an issue.</p>
 <h2 id="two-copies-of-omac">Two copies of Omac</h2>
-<p>Only one Omac may run. From 1.5.0, when a second copy opens, one of the two says so and asks
+<p>Only one Omac may run. From 1.0.0, when a second copy opens, one of the two says so and asks
 which one to keep: the copy that opens, or, when an older 1.4.x copy opens after it, the copy that
 was already running (a copy that quits does so the normal way, putting back any window it had
 hidden). The suggested answer keeps the copy in your Applications folder over one opened where it
@@ -69,6 +69,36 @@ command again removes the <code>/Applications</code> copy for you (it may ask fo
 move, resize, split, float) pass through to the app in front. Launch keys, workspace keys and
 the tools (palette, clipboard history, theme menu) keep working. Press it again to resume.
 While paused, the menu-bar icon shows ⏸.</p>
+<h2 id="shortcuts-stop-while-a-terminal-or-a-password-field-is-open">Shortcuts stop while a terminal or a password field is open</h2>
+<p>While a password field has the keyboard, or a terminal has <strong>Secure Keyboard Entry</strong> turned on (in
+Terminal's or iTerm2's app menu), macOS keeps the keys you type from every other app, Omac's
+shortcuts included. They work again as soon as it ends. Meanwhile <code>omac status</code> shows
+<code>secure_input true</code> and says what to do, and Omac's log notes when it starts and ends. Omac names
+the app that holds it when macOS reports it: <code>omac status</code> shows it under <code>secure_input_app</code> (for
+example <code>Terminal, pid 812</code>), and the menu's hotkey row and the log line name it too. Leave the
+password field, or turn Secure Keyboard Entry off in the terminal's app menu; if it stays on, quit
+the app where you last typed a password (some apps leave it on until they quit).</p>
+<h2 id="the-keyboard-feels-slow">The keyboard feels slow</h2>
+<p>Omac asks each app where its windows are every 2 seconds, and a question to an app that stops
+answering (stopped at a debugger breakpoint, or showing the spinning wait cursor) would make every
+key on the Mac wait. So Omac leaves such an app out of those checks and asks again after 5 seconds,
+then after longer waits, up to 30 seconds, while it still does not answer; the first answer ends
+the wait. <code>omac status</code> lists those apps by process number under <code>quarantined_pids</code> (<code>ps -p &lt;number&gt;</code>
+names one), and <code>ax_timeouts</code> counts the requests that got no answer since Omac started. When a
+request to move or focus one of an app's windows gets no answer, Omac also stops moving that app's
+windows for 5 seconds, then tries again: <code>blocked_pids</code> lists those apps. An app that answers, but
+slowly, is never left out, and your keys wait while Omac waits for its answer. Each 2-second check
+asks it one question, then leaves it until the next check: while nothing changes, a check holds
+your keys for one of its answers at most, plus at most about an eighth of a second for the other
+apps (a check usually holds your keys for at most about 0.33 s beside an app that takes 0.2 s to
+answer; 0.23 s in Omac's simulation of a typical desk; an app that is usually quick but stalls only
+now and then can add one of its stalls, once; an app slower than 0.25 s counts as not answering). A window of it that moved costs
+a question or two more, and a new window of it that appeared without notice costs nine, once.
+Beside it, the apps that answer at once are still checked every few seconds on a desk of a handful
+of apps, less often on a crowded one. <code>omac stats</code> counts the slow answers under <code>slow reads</code>.
+<code>tap_reenabled</code> above 0 means macOS switched Omac's shortcuts off for a moment because Omac
+answered too slowly, and Omac switched them back on. <code>tap</code> is <code>true</code> only while macOS has them
+switched on; Omac checks every 5 seconds and switches them back on if they are off.</p>
 <h2 id="a-window-you-cannot-reach">A window you cannot reach</h2>
 <p><code>omac rescue</code> moves any window that is off every display back onto one. <strong>Reorganize</strong> in
 Omac's menu (or <code>omac reorganize</code>) re-tiles every workspace: it evens out the split sizes and
@@ -79,6 +109,6 @@ screen.</p>
 <strong>System Settings → Privacy &amp; Security → Accessibility</strong>, turn <strong>Omac</strong> off and on again, then
 check <code>omac status</code>.</p>
 </main>
-<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 Evans Castonguay. All rights reserved. Versions 1.4.5–1.4.7 are MIT-licensed and stay so; later versions are not. · <a href="../../terms/">Terms</a> · <a href="https://github.com/evanscastonguay/omac">GitHub</a></p></div></footer>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. The preview releases 1.4.5–1.4.7 were once offered under the MIT License; no other version is. · <a href="../../terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <script defer src="../copy.js"></script>
 </head>
 <body>
-<header class="site-header"><nav aria-label="Site"><a class="brand" href="../">Omac</a><a href="../install/" aria-current="page">Install</a><a href="../features/">Features</a><a href="../compare/">Compare</a><a href="../config/">omac.toml</a><a href="../docs/">Docs</a><a href="https://github.com/evanscastonguay/omac">GitHub</a></nav></header>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../">Omac</a><a href="../install/" aria-current="page">Install</a><a href="../features/">Features</a><a href="../compare/">Compare</a><a href="../config/">omac.toml</a><a href="../docs/">Docs</a><a href="https://github.com/cast3labs/omac">GitHub</a></nav></header>
 <main class="narrow install">
 <h1>Install Omac</h1>
 <p class="lede">One app. Nothing else to install. Needs a Mac with Apple silicon and macOS 14 or later — no Homebrew, no developer tools, no GitHub account.</p>
@@ -31,26 +31,28 @@
 <section id="curl">
 <h2>1. Terminal (curl)</h2>
 <p>The way that sets up everything: the app in <code>~/Applications</code>, the <code>omac</code> command, and, on a first install, start at login. Paste it into Terminal (⌘ Space, type <i>Terminal</i>, press Return):</p>
-<pre><code data-cmd>curl -fsSL https://raw.githubusercontent.com/evanscastonguay/omac/main/install.sh | bash</code></pre>
+<pre><code data-cmd>curl -fsSL https://raw.githubusercontent.com/cast3labs/omac/main/install.sh | bash</code></pre>
 <p>Prefer to read the script first? Download it, read it, then run it:</p>
-<pre><code data-cmd>curl -fsSL https://raw.githubusercontent.com/evanscastonguay/omac/main/install.sh -o install.sh
+<pre><code data-cmd>curl -fsSL https://raw.githubusercontent.com/cast3labs/omac/main/install.sh -o install.sh
 less install.sh
 bash install.sh</code></pre>
 <p>The installer checks the app's Developer ID signature before installing it, and stops, changing nothing, on an Intel Mac or when another package manager installed Omac. If an old copy of Omac is in <code>/Applications</code>, Terminal may ask for your Mac password to remove it: two copies conflict. The terms of use are <a href="../terms/">here</a>; the installer prints their address too.</p>
 </section>
 <section id="homebrew">
 <h2>2. Homebrew</h2>
-<p><code data-cmd>brew install --cask evanscastonguay/tap/omac</code>, then <code data-cmd>open ~/Applications/Omac.app</code>; to have it start when you log in, turn on <strong>Launch at login</strong> in Omac&#x27;s menu. The cask does not start Omac or turn on start at login; <code data-cmd>omac login on</code> does that.</p>
-<pre><code data-cmd>brew install --cask evanscastonguay/tap/omac
+<p><code data-cmd>brew install --cask cast3labs/tap/omac</code>, then <code data-cmd>open ~/Applications/Omac.app</code>; to have it start when you log in, turn on <strong>Launch at login</strong> in Omac&#x27;s menu. The cask does not start Omac or turn on start at login; <code data-cmd>omac login on</code> does that.</p>
+<pre><code data-cmd>brew install --cask cast3labs/tap/omac
 open ~/Applications/Omac.app</code></pre>
 </section>
 <section id="download">
 <h2>3. Download</h2>
-<p><code>Omac-arm64.zip</code> from the <a href="https://github.com/evanscastonguay/omac/releases/latest">latest release</a>; drag <code>Omac.app</code> into Applications. Then open it: macOS asks once whether to open an app downloaded from the internet — click <b>Open</b>. This way does not set up the <code>omac</code> command or start at login. <a href="../download/">The download page</a> walks through it.</p>
+<p><code>Omac-arm64.zip</code> from the <a href="https://github.com/cast3labs/omac/releases/latest">latest release</a>; drag <code>Omac.app</code> into Applications. Then open it: macOS asks once whether to open an app downloaded from the internet — click <b>Open</b>. This way does not set up the <code>omac</code> command or start at login. <a href="../download/">The download page</a> walks through it.</p>
 </section>
 <section id="permission">
 <h2>Let Omac control your windows</h2>
-<p>Whatever the way, first grant <strong>System Settings → Privacy &amp; Security → Accessibility → Omac</strong>,
+<p>Installed with Homebrew from the tap&#x27;s old name, <code>evanscastonguay/tap</code>? Update it as above: Homebrew follows the tap to <code>cast3labs/tap</code>. Until it has been updated once, Homebrew refuses the new name to uninstall it: run <code data-cmd>omac login off</code>, then <code data-cmd>brew uninstall --cask evanscastonguay/tap/omac</code> (add <code>--zap</code> to remove its settings too).
+
+Whatever the way, first grant <strong>System Settings → Privacy &amp; Security → Accessibility → Omac</strong>,
 then <code data-cmd>omac status</code> must show <code>accessibility</code> and <code>tap</code> both <code>true</code>. Only the curl way and the
 tap set up the <code data-cmd>omac</code> command; the download does not.</p>
 <pre><code data-cmd>omac status</code></pre>
@@ -72,17 +74,17 @@ tap set up the <code data-cmd>omac</code> command; the download does not.</p>
 <section id="update">
 <h2>Update</h2>
 <table><thead><tr><th>If you installed with</th><th>To update</th></tr></thead><tbody>
-<tr><th scope="row">Terminal (curl)</th><td>run the same command again; settings and the Accessibility permission are kept</td></tr>
-<tr><th scope="row">Homebrew</th><td><code data-cmd>brew upgrade --cask evanscastonguay/tap/omac</code>, then quit Omac and open it again: <code data-cmd>omac quit; while pgrep -x -U &quot;$USER&quot; Omac &gt;/dev/null; do sleep 0.2; done; open ~/Applications/Omac.app</code></td></tr>
+<tr><th scope="row">Terminal (curl)</th><td>run the same command again; settings and the Accessibility permission are kept (from a 1.4 preview, macOS asks for Accessibility once more)</td></tr>
+<tr><th scope="row">Homebrew</th><td><code data-cmd>brew upgrade --cask cast3labs/tap/omac</code>, then quit Omac and open it again: <code data-cmd>omac quit; while pgrep -x -U &quot;$USER&quot; Omac &gt;/dev/null; do sleep 0.2; done; open ~/Applications/Omac.app</code></td></tr>
 <tr><th scope="row">Download</th><td>quit Omac, then download the new zip and replace <code>Omac.app</code></td></tr>
 </tbody></table>
-<p>Omac does not check for updates by itself in this version; the release notes of each version are on <a href="https://github.com/evanscastonguay/omac/releases">GitHub</a>.</p>
+<p>Omac does not check for updates by itself in this version; the release notes of each version are on <a href="https://github.com/cast3labs/omac/releases">GitHub</a>.</p>
 </section>
 <section id="switch">
 <h2>Switch to another way</h2>
 <table><thead><tr><th>From</th><th>How</th></tr></thead><tbody>
-<tr><th scope="row">Terminal (curl)</th><td>to Homebrew: uninstall, then <code data-cmd>brew install --cask evanscastonguay/tap/omac</code></td></tr>
-<tr><th scope="row">Homebrew</th><td>to curl: <code data-cmd>brew uninstall --cask evanscastonguay/tap/omac</code>, then the curl command</td></tr>
+<tr><th scope="row">Terminal (curl)</th><td>to Homebrew: uninstall, then <code data-cmd>brew install --cask cast3labs/tap/omac</code></td></tr>
+<tr><th scope="row">Homebrew</th><td>to curl: <code data-cmd>brew uninstall --cask cast3labs/tap/omac</code>, then the curl command</td></tr>
 <tr><th scope="row">Download</th><td>to curl: just run the curl command — the installer removes the <code>/Applications</code> copy for you; it does not turn on start at login: turn on <strong>Launch at login</strong> in Omac&#x27;s menu</td></tr>
 </tbody></table>
 </section>
@@ -91,7 +93,7 @@ tap set up the <code data-cmd>omac</code> command; the download does not.</p>
 <p>To remove the app:</p>
 <table><thead><tr><th>If you installed with</th><th>To remove the app</th></tr></thead><tbody>
 <tr><th scope="row">Terminal (curl)</th><td>with Omac running: <code data-cmd>omac login off; omac quit; rm -rf ~/Applications/Omac.app ~/.local/bin/omac</code> (unless it prints “launch at login: off”, also remove Omac in <strong>System Settings → General → Login Items</strong>)</td></tr>
-<tr><th scope="row">Homebrew</th><td>with Omac running: <code data-cmd>omac login off; brew uninstall --cask --zap evanscastonguay/tap/omac</code> (unless it prints “launch at login: off”, also remove Omac in <strong>System Settings → General → Login Items</strong>; <code>--zap</code> also removes settings and state — among them the copy of your own wallpaper that <code data-cmd>omac theme off</code> puts back, so run that first if you used a theme — but not the theme media in <code>~/.local/share/omac</code>)</td></tr>
+<tr><th scope="row">Homebrew</th><td>with Omac running: <code data-cmd>omac login off; brew uninstall --cask --zap cast3labs/tap/omac</code> (unless it prints “launch at login: off”, also remove Omac in <strong>System Settings → General → Login Items</strong>; <code>--zap</code> also removes settings and state — among them the copy of your own wallpaper that <code data-cmd>omac theme off</code> puts back, so run that first if you used a theme — but not the theme media in <code>~/.local/share/omac</code>)</td></tr>
 <tr><th scope="row">Download</th><td>turn off <strong>Launch at login</strong> in Omac&#x27;s menu (or in <strong>System Settings → General → Login Items</strong>) if it is on, quit Omac, then drag <code>Omac.app</code> to the Trash</td></tr>
 </tbody></table>
 <h3>The complete uninstall</h3>
@@ -102,25 +104,32 @@ omac dispatch mic_mute on=false
 omac skill uninstall
 omac login off
 omac quit
-tccutil reset All com.evanscastonguay.omac
+tccutil reset All com.cast3labs.omac
 </code></pre>
 <p>What each line does:</p>
 <ul>
 <li><code>omac theme off</code> puts your own wallpaper back, if you used a theme. What the theme wrote into
   other apps stays: see below.</li>
-<li><code>omac dispatch mic_mute on=false</code> unmutes the microphone, if 🎙️ shows in the menu bar. The mute
-  belongs to the microphone, not to Omac, so it would stay on in every app. If a microphone is
-  still muted after Omac is gone, unmute it in <strong>Audio MIDI Setup</strong> (in <strong>Applications →
-  Utilities</strong>).</li>
+<li><code>omac dispatch mic_mute on=false</code> unmutes the microphone, if 🎙️ shows in the menu bar. From
+  1.0.0, quitting Omac unmutes a microphone Omac muted itself; this line is for a preview
+  release (1.4.4 to 1.4.8), or an Omac that did not quit normally (it crashed, was forced to quit or hung while
+  quitting), or the microphone was not connected when Omac quit. The mute belongs to the
+  microphone, not to Omac, so it would stay on in every app.
+  If a microphone is still muted after Omac is gone, unmute it in <strong>Audio MIDI Setup</strong> (in
+  <strong>Applications → Utilities</strong>).</li>
 <li><code>omac skill uninstall</code> removes the link in each coding agent's skills folder, if you installed
   the coding-agent skill.</li>
 <li><code>omac login off</code> stops Omac from starting at login. If it did not print “launch at login: off”,
   remove Omac in <strong>System Settings → General → Login Items</strong>.</li>
 <li><code>omac quit</code> quits Omac.</li>
-<li><code>tccutil reset All com.evanscastonguay.omac</code> removes every permission you gave Omac:
+<li><code>tccutil reset All com.cast3labs.omac</code> removes every permission you gave Omac:
   Accessibility, and Screen Recording, Microphone or Automation if you allowed them. It comes
   before removing the app, since <code>tccutil</code> looks the app up by its identifier. On a Mac with other
   accounts, it can also remove the Accessibility and Screen Recording permissions Omac has in them.</li>
+<li>A preview release (1.4.4 to 1.4.8) had another identifier, <code>com.evanscastonguay.omac</code>, and <code>tccutil</code>
+  cannot find it once the preview is replaced. If you used one, remove any Omac still listed in
+  <strong>System Settings → Privacy &amp; Security</strong> (Accessibility, and Screen Recording, Microphone or
+  Automation): select it, then click −.</li>
 </ul>
 <p>A copy from a download has no <code>omac</code> command: type <code>/Applications/Omac.app/Contents/Helpers/omac</code>
 in its place, or use Omac's menu (<strong>Theme → Off</strong>, untick <strong>Mute microphone</strong>, turn off <strong>Launch at
@@ -141,19 +150,21 @@ for Chrome and Brave, <code>defaults delete com.google.Chrome BrowserThemeColor<
 commands there say “Omac is not running”, which is expected here, and launch at login is already
 off), and:</p>
 <pre><code data-cmd class="language-bash">rm -rf ~/.config/omac ~/.local/state/omac ~/.local/share/omac
-rm -rf ~/Library/Caches/com.evanscastonguay.omac
-rm -rf ~/Library/HTTPStorages/com.evanscastonguay.omac
+rm -rf ~/Library/Caches/com.cast3labs.omac ~/Library/Caches/com.evanscastonguay.omac
+rm -rf ~/Library/HTTPStorages/com.cast3labs.omac ~/Library/HTTPStorages/com.evanscastonguay.omac
+defaults delete com.cast3labs.omac 2&gt;/dev/null
 defaults delete com.evanscastonguay.omac 2&gt;/dev/null
 </code></pre>
 <p>The first line removes Omac's settings, its state and the theme media it downloaded; the next two,
-its caches and the web storage macOS keeps for it; the last, its preferences in
-<code>~/Library/Preferences</code>.</p>
+its caches and the web storage macOS keeps for it; the last two, its preferences in
+<code>~/Library/Preferences</code>. Each names both of Omac's identifiers: today's, and the one the preview
+releases (1.4.4 to 1.4.8) had.</p>
 <p>The installer may have added two lines starting with <code># Added by the Omac installer</code> to your
 shell's startup file (<code>~/.zshrc</code>, <code>~/.bash_profile</code> or <code>~/.config/fish/config.fish</code>); delete
 them. Night Shift stays as Omac left it: turn it on or off in <strong>System Settings → Displays →
 Night Shift…</strong>.</p>
 </section>
 </main>
-<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 Evans Castonguay. All rights reserved. Versions 1.4.5–1.4.7 are MIT-licensed and stay so; later versions are not. · <a href="../terms/">Terms</a> · <a href="https://github.com/evanscastonguay/omac">GitHub</a></p></div></footer>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. The preview releases 1.4.5–1.4.7 were once offered under the MIT License; no other version is. · <a href="../terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
 </body>
 </html>
