@@ -156,9 +156,8 @@ Terminal command has no extra step.
 
 From 1.4.8, Omac is free to use under its licence terms,
 [`EULA.md`](EULA.md) (en français, [`EULA.fr.md`](EULA.fr.md)), which come with
-the app. All rights reserved — see [`LICENSE`](LICENSE). Versions 1.4.5, 1.4.6 and
-1.4.7 were released under the MIT License and stay under it
-([`LICENSE-MIT-1.4.5-1.4.7`](LICENSE-MIT-1.4.5-1.4.7)); later versions are not.
+the app. All rights reserved — see [`LICENSE`](LICENSE). The preview releases
+1.4.5, 1.4.6 and 1.4.7 were once offered under the MIT License; no other version is.
 Omac includes third-party work, listed in
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). Of Omarchy's 92 theme
 wallpapers, a review found 22 that Omac may redistribute, and 21 of those show
