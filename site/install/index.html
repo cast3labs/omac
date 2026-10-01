@@ -69,12 +69,12 @@ tap set up the <code data-cmd>omac</code> command; the download does not.</p>
 </section>
 <section id="signed">
 <h2>Signed and notarized</h2>
-<p>Every release is <b>signed with the author's Apple Developer ID</b>: macOS, and the installer, check that the app was built by that identity and has not been changed since. Every release since 1.4.8 is also <b>notarized</b>: Apple scanned the build for malware and issued a ticket, stapled to the app, which macOS can confirm even offline. The Terminal command has no extra step; a copy downloaded with a web browser opens after macOS's usual first-open confirmation. Never turn Gatekeeper off for Omac: it does not need it.</p>
+<p>Every release is <b>signed with the author's Apple Developer ID</b>: macOS, and the installer, check that the app was built by that identity and has not been changed since. The latest release is also <b>notarized</b>: Apple scanned the build for malware and issued a ticket, stapled to the app, which macOS can confirm even offline. The Terminal command has no extra step; a copy downloaded with a web browser opens after macOS's usual first-open confirmation. Never turn Gatekeeper off for Omac: it does not need it.</p>
 </section>
 <section id="update">
 <h2>Update</h2>
 <table><thead><tr><th>If you installed with</th><th>To update</th></tr></thead><tbody>
-<tr><th scope="row">Terminal (curl)</th><td>run the same command again; settings and the Accessibility permission are kept (from a 1.4 preview, macOS asks for Accessibility once more)</td></tr>
+<tr><th scope="row">Terminal (curl)</th><td>run the same command again; settings and the Accessibility permission are kept (from an earlier preview, macOS asks for Accessibility once more)</td></tr>
 <tr><th scope="row">Homebrew</th><td><code data-cmd>brew upgrade --cask cast3labs/tap/omac</code>, then quit Omac and open it again: <code data-cmd>omac quit; while pgrep -x -U &quot;$USER&quot; Omac &gt;/dev/null; do sleep 0.2; done; open ~/Applications/Omac.app</code></td></tr>
 <tr><th scope="row">Download</th><td>quit Omac, then download the new zip and replace <code>Omac.app</code></td></tr>
 </tbody></table>
@@ -111,8 +111,8 @@ tccutil reset All com.cast3labs.omac
 <li><code>omac theme off</code> puts your own wallpaper back, if you used a theme. What the theme wrote into
   other apps stays: see below.</li>
 <li><code>omac dispatch mic_mute on=false</code> unmutes the microphone, if 🎙️ shows in the menu bar. From
-  1.0.0, quitting Omac unmutes a microphone Omac muted itself; this line is for a preview
-  release (1.4.4 to 1.4.8), or an Omac that did not quit normally (it crashed, was forced to quit or hung while
+  1.0.0, quitting Omac unmutes a microphone Omac muted itself; this line is for an
+  earlier preview of Omac, or an Omac that did not quit normally (it crashed, was forced to quit or hung while
   quitting), or the microphone was not connected when Omac quit. The mute belongs to the
   microphone, not to Omac, so it would stay on in every app.
   If a microphone is still muted after Omac is gone, unmute it in <strong>Audio MIDI Setup</strong> (in
@@ -126,7 +126,7 @@ tccutil reset All com.cast3labs.omac
   Accessibility, and Screen Recording, Microphone or Automation if you allowed them. It comes
   before removing the app, since <code>tccutil</code> looks the app up by its identifier. On a Mac with other
   accounts, it can also remove the Accessibility and Screen Recording permissions Omac has in them.</li>
-<li>A preview release (1.4.4 to 1.4.8) had another identifier, <code>com.evanscastonguay.omac</code>, and <code>tccutil</code>
+<li>An earlier preview of Omac had another identifier, <code>com.evanscastonguay.omac</code>, and <code>tccutil</code>
   cannot find it once the preview is replaced. If you used one, remove any Omac still listed in
   <strong>System Settings → Privacy &amp; Security</strong> (Accessibility, and Screen Recording, Microphone or
   Automation): select it, then click −.</li>
@@ -157,14 +157,14 @@ defaults delete com.evanscastonguay.omac 2&gt;/dev/null
 </code></pre>
 <p>The first line removes Omac's settings, its state and the theme media it downloaded; the next two,
 its caches and the web storage macOS keeps for it; the last two, its preferences in
-<code>~/Library/Preferences</code>. Each names both of Omac's identifiers: today's, and the one the preview
-releases (1.4.4 to 1.4.8) had.</p>
+<code>~/Library/Preferences</code>. Each names both of Omac's identifiers: today's, and the one an earlier
+preview of Omac had.</p>
 <p>The installer may have added two lines starting with <code># Added by the Omac installer</code> to your
 shell's startup file (<code>~/.zshrc</code>, <code>~/.bash_profile</code> or <code>~/.config/fish/config.fish</code>); delete
 them. Night Shift stays as Omac left it: turn it on or off in <strong>System Settings → Displays →
 Night Shift…</strong>.</p>
 </section>
 </main>
-<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. The preview releases 1.4.5–1.4.7 were once offered under the MIT License; no other version is. · <a href="../terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · <a href="../terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
 </body>
 </html>
