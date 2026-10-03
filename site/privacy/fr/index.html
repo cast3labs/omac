@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité d&#x27;Omac</title>
+<meta name="description" content="Ce qu&#x27;Omac envoie (rien, sauf si vous le demandez), ce qui reste sur votre Mac, qui reçoit le compte quotidien facultatif, et vos droits.">
+<meta name="generator" content="scripts/build-site.py">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../style.css">
+<link rel="icon" href="../../favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<script defer src="../../copy.js"></script>
+</head>
+<body>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a href="../../install/">Install</a><a href="../../features/">Features</a><a href="../../compare/">Compare</a><a href="../../config/">omac.toml</a><a href="../../docs/">Docs</a><a href="https://github.com/cast3labs/omac">GitHub</a></nav></header>
+<main class="narrow legal">
+<h1 id="politique-de-confidentialite-domac">Politique de confidentialité d'Omac</h1>
+<p><strong>Version :</strong> 1, 2026-10-03; approuvée par le mainteneur le 2026-10-03. Les ébauches qui l'ont précédée sont
+énumérées sous « Modifications de cette politique ».
+<strong>S'applique à :</strong> l'application Omac et son outil en ligne de commande <code>omac</code>, au serveur d'Omac
+<code>t.ghostype.ca</code> et au site Web <code>omac.ghostype.ca</code>.
+<strong>English version:</strong> <a href="../">PRIVACY.md</a>. Les deux disent la même chose.</p>
+<h2 id="en-bref">En bref</h2>
+<ul>
+<li><strong>Omac n'envoie rien à moins que vous le lui demandiez.</strong> Seules deux fonctions peuvent envoyer
+  quelque chose d'elles-mêmes, et les deux restent désactivées tant que vous ne cochez pas leur
+  case : un <strong>décompte d'utilisation quotidien</strong> et des <strong>vérifications de mises à jour
+  automatiques</strong>.</li>
+<li><strong>Le décompte d'utilisation quotidien</strong> est un petit message par jour : la version d'Omac, la
+  version de macOS, le nombre d'écrans et deux indicateurs oui/non. Il ne contient <strong>aucun
+  identifiant</strong>. Le serveur d'Omac ne lit ni ne conserve jamais votre adresse IP. Cloudflare, qui
+  exploite ce serveur, voit l'adresse afin d'acheminer le message; ce que Cloudflare conserve est
+  décrit plus bas.</li>
+<li><strong>Une vérification de mises à jour</strong> demande à GitHub, qui héberge le site Web et les
+  téléchargements d'Omac, s'il existe une version plus récente.</li>
+<li><strong>Tout le reste demeure sur votre Mac :</strong> vos réglages, la disposition de vos fenêtres, votre
+  historique du presse-papiers et les fichiers dont Omac a besoin pour fonctionner.</li>
+<li><strong>Omac ne vend aucune donnée, n'affiche aucune publicité et ne crée aucun profil.</strong></li>
+<li><strong>Les versions préliminaires antérieures d'Omac</strong> n'envoient jamais le décompte quotidien et ne vérifient jamais les mises à jour. La
+  première version qui le peut est 1.0.0.</li>
+<li><strong>Les achats et les licences ne sont pas encore couverts.</strong> Rien n'est encore vendu, et aucune
+  version d'Omac ne recueille de données d'achat ou de licence.</li>
+<li><strong>Questions :</strong> omac@ghostype.ca.</li>
+</ul>
+<h2 id="qui-est-responsable">Qui est responsable</h2>
+<p>Omac est conçu par <strong>cast3labs</strong>, au Québec, Canada. cast3labs décide de ce qu'Omac recueille et
+pourquoi (le « responsable du traitement », selon le RGPD européen). Le <strong>responsable de la
+protection des renseignements personnels</strong> d'Omac au sens de la loi québécoise sur la protection
+des renseignements personnels dans le secteur privé (Loi 25, article 3.1) est <strong>le mainteneur</strong>, la
+personne qui dirige cast3labs, que vous pouvez joindre à omac@ghostype.ca.</p>
+<p><strong>Contact : omac@ghostype.ca.</strong> Écrivez à cette adresse pour toute question sur cette politique, y
+compris pour obtenir de l'aide afin de comprendre ce que signifie une case avant de la cocher. Le
+courriel envoyé à cette adresse passe par Cloudflare Email Routing, qui le transfère à la boîte
+aux lettres du mainteneur.
+Cette boîte est un compte Gmail, exploité par Google LLC aux États-Unis. Cloudflare garde un journal
+de chaque message qu'il transfère (son expéditeur, son destinataire, son heure d'arrivée et s'il a
+été livré), que le mainteneur peut consulter pendant 30 jours au plus.</p>
+<h2 id="le-decompte-dutilisation-quotidien-facultatif">Le décompte d'utilisation quotidien (facultatif)</h2>
+<p><strong>Désactivé à moins que vous ne cochiez sa case.</strong> Omac pose la question une seule fois, dans sa
+première fenêtre, dans une case distincte, séparée de la question sur les mises à jour. Laisser la
+case décochée vaut un non, et Omac ne repose pas la question. Si vous quittez Omac pendant que
+cette fenêtre est ouverte, ou si Omac ne peut pas enregistrer votre réponse dans <code>omac.toml</code>, rien
+n'est enregistré ni envoyé, et la fenêtre repose la question à un lancement ultérieur, une fois
+qu'Omac peut enregistrer la réponse. Omac écrit chaque réponse avec <code>consent_version</code>, la version
+du texte de la case auquel vous avez répondu. Un oui sans lui, ou avec un numéro plus ancien, ne
+compte pas comme une réponse : c'est le cas d'un oui donné dans une version préliminaire antérieure
+d'Omac, dont la ligne du menu disait que le décompte n'était pas encore actif, et d'une ligne tapée à la main. Rien n'est
+envoyé pour ce oui, et la fenêtre repose la question, case décochée. Vous pouvez changer votre
+réponse en tout temps dans le menu d'Omac (« Share anonymous daily count ») ou dans votre fichier
+de réglages, <code>~/.config/omac/omac.toml</code> :</p>
+<pre><code class="language-toml">[privacy]
+daily_ping = true    # false, ou aucune ligne, n'envoie rien
+consent_version = 2  # écrit par Omac avec votre réponse; un true sans lui n'envoie rien
+</code></pre>
+<p><strong>À quoi il sert :</strong> compter combien de Mac utilisent Omac, avec quelles versions d'Omac et de
+macOS, et avec combien d'écrans, afin que le mainteneur sache quoi prendre en charge. Il ne sert à
+rien d'autre.</p>
+<h3 id="ce-qui-est-envoye">Ce qui est envoyé</h3>
+<p>Au plus un message HTTPS réussi par jour (voir « Quand »), exactement comme cet exemple. Les
+valeurs changent; les clés, jamais.</p>
+<pre><code class="language-json">{&quot;displays&quot;:&quot;2&quot;,&quot;first_ever&quot;:false,&quot;first_this_month&quot;:false,&quot;os&quot;:&quot;26.1&quot;,&quot;schema&quot;:1,&quot;version&quot;:&quot;1.0.0&quot;}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Clé</th>
+<th>Ce que c'est</th>
+<th>Valeurs possibles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>schema</code></td>
+<td>le format du message</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>la version d'Omac</td>
+<td>une version comme <code>1.0.0</code>; toute autre valeur est envoyée comme <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>os</code></td>
+<td>la version de macOS, les deux premiers nombres seulement</td>
+<td>comme <code>26.1</code>; le troisième nombre n'est jamais envoyé</td>
+</tr>
+<tr>
+<td><code>displays</code></td>
+<td>le nombre d'écrans branchés</td>
+<td><code>1</code>, <code>2</code>, <code>3</code>, <code>4</code> ou <code>5+</code></td>
+</tr>
+<tr>
+<td><code>first_this_month</code></td>
+<td>c'est le premier message du Mac ce mois civil (UTC)</td>
+<td><code>true</code> ou <code>false</code></td>
+</tr>
+<tr>
+<td><code>first_ever</code></td>
+<td>c'est le premier message depuis l'activation du décompte</td>
+<td><code>true</code> ou <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Il ne contient jamais aucun des éléments suivants : un identifiant, vos frappes au clavier, les
+titres de fenêtres, les noms d'applications, les noms ou le contenu de vos fichiers, votre nom,
+votre identifiant Apple, votre langue, votre emplacement. Les messages n'ont aucune clé commune, de sorte que le serveur ne peut
+pas savoir lesquels viennent du même Mac. Une limite : une configuration inhabituelle (une
+combinaison rare de versions et de nombre d'écrans) peut faire ressortir les messages d'un Mac
+tant que les messages bruts sont conservés (voir « Ce qui est conservé »).</p>
+<p>Si vous désactivez puis réactivez le décompte, votre prochain message indique de nouveau
+<code>first_ever: true</code> et <code>first_this_month: true</code>; les chiffres publics peuvent donc compter la même
+installation plus d'une fois.</p>
+<p>La requête porte aussi des en-têtes fixes qui ne disent rien sur vous : <code>User-Agent: Omac/&lt;version&gt;</code>
+(la même version que dans le message), <code>Content-Type: application/json</code> et <code>Accept-Language: en</code>
+(fixé, pour que votre liste de langues ne soit pas envoyée). macOS ajoute les en-têtes standard
+<code>Host</code>, <code>Content-Length</code>, <code>Connection</code>, <code>Accept</code> et <code>Accept-Encoding</code>. La requête ne porte aucun
+témoin (cookie), et rien d'elle n'est mis en cache.</p>
+<h3 id="quand">Quand</h3>
+<ul>
+<li>Au plus un message réussi par jour, compté en UTC.</li>
+<li>Le premier message après l'activation du décompte part le jour UTC suivant, jamais le jour même
+  de l'activation.</li>
+<li>Jamais avant un délai aléatoire de 5 à 60 minutes après le démarrage d'Omac ou la sortie de
+  veille de votre Mac, pour que l'heure d'un message ne dise qu'à une heure près quand vous vous
+  êtes installé devant l'écran.</li>
+<li>Un message que le serveur refuse est réessayé plus tard : après 10 minutes, puis deux fois plus longtemps
+  chaque fois, jusqu'à 6 heures d'écart. Quand le serveur demande à Omac d'attendre plus longtemps
+  (une réponse HTTP 429 avec un en-tête <code>Retry-After</code> en secondes), Omac attend le temps demandé,
+  jusqu'à 24 heures. Un Mac éteint pendant une semaine envoie un seul message à son retour, pas sept.</li>
+<li>Un message qui ne reçoit aucune réponse du serveur, par exemple parce que votre Mac est hors ligne
+  ou que la connexion est coupée, compte comme le message de ce jour-là, puisqu'il a pu arriver : le
+  suivant part le jour UTC suivant.</li>
+<li>Seule une version publiée d'Omac, signée par le mainteneur, peut l'envoyer. Une copie compilée à
+  partir du code source ne l'envoie jamais.</li>
+<li>Juste avant chaque envoi, Omac relit <code>omac.toml</code> et n'envoie rien s'il n'indique plus
+  <code>daily_ping = true</code>.</li>
+</ul>
+<h3 id="qui-le-recoit-et-ce-quil-voit">Qui le reçoit, et ce qu'il voit</h3>
+<p>Le message va à <code>https://t.ghostype.ca/v1/ping</code> : un petit serveur (un Worker Cloudflare avec une
+base de données Cloudflare D1) que Cloudflare exploite pour le mainteneur.</p>
+<ul>
+<li><strong>Votre adresse IP parvient à Cloudflare</strong> avec chaque message, comme pour toute connexion.
+  Cloudflare voit aussi les en-têtes ci-dessus et les détails techniques de la connexion chiffrée.</li>
+<li><strong>Le code du serveur d'Omac ne lit jamais ni votre adresse IP, ni aucun en-tête, ni l'emplacement
+  que Cloudflare joint à chaque requête, et il n'écrit aucun journal.</strong> Les journaux de requêtes du
+  serveur (Workers Logs) et leur exportation (Logpush) sont désactivés. Un test du 2026-09-27 a
+  montré que, ces journaux désactivés, les journaux du Worker ne gardent aucune trace d'une requête.</li>
+<li><strong>Ce que Cloudflare fait lui-même échappe au contrôle d'Omac.</strong> Les outils de sécurité de
+  Cloudflare montrent au titulaire du compte des échantillons des requêtes récentes, et de celles
+  que ses règles ont bloquées ou limitées, avec leur adresse IP, jusqu'à 31 jours sur le forfait
+  gratuit qu'utilise Omac. Une règle de limitation du débit qui
+  protège le serveur compte les requêtes par adresse IP. Une deuxième règle refuse un message dont
+  le User-Agent ne nomme pas Omac.
+  L'outil de journal en direct de Cloudflare peut montrer les requêtes à leur
+  arrivée; le mainteneur ne le laisse pas tourner et n'enregistre jamais ce qu'il affiche.
+  Cloudflare décrit son propre traitement des adresses IP dans sa politique de confidentialité :
+  <a href="https://www.cloudflare.com/fr-fr/privacypolicy/">https://www.cloudflare.com/fr-fr/privacypolicy/</a>.</li>
+</ul>
+<h3 id="ce-qui-est-conserve-et-pendant-combien-de-temps">Ce qui est conservé, et pendant combien de temps</h3>
+<table>
+<thead>
+<tr>
+<th>Quoi</th>
+<th>Où</th>
+<th>Combien de temps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chaque message, sous forme de compte : combien de messages aux mêmes valeurs sont arrivés ce jour UTC. Aucune adresse IP ni aucun en-tête; aucune heure ni aucun ordre d'arrivée, sauf dans la sauvegarde (rangée suivante).</td>
+<td>La base de données d'Omac chez Cloudflare</td>
+<td>Supprimé une fois son jour vieux de 6 jours, par une tâche qui s'exécute chaque heure quoi que fasse la tâche nocturne, d'abord dans les 15 minutes après 0 h UTC, où le serveur ne conserve aucun message : moins de 6 jours, 7 au plus</td>
+</tr>
+<tr>
+<td>Ces mêmes comptes dans la sauvegarde automatique de la base de données (le « Time Travel » de Cloudflare D1, toujours actif, qui ne peut pas être désactivé). Elle peut remettre la base de données dans l'état où elle était à n'importe quel moment de ces jours; elle garde donc aussi le moment où chaque compte a augmenté, à la minute près ou mieux, et dans quel ordre.</td>
+<td>Cloudflare</td>
+<td>Jusqu'à 7 jours de plus, sur le forfait gratuit de Cloudflare qu'utilise Omac</td>
+</tr>
+<tr>
+<td>Des totaux quotidiens : combien de messages sont arrivés, combien étaient le premier du mois d'un Mac et combien étaient un tout premier message. Par jour, parmi les messages qui étaient le premier du mois d'un Mac : un compte pour chaque version d'Omac, chaque version de macOS et chaque nombre d'écrans, toute valeur vue moins de 5 fois étant regroupée sous « other ». Jamais les trois combinés. Pour chaque mois que la page de statistiques a montré, ses trois tableaux tels qu'ils ont été montrés.</td>
+<td>La base de données d'Omac</td>
+<td>Sans date de fin. Ils ne décrivent personne et sont réexaminés une fois par année</td>
+</tr>
+<tr>
+<td>Sur votre Mac, <code>~/.local/state/omac/telemetry.json</code> : le jour où le décompte a été activé (pour que le premier message attende le jour UTC suivant), le jour du dernier message (écrit juste avant son envoi, pour qu'un message resté sans réponse compte), le nombre d'essais ratés consécutifs, le moment du prochain essai et une version que le serveur a demandé d'arrêter</td>
+<td>Votre Mac, lisible par vous seul</td>
+<td>Jusqu'à ce que vous désactiviez le décompte et que <code>omac.toml</code> l'indique : Omac efface alors le fichier</td>
+</tr>
+<tr>
+<td>Le courriel que vous envoyez à omac@ghostype.ca : votre adresse, votre nom si vous le donnez, et votre message</td>
+<td>La boîte aux lettres du mainteneur (Gmail, Google LLC)</td>
+<td>12 mois après la fin de l'échange, puis supprimé par le mainteneur</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ce-que-montrent-les-statistiques-publiques">Ce que montrent les statistiques publiques</h3>
+<p>Les
+totaux sont publics à <code>https://t.ghostype.ca/stats</code> et <code>https://t.ghostype.ca/stats.json</code> : les
+installations ayant accepté le décompte, par jour et, pour chaque mois civil une fois terminé, par
+mois; pour le plus récent de ces mois, leurs versions d'Omac, leurs versions de macOS et leur
+nombre d'écrans, chaque installation comptée une fois, mais une installation qui a désactivé puis
+réactivé le décompte ce mois-là peut être comptée plus d'une fois; et le nombre de téléchargements.
+Tout nombre d'installations par jour ou par mois inférieur à 5 s'affiche comme <code>&lt;5</code>, zéro compris.
+Dans les tableaux, une version d'Omac, une version de macOS ou un nombre d'écrans que partagent
+moins de 5 installations est compté sous « other », et « other » n'est jamais inférieur à 5 : tant
+qu'il le serait, même à 0, il prend aussi la plus petite valeur nommée; chaque nombre d'un tableau
+vaut donc 5 ou plus. Un mois n'est affiché qu'une fois terminé, et ses nombres ne changent plus
+ensuite. Les nombres de téléchargements, qui comptent des fichiers et non des personnes,
+s'affichent même lorsqu'ils sont inférieurs à 5. Rien sur la page ne décrit une personne.</p>
+<p>Ouvrir la page montre à Cloudflare votre adresse IP et ce que votre navigateur envoie avec toute
+requête, comme son nom et vos langues préférées (voir « Qui le reçoit, et ce qu'il voit » pour ce
+que Cloudflare conserve); le code du serveur d'Omac n'en lit rien, et la page ne dépose aucun
+témoin et ne charge rien de personne d'autre.</p>
+<p>N'importe qui peut envoyer un message qui ressemble à celui d'Omac, et le serveur ne peut pas le
+distinguer d'un vrai; les nombres peuvent donc inclure des faux. Qui envoie des faux sait combien il
+en a envoyé; pour lui, un nombre inférieur à 5 n'est donc pas caché : il pourrait apprendre combien
+d'installations ont envoyé un décompte un jour donné, si une installation à la configuration
+inhabituelle était active un mois donné, et même si son premier décompte de ce mois est arrivé un
+jour qu'il choisit; jamais laquelle, ni rien d'elle au-delà des valeurs que portent ses messages et
+des jours où ils sont arrivés.</p>
+<h3 id="comment-le-desactiver">Comment le désactiver</h3>
+<p>N'importe laquelle de ces actions arrête le décompte immédiatement :</p>
+<ul>
+<li>dans le menu d'Omac, décochez « Share anonymous daily count »;</li>
+<li>lancez <code>omac telemetry off</code>;</li>
+<li>mettez <code>daily_ping = false</code> dans la table <code>[privacy]</code> de <code>~/.config/omac/omac.toml</code>.</li>
+</ul>
+<p>Omac efface <code>telemetry.json</code> dès qu'il lit un <code>omac.toml</code> qui dit non. Si Omac ne peut pas
+enregistrer <code>omac.toml</code>, il vous le dit, et le décompte reprend la prochaine fois qu'Omac lit le oui
+du fichier; <code>telemetry.json</code> reste jusque-là, pour que cette reprise n'envoie pas un deuxième
+message le même jour.</p>
+<p><code>omac status</code> affiche votre réponse (<code>telemetry</code> : <code>not-asked</code>, <code>on</code> ou <code>off</code>) et le jour du dernier
+message (<code>telemetry_last_sent</code>). Omac fonctionne de la même façon, que le décompte soit activé ou
+non.</p>
+<h2 id="les-verifications-de-mises-a-jour-facultatives">Les vérifications de mises à jour (facultatives)</h2>
+<p><strong>Désactivées à moins que vous ne cochiez leur case</strong>, qui est distincte de celle du décompte
+quotidien. Changez-la en tout temps dans le menu d'Omac, ou avec <code>check_updates</code> dans la table
+<code>[privacy]</code> de <code>omac.toml</code>. Comme pour le décompte, un oui sans le <code>consent_version</code> qu'Omac écrit
+avec chaque réponse (une ligne tapée à la main avant la version 1.0.0) ne compte pas comme une
+réponse : Omac ne vérifie pas, et la fenêtre repose la question.</p>
+<p><strong>À quoi elles servent :</strong> vous dire quand une version plus récente d'Omac existe. Omac utilise
+Sparkle, un module de mise à jour à code source ouvert très répandu pour les applications Mac.</p>
+<h3 id="ce-quenvoie-une-verification-de-mises-a-jour">Ce qu'envoie une vérification de mises à jour</h3>
+<ul>
+<li><strong>Quand :</strong> au plus une fois par jour, et seulement tant que <code>check_updates = true</code>.
+  « Check for Updates… » dans le menu d'Omac vérifie une fois, quand vous le choisissez, que la
+  case soit cochée ou non.</li>
+<li><strong>Quoi :</strong> une requête pour la liste des versions à <code>https://omac.ghostype.ca/appcast.xml</code>. Comme
+  toute requête Web, elle transmet votre adresse IP, et elle indique les versions d'Omac et de
+  Sparkle. Son en-tête <code>Accept-Language</code> est fixé à <code>en</code>, comme celui du décompte quotidien, pour
+  que votre liste de langues ne soit pas envoyée. Elle n'envoie aucune description de votre Mac
+  (le « profil du système » de Sparkle est désactivé) et aucun identifiant.</li>
+<li><strong>Rien n'est téléchargé ni installé tant que vous ne choisissez pas d'installer une mise à
+  jour.</strong> La mise à jour est alors téléchargée depuis GitHub, et Omac vérifie ses signatures avant
+  de l'installer.</li>
+<li>Une copie compilée à partir du code source ne vérifie jamais, pas plus qu'une copie lancée depuis
+  un dossier de Nix ou MacPorts : Nix ou MacPorts la met à jour. Omac reconnaît une telle copie à
+  son dossier ou, pour Nix, à la date que Nix donne à ses fichiers; une copie qu'il ne reconnaît
+  pas est traitée comme une copie téléchargée, et vérifie tant que la case est cochée. Une copie
+  téléchargée que macOS lance depuis un emplacement temporaire, avant que vous la déplaciez dans
+  votre dossier Applications, ne vérifie pas tant que vous ne la déplacez pas.
+  Une copie installée avec Homebrew vérifie, comme une copie téléchargée, tant que la case est
+  cochée. Le dossier ne change rien au décompte quotidien : une copie ne l'envoie que si c'est une
+  version publiée et que sa propre case est cochée.</li>
+</ul>
+<h3 id="qui-la-recoit">Qui la reçoit</h3>
+<p><strong>GitHub</strong>, qui héberge <code>omac.ghostype.ca</code> (sur GitHub Pages) et les téléchargements d'Omac, aux
+États-Unis. GitHub journalise l'adresse IP de chaque visite d'un site GitHub Pages pour des raisons
+de sécurité, et compte combien de fois chaque fichier publié est téléchargé (ces comptes sont des
+nombres publics). Le mainteneur ne reçoit aucun journal des visiteurs de GitHub Pages; il ne peut
+donc pas savoir qui a vérifié. GitHub décrit son propre traitement dans sa déclaration de
+confidentialité :
+<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement</a>.</p>
+<p>Sur votre Mac, Sparkle garde quelques renseignements dans les préférences macOS d'Omac : le moment
+de sa dernière vérification, une version que vous avez choisi d'ignorer, le fait qu'il a déjà été
+lancé, la position de sa fenêtre de mise à jour à l'écran, et un nombre aléatoire, jamais envoyé,
+qui décide quand une version publiée graduellement parvient à votre Mac.</p>
+<h2 id="ce-qui-reste-sur-votre-mac">Ce qui reste sur votre Mac</h2>
+<p>Le code d'Omac n'envoie rien de ce qui suit, nulle part.</p>
+<table>
+<thead>
+<tr>
+<th>Quoi</th>
+<th>Où</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vos réglages</td>
+<td><code>~/.config/omac/omac.toml</code></td>
+<td>Tous les réglages d'Omac, y compris vos deux réponses sur la confidentialité. C'est le seul endroit où un réglage est conservé.</td>
+</tr>
+<tr>
+<td>Disposition des fenêtres</td>
+<td><code>~/.local/state/omac/state.json</code></td>
+<td>L'espace de travail et l'écran de chaque fenêtre, avec l'identifiant de l'application et le titre de la fenêtre, pour remettre les fenêtres en place quand Omac redémarre</td>
+</tr>
+<tr>
+<td>Historique du presse-papiers</td>
+<td><code>~/.local/state/omac/clipboard-history.json</code> et <code>clipboard-images/</code></td>
+<td>Jusqu'à 100 copies récentes par défaut (texte, chemins de fichiers, images). Les copies que les gestionnaires de mots de passe marquent comme secrètes ou temporaires ne sont jamais saisies. Les fichiers sont lisibles par vous seul. Un historique enregistré qu'Omac ne peut pas lire est mis de côté sous <code>clipboard-history.json.bak</code>, pour que vous puissiez le récupérer; « Clear clipboard history… » dans le menu d'Omac le supprime avec le reste. <code>[clipboard] persist = false</code> ne garde rien une fois Omac quitté : l'historique reste en mémoire, et seuls les images que vous copiez (dans <code>clipboard-images/</code>) et les textes que vous ouvrez (plus bas) se trouvent sur le disque pendant qu'Omac fonctionne; Omac les supprime quand il quitte ou, après un plantage, dès qu'il relit ce réglage. Désactiver <code>persist</code> supprime immédiatement l'historique enregistré, sa copie mise de côté, ses images et les textes ouverts, même quand l'historique du presse-papiers est désactivé. <code>enabled = false</code> désactive l'historique.</td>
+</tr>
+<tr>
+<td>Texte du presse-papiers que vous ouvrez</td>
+<td><code>~/.local/state/omac/clipboard-open/</code></td>
+<td>Un fichier texte créé quand vous ouvrez une entrée dans un éditeur; retiré au prochain démarrage de l'historique du presse-papiers</td>
+</tr>
+<tr>
+<td>Suivi du décompte quotidien</td>
+<td><code>~/.local/state/omac/telemetry.json</code></td>
+<td>Voir « Ce qui est conservé » plus haut</td>
+</tr>
+<tr>
+<td>Thème actuel</td>
+<td><code>~/.local/state/omac/current/</code></td>
+<td>Les fichiers de couleurs créés pour le thème choisi</td>
+</tr>
+<tr>
+<td>Sauvegarde du fond d'écran</td>
+<td><code>~/.local/state/omac/wallpaper-backup/</code></td>
+<td>Une copie des réglages de fond d'écran de macOS d'avant le premier changement de thème, retirée par <code>omac theme off</code></td>
+</tr>
+<tr>
+<td>Dictée</td>
+<td><code>~/.local/state/omac/dictation/</code></td>
+<td>L'enregistrement fait pendant que la dictée écoute (pendant que vous maintenez les touches de dictée, ou d'un appui sur la touche de bascule au suivant), supprimé une fois converti en texte par la reconnaissance vocale intégrée à macOS</td>
+</tr>
+<tr>
+<td>Lecture de texte à l'écran</td>
+<td>un dossier privé dans le dossier temporaire de macOS, ou ce dossier temporaire lui-même quand Omac ne peut pas rendre son propre dossier privé</td>
+<td>L'image de la zone que vous sélectionnez, supprimée une fois le texte lu</td>
+</tr>
+<tr>
+<td>Images des thèmes</td>
+<td><code>~/.local/share/omac/omarchy/themes/</code></td>
+<td>Les fonds d'écran téléchargés par <code>omac theme sync</code></td>
+</tr>
+<tr>
+<td>Compétence pour agents de programmation</td>
+<td><code>~/.local/state/omac/skills/omac/</code></td>
+<td>Un guide pour les agents de programmation, créé seulement par <code>omac skill install</code>, qui le relie aussi aux dossiers de compétences de ces agents. Au démarrage, Omac met à jour un guide qu'une version antérieure d'Omac a écrit et que personne n'a modifié.</td>
+</tr>
+<tr>
+<td>Préférences macOS d'Omac</td>
+<td>les préférences <code>com.cast3labs.omac</code> (<code>com.evanscastonguay.omac</code> pour une version préliminaire antérieure d'Omac)</td>
+<td>Les agents de programmation qu'Omac a votre permission de lancer, et le fait qu'un conseil unique a été affiché. Les renseignements de Sparkle (plus haut). Jamais un réglage ni une réponse sur la confidentialité.</td>
+</tr>
+<tr>
+<td>Journal d'Omac</td>
+<td>le journal unifié de macOS</td>
+<td>Chaque raccourci d'Omac déclenché et ce qu'il a lancé, y compris la commande complète d'un raccourci que vous avez écrit avec <code>action = "exec"</code> et la consigne donnée à un agent de programmation (pour <code>omac agent crash</code>, le nom d'un fichier de rapport de plantage); le texte de chaque rappel que vous créez; les noms d'applications, ainsi que l'identifiant et le numéro de processus de chaque application qui s'ouvre; le début des titres de fenêtres; l'adresse d'un thème que vous installez; les chemins de fichiers et de dossiers de votre dossier personnel, qui contiennent le nom de votre compte; chaque décompte quotidien envoyé, ou la raison pour laquelle il ne l'a pas été, jamais son contenu; chaque vérification de mises à jour, avec la version trouvée ou l'erreur qui l'a terminée; vos réponses sur la confidentialité quand vous les donnez ou les changez dans la première fenêtre d'Omac ou dans son menu, et les réglages que vous changez depuis le menu; et les erreurs. macOS le conserve et le fait tourner. Il ne quitte le Mac que si vous le partagez, par exemple dans un rapport de bogue; relisez-le donc avant de le partager.</td>
+</tr>
+</tbody>
+</table>
+<p>À savoir aussi :</p>
+<ul>
+<li><strong>Frappes au clavier.</strong> Pour reconnaître ses raccourcis, Omac surveille le clavier; c'est
+  pourquoi il a besoin de l'autorisation Accessibilité. Il n'enregistre ni n'envoie ce que vous
+  tapez. Son journal nomme seulement un raccourci d'Omac quand il se déclenche.</li>
+<li><strong>Autorisations.</strong> En plus d'Accessibilité, Omac demande le Microphone seulement pour la dictée
+  (il n'écoute que pendant la dictée : pendant que vous maintenez les touches de dictée, ou d'un
+  appui sur la touche de bascule au suivant, une minute au plus sauf si vous changez cela dans
+  <code>omac.toml</code>), l'Enregistrement de l'écran seulement pour
+  lire du texte à l'écran, l'Automatisation pour ouvrir un terminal (pour un agent de programmation,
+  ou avec « Finish in Terminal » quand Homebrew n'a pas pu terminer une installation) et pour faire
+  passer macOS du mode clair au mode sombre, et les Notifications pour vos rappels et pour les courts
+  avis d'Omac (sur le texte lu à l'écran, la dictée, la lecture à voix haute, les thèmes, sa
+  première fenêtre et les vérifications de mises à jour).</li>
+<li><strong>Autres applications.</strong> Quand vous choisissez un thème, Omac écrit des fichiers de couleurs pour
+  les applications que vous avez installées (comme Ghostty, Claude Code, opencode, Sublime Text,
+  VS Code et iTerm2), change le fond d'écran et fait passer macOS du mode clair au mode sombre. Il
+  ne modifie les réglages propres à une autre application qu'après <code>omac theme adopt &lt;app&gt;</code>, sauf
+  le réglage de couleur de Chrome et de Brave, qu'un changement de thème met aussi à jour quand un
+  tel réglage existe déjà. <code>omac theme off</code> remet le fond d'écran en place et retire le dossier de
+  thème propre à Omac (<code>~/.local/state/omac/current/</code>); il laisse le reste tel quel :</li>
+<li>macOS reste en mode clair ou sombre (changez-le dans Réglages Système, Apparence);</li>
+<li>les fichiers de couleurs qu'Omac a écrits dans les dossiers d'autres applications restent, comme
+    <code>~/.claude/themes/omac.json</code>, <code>DynamicProfiles/omac.json</code> d'iTerm2, <code>Omac.sublime-color-scheme</code>
+    de Sublime Text et <code>~/.vscode/extensions/omac-theme</code> de VS Code; supprimez-les pour les retirer;</li>
+<li>le réglage de couleur de Chrome et de Brave reste; cette commande le retire pour Chrome (pour
+    Brave, utilisez <code>com.brave.Browser</code>) : <code>defaults delete com.google.Chrome BrowserThemeColor</code>;</li>
+<li>les réglages d'une application adoptée restent tels quels jusqu'à ce que vous les changiez dans
+    cette application.</li>
+<li><strong>L'ouverture à la connexion</strong> est inscrite dans les éléments de connexion de macOS. Une première
+  installation avec le programme d'installation en une ligne l'active; une mise à jour laisse votre
+  choix tel quel. <code>omac login off</code>, ou « Launch at login » dans le menu d'Omac, la désactive, et
+  <code>omac login on</code> la réactive.</li>
+<li><strong>Le programme d'installation</strong> met Omac dans <code>~/Applications/Omac.app</code> et la commande <code>omac</code> dans
+  <code>~/.local/bin</code>, peut ajouter deux lignes marquées au fichier de démarrage de votre shell pour que
+  la commande soit trouvée et, lors d'une première installation, active l'ouverture à la connexion
+  (plus haut).</li>
+</ul>
+<h2 id="ce-quomac-fait-seulement-a-votre-demande">Ce qu'Omac fait seulement à votre demande</h2>
+<p>Ces actions ne se connectent à Internet que lorsque vous les lancez. Installer quelque chose vous
+le demande d'abord.</p>
+<table>
+<thead>
+<tr>
+<th>Quand vous…</th>
+<th>Omac se connecte à</th>
+<th>Ce qui se passe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lancez <code>omac theme sync</code></td>
+<td>GitHub (<code>github.com</code>, et <code>api.github.com</code> si la première adresse refuse)</td>
+<td>Télécharge les images des thèmes pour votre version d'Omac. En cas de refus, Omac réessaie avec votre jeton GitHub (de <code>GITHUB_TOKEN</code>, <code>GH_TOKEN</code> ou de l'outil <code>gh</code>), envoyé à <code>api.github.com</code> seulement; le téléchargement vient ensuite de l'hôte de stockage de GitHub, sans le jeton. Comme tout téléchargement sous macOS, les requêtes portent les en-têtes habituels de macOS, y compris votre liste de langues préférées.</td>
+</tr>
+<tr>
+<td>lancez <code>omac theme install &lt;adresse&gt;</code></td>
+<td>l'adresse que vous donnez</td>
+<td><code>git</code> copie ce thème.</td>
+</tr>
+<tr>
+<td>installez une application avec <code>omac install &lt;app&gt; --yes</code>, ou acceptez « Install … with Homebrew? »</td>
+<td>Homebrew et le site de téléchargement de l'application</td>
+<td>Homebrew fonctionne comme d'habitude, y compris ses propres statistiques, sauf si vous les avez désactivées.</td>
+</tr>
+<tr>
+<td>installez un agent de programmation avec <code>omac install &lt;agent&gt; --yes</code>, ou en lancez un qui n'est pas installé et acceptez la boîte de dialogue</td>
+<td>le programme d'installation du fabricant de l'agent</td>
+<td>Le programme d'installation officiel du fabricant s'exécute dans votre terminal.</td>
+</tr>
+<tr>
+<td>lancez un agent de programmation, ou <code>omac agent crash</code></td>
+<td>rien, de lui-même</td>
+<td>Omac ouvre l'agent dans votre terminal; <code>omac agent crash</code> lui donne une consigne qui nomme le plus récent rapport de plantage sur votre Mac. Ce que l'agent lit et envoie dépend de l'agent et de son fabricant.</td>
+</tr>
+<tr>
+<td>choisissez Privacy › « Privacy policy… » dans le menu (« Privacy… » dans les versions préliminaires), ou ouvrez un lien Web de l'historique du presse-papiers</td>
+<td>votre navigateur ouvre la page</td>
+<td>C'est votre navigateur qui fait la requête.</td>
+</tr>
+<tr>
+<td>appuyez sur un raccourci que vous avez écrit avec <code>action = "exec"</code></td>
+<td>ce que fait votre commande</td>
+<td>Omac exécute votre commande telle qu'écrite.</td>
+</tr>
+<tr>
+<td>installez ou mettez à jour avec le programme d'installation en une ligne</td>
+<td>GitHub (<code>raw.githubusercontent.com</code>, <code>github.com</code>)</td>
+<td>Télécharge Omac. GitHub compte le téléchargement.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="le-site-web">Le site Web</h2>
+<p><code>omac.ghostype.ca</code> est hébergé par GitHub Pages. GitHub journalise l'adresse IP de chaque visiteur
+pour des raisons de sécurité; le mainteneur ne reçoit aucun journal des visiteurs. Les pages du site
+ne déposent aucun témoin (cookie) et, aujourd'hui, ne chargent rien de personne d'autre.</p>
+<h2 id="achats-et-licences-pas-encore-couverts">Achats et licences (pas encore couverts)</h2>
+<p><strong>Cette section est un espace réservé.</strong> Rien n'est encore vendu, et aucune version d'Omac ne
+recueille de données d'achat ou de licence; cette politique n'en couvre donc aucune.</p>
+<p>Avant toute vente, cette section précisera, avec le même détail que le reste de cette politique :
+qui vend Omac (le mainteneur, ou un revendeur qui est le vendeur légal au paiement); ce que le
+vendeur et le mainteneur reçoivent (par exemple votre nom, votre adresse courriel et votre pays,
+pour les taxes); comment une licence est émise et vérifiée sur votre Mac, et si cela utilise un
+jour le réseau; qui d'autre traite les données, et où; et combien de temps les dossiers sont
+conservés, y compris ce qu'exigent les lois fiscales.</p>
+<p>Les renseignements de licence ou d'essai ne seront pas ajoutés au décompte quotidien : cela
+changerait ce que vous avez accepté, et il faudrait donc un nouveau consentement distinct.</p>
+<h2 id="fins-et-fondement-juridique">Fins et fondement juridique</h2>
+<table>
+<thead>
+<tr>
+<th>Quoi</th>
+<th>Fin</th>
+<th>Fondement juridique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Décompte d'utilisation quotidien</td>
+<td>Compter les installations actives, les versions, les versions de macOS et le nombre d'écrans</td>
+<td>Votre consentement : la case non cochée au départ (RGPD, art. 6(1)a) et directive « vie privée et communications électroniques », art. 5(3); Loi 25, art. 14; LPRPDE, art. 6.1). Vous pouvez le retirer en tout temps.</td>
+</tr>
+<tr>
+<td>Vérifications de mises à jour automatiques</td>
+<td>Vous dire qu'une version plus récente existe</td>
+<td>Votre consentement : sa propre case non cochée au départ</td>
+</tr>
+<tr>
+<td>« Check for Updates… »</td>
+<td>La même chose, une fois, à votre demande</td>
+<td>Votre demande</td>
+</tr>
+<tr>
+<td>Limitation du débit chez Cloudflare</td>
+<td>Protéger le serveur contre les abus</td>
+<td>La sécurité (Loi 25, art. 12, deuxième alinéa, par. 3°; RGPD, art. 6(1)f), intérêt légitime pour la sécurité des réseaux, considérant 49)</td>
+</tr>
+<tr>
+<td>Courriel à omac@ghostype.ca</td>
+<td>Vous répondre</td>
+<td>Votre demande (RGPD, art. 6(1)f))</td>
+</tr>
+<tr>
+<td>Page de statistiques publique</td>
+<td>Montrer à tous les totaux du décompte quotidien</td>
+<td>Intérêt légitime à les publier (RGPD, art. 6(1)f))</td>
+</tr>
+</tbody>
+</table>
+<p>Fournir l'un ou l'autre de ces renseignements est facultatif : Omac fonctionne pleinement sans eux.
+Omac ne prend aucune décision automatisée à votre sujet et ne crée aucun profil.</p>
+<h2 id="fournisseurs-de-services-et-donnees-hors-du-quebec">Fournisseurs de services et données hors du Québec</h2>
+<table>
+<thead>
+<tr>
+<th>Fournisseur</th>
+<th>Rôle</th>
+<th>Ce qu'il traite</th>
+<th>Où</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloudflare, Inc.</td>
+<td>Exploite le serveur et la base de données du décompte quotidien pour le mainteneur; transfère le courriel envoyé à omac@ghostype.ca; héberge le DNS de <code>ghostype.ca</code></td>
+<td>Le message quotidien, votre adresse IP en transit, le courriel que vous envoyez</td>
+<td>Le centre de données le plus proche de vous, qui peut être hors du Québec et du Canada. La base de données est dans une seule région, l'est de l'Amérique du Nord (<code>enam</code> chez Cloudflare), et n'est pas copiée dans d'autres régions.</td>
+</tr>
+<tr>
+<td>GitHub, Inc.</td>
+<td>Héberge le site Web, le flux des mises à jour et les téléchargements. Il décide lui-même du traitement de ses propres journaux.</td>
+<td>Votre adresse IP et la requête</td>
+<td>États-Unis</td>
+</tr>
+<tr>
+<td>Google LLC (Gmail)</td>
+<td>Héberge la boîte aux lettres du mainteneur, où arrive le courriel envoyé à omac@ghostype.ca</td>
+<td>Le courriel que vous envoyez</td>
+<td>États-Unis</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hors du Québec.</strong> Votre adresse IP, le message quotidien et le courriel que vous envoyez peuvent
+être traités hors du Québec et du Canada. Avant que cela se produise, le mainteneur l'a évalué comme l'exige la Loi 25
+(article 17). L'avenant sur le traitement des données des clients de Cloudflare (Customer Data
+Processing Addendum) est l'entente écrite avec Cloudflare; il comprend les clauses contractuelles
+types de l'Union européenne, et Cloudflare s'appuie sur le cadre de protection des données
+UE–États-Unis (Data Privacy Framework). Tant que vos renseignements sont hors du Canada, ils sont
+soumis aux lois du pays où ils se trouvent, et les tribunaux, la police et les autorités chargées
+de la sécurité nationale de ce pays, les États-Unis surtout, peuvent être en mesure de les obtenir.</p>
+<h2 id="vos-droits">Vos droits</h2>
+<p>Vous avez ces droits où que vous viviez. Ils viennent de la Loi 25 du Québec, de la LPRPDE du Canada
+et, pour les personnes dans l'Union européenne ou l'Espace économique européen, du RGPD.</p>
+<ul>
+<li><strong>Retirer votre consentement</strong> en tout temps, aussi facilement que vous l'avez donné : voir
+  « Comment le désactiver ». Les messages futurs s'arrêtent immédiatement.</li>
+<li><strong>Savoir ce qui est recueilli et pourquoi :</strong> cette politique, et <code>omac status</code> sur votre Mac.</li>
+<li><strong>Accès, rectification, suppression, limitation du traitement et copie dans un format
+  courant.</strong> Pour le décompte quotidien, les messages ne contiennent aucun identifiant; le
+  mainteneur ne peut donc pas savoir quelles rangées viennent de votre Mac, ni les retrouver, les
+  montrer, les corriger, en limiter le traitement ou les supprimer pour vous (RGPD, art. 11(2)). Les rangées brutes disparaissent en environ 7 jours, plus
+  jusqu'à 7 jours dans la sauvegarde; les totaux ne décrivent personne. Si vous donnez des détails
+  qui distinguent vos rangées, par exemple une configuration rare, le mainteneur donnera suite à
+  votre demande dans la mesure où ces détails le permettent. Tout ce qu'Omac conserve d'autre est
+  sur votre Mac, où vous pouvez le lire ou le supprimer. Pour le courriel que vous avez envoyé,
+  écrivez à omac@ghostype.ca.</li>
+<li><strong>Vous opposer</strong> à toute utilisation de vos données, et <strong>porter plainte</strong> (voir « Plaintes »).</li>
+</ul>
+<p>Les réponses sont gratuites et vous parviennent dans les 30 jours.</p>
+<p><strong>Aucun représentant dans l'Union européenne.</strong> Omac n'a pas désigné de représentant dans l'UE au
+sens de l'article 27 du RGPD. Les motifs du mainteneur sont consignés dans les registres de cette
+politique.</p>
+<h2 id="plaintes">Plaintes</h2>
+<ol>
+<li>Écrivez d'abord à omac@ghostype.ca. Vous recevez une réponse dans les 30 jours.</li>
+<li>Si vous n'êtes pas satisfait, vous pouvez porter plainte :</li>
+<li>au Québec, auprès de la <strong>Commission d'accès à l'information du Québec</strong> :
+     <a href="https://www.cai.gouv.qc.ca/">https://www.cai.gouv.qc.ca/</a></li>
+<li>au Canada, auprès du <strong>Commissariat à la protection de la vie privée du Canada</strong> :
+     <a href="https://www.priv.gc.ca/fr/signaler-des-preoccupations/">https://www.priv.gc.ca/fr/signaler-des-preoccupations/</a></li>
+<li>dans l'Union européenne ou l'Espace économique européen, auprès de <strong>l'autorité de protection
+     des données de votre pays</strong> : <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_fr">https://www.edpb.europa.eu/about-edpb/about-edpb/members_fr</a></li>
+</ol>
+<h2 id="securite">Sécurité</h2>
+<ul>
+<li>Le décompte quotidien passe seulement par HTTPS, vers une seule adresse fixe. Omac ne suit
+  aucune redirection pour lui, n'envoie aucun témoin et ne garde aucune copie de la requête.</li>
+<li>La base de données du serveur n'a aucune colonne pour une adresse IP, un nom de navigateur ou
+  d'application, un emplacement ou un identifiant, et son code ne les lit jamais. Ses journaux de
+  requêtes sont désactivés.</li>
+<li><code>telemetry.json</code> et les fichiers de l'historique du presse-papiers ne sont lisibles que par votre
+  compte d'utilisateur sur votre Mac.</li>
+<li>Une mise à jour n'est installée que si ses signatures correspondent à celles du mainteneur.</li>
+</ul>
+<h2 id="enfants">Enfants</h2>
+<p>Omac ne s'adresse pas aux enfants. Au Québec, une personne de moins de 14 ans a besoin du
+consentement d'un parent avant d'activer le décompte quotidien; dans l'UE, l'âge se situe entre 13
+et 16 ans selon le pays.</p>
+<h2 id="gouvernance">Gouvernance</h2>
+<p>Le mainteneur est la seule personne qui a accès au serveur d'Omac, à ses registres et à l'adresse
+de contact. Il :</p>
+<ul>
+<li>approuve cette politique et chacune de ses modifications;</li>
+<li>ne conserve les données que pendant la durée indiquée dans le tableau « Ce qui est conservé », et
+  les supprime de la façon que ce tableau décrit;</li>
+<li>répond aux demandes et aux plaintes dans les 30 jours;</li>
+<li>tient un registre des incidents de confidentialité et, quand un incident présente le risque que
+  chaque loi nomme, le déclare à la Commission d'accès à l'information, au Commissariat à la
+  protection de la vie privée du Canada et, pour les personnes dans l'Union européenne ou l'Espace
+  économique européen, à leurs autorités de protection des données; il avise directement les
+  personnes concernées quand il peut les joindre, comme celles qui lui ont écrit, et par un avis
+  public quand il ne le peut pas, comme pour le décompte quotidien, dont il ne connaît pas les
+  expéditeurs;</li>
+<li>réexamine cette politique, et les statistiques conservées sans date de fin, une fois par année et
+  chaque fois que ce qu'Omac envoie change.</li>
+</ul>
+<p>Cette version a été approuvée par le responsable, le mainteneur, le 2026-10-03.</p>
+<h2 id="modifications-de-cette-politique">Modifications de cette politique</h2>
+<p>Chaque version a une date et une ligne dans la liste ci-dessous. Les modifications sont annoncées
+dans les notes de version d'Omac et sur le site Web avant d'entrer en vigueur. Si Omac voulait un
+jour utiliser vos données à une nouvelle fin, il vous le demanderait de nouveau, dans une nouvelle
+case : une nouvelle utilisation ne s'appuie jamais sur un ancien consentement.</p>
+<ul>
+<li>Ébauche 1, 2026-09-27 : première ébauche, soumise à l'approbation du mainteneur; libellé approuvé
+  le 2026-09-28.</li>
+<li>Ébauche 2, 2026-09-30 : mise à jour selon le code, le serveur et les décisions prises depuis :
+  <code>first_this_month</code> envoyé de nouveau après avoir désactivé puis réactivé le décompte; ce que dit l'heure d'un message; des attentes jusqu'à
+  24 heures quand le serveur le demande; la question reposée quand une réponse ne peut pas être
+  enregistrée; <code>telemetry.json</code> gardé jusqu'à ce que <code>omac.toml</code> dise non; le serveur garde des
+  comptes par jour plutôt que chaque message et les supprime chaque heure, d'abord dans les 15 minutes
+  après 0 h UTC où il ne conserve aucun message, quoi que fasse la tâche nocturne, et sa sauvegarde garde le moment où chaque compte a augmenté, et dans quel
+  ordre; les tableaux mensuels; les nombres que la page de statistiques masque, ce que des faux
+  messages peuvent révéler, et ce qu'ouvrir la page montre à Cloudflare; le fondement juridique de la page de statistiques; la règle qui refuse les
+  messages qui ne nomment pas Omac; l'en-tête de langue fixe de la vérification de mises à jour;
+  les copies de Nix et de MacPorts qui ne vérifient jamais, une copie téléchargée lancée depuis un
+  emplacement temporaire qui ne vérifie pas tant qu'elle n'est pas déplacée, et le fait que le
+  dossier ne change rien au décompte quotidien; ce que gardent Sparkle et le journal; les
+  autorisations et le moment où la dictée écoute; ce que l'historique du presse-papiers garde sur le disque quand il n'est pas
+  enregistré, et sa copie mise de côté; le guide pour agents de programmation mis à jour au
+  démarrage; le dossier utilisé pour lire du texte à l'écran; le jeton GitHub envoyé à
+  <code>api.github.com</code> seulement; aucune statistique du site Web; rien n'est encore vendu; les versions
+  publiées n'envoient ni l'une ni l'autre fonction. Libellé approuvé le
+  2026-09-30.</li>
+<li>Ébauche 3, 2026-09-30 : un oui donné avant les cases de la version 1.0.0 (la ligne du menu d'une
+  version préliminaire antérieure, une ligne tapée à la main) ne compte pas comme une réponse, et la question est
+  reposée : Omac écrit <code>consent_version</code> avec chaque réponse. Aussi : la première version qui peut
+  envoyer le décompte ou vérifier les mises à jour est 1.0.0, la première version publique (la
+  numérotation a recommencé le 2026-09-30), et les versions préliminaires antérieures d'Omac ne le
+  font jamais; l'entrée Privacy › « Privacy policy… » du menu; le serveur supprime les comptes bruts
+  chaque heure une fois leur jour vieux de 6 jours; qui est responsable : Omac est conçu par
+  cast3labs, qui décide de ce qu'Omac recueille, et le responsable de la protection des
+  renseignements personnels est le mainteneur, la personne qui dirige cast3labs, que vous pouvez
+  joindre à omac@ghostype.ca; la ligne des préférences macOS nomme le nouvel identifiant d'Omac,
+  <code>com.cast3labs.omac</code>, et l'ancien des versions préliminaires, <code>com.evanscastonguay.omac</code>.
+  Libellé approuvé le 2026-10-01.</li>
+<li>Version 1, 2026-10-03 : la première version publiée, approuvée le 2026-10-03. Depuis l'ébauche 3 : les
+  notes d'ébauche sont résolues : la région de la base de données (l'est de l'Amérique du Nord),
+  les deux règles en périphérie, la page de statistiques et les vérifications de mises à jour, qui
+  existent maintenant; les outils de sécurité de Cloudflare
+  gardent des échantillons de requêtes avec leur adresse IP jusqu'à 31 jours, et non 7 (documentation
+  de Cloudflare, lue le 2026-10-02); le journal du courriel transféré par Cloudflare; le premier
+  message après l'activation du décompte attend le jour UTC suivant, un message resté sans réponse
+  compte comme le message de ce jour-là, et <code>telemetry.json</code> garde le jour de l'activation; les
+  versions préliminaires antérieures d'Omac n'envoient jamais le décompte et ne vérifient jamais,
+  ce que dit maintenant le résumé.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>Québec, Loi sur la protection des renseignements personnels dans le secteur privé (RLRQ,
+   c. P-39.1, « Loi 25 ») : <a href="https://www.legisquebec.gouv.qc.ca/fr/document/lc/P-39.1">https://www.legisquebec.gouv.qc.ca/fr/document/lc/P-39.1</a></li>
+<li>Canada, Loi sur la protection des renseignements personnels et les documents électroniques
+   (LPRPDE) : <a href="https://laws-lois.justice.gc.ca/fra/lois/P-8.6/TexteComplet.html">https://laws-lois.justice.gc.ca/fra/lois/P-8.6/TexteComplet.html</a></li>
+<li>Union européenne, Règlement général sur la protection des données (RGPD) :
+   <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32016R0679">https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32016R0679</a></li>
+<li>Union européenne, directive 2002/58/CE « vie privée et communications électroniques » :
+   <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02002L0058-20091219">https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02002L0058-20091219</a></li>
+<li>Politique de confidentialité de Cloudflare : <a href="https://www.cloudflare.com/fr-fr/privacypolicy/">https://www.cloudflare.com/fr-fr/privacypolicy/</a></li>
+<li>Avenant de Cloudflare sur le traitement des données des clients (en anglais) :
+   <a href="https://www.cloudflare.com/cloudflare-customer-dpa/">https://www.cloudflare.com/cloudflare-customer-dpa/</a></li>
+<li>Cloudflare D1 Time Travel (en anglais) : <a href="https://developers.cloudflare.com/d1/reference/time-travel/">https://developers.cloudflare.com/d1/reference/time-travel/</a></li>
+<li>Cloudflare Security Analytics (en anglais) : <a href="https://developers.cloudflare.com/waf/analytics/security-analytics/">https://developers.cloudflare.com/waf/analytics/security-analytics/</a></li>
+<li>GitHub Pages (adresses IP des visiteurs, en anglais) : <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages</a></li>
+<li>Déclaration de confidentialité générale de GitHub (en anglais) : <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement</a></li>
+<li>Statistiques de Homebrew (en anglais) : <a href="https://docs.brew.sh/Analytics">https://docs.brew.sh/Analytics</a></li>
+</ol>
+<section id="network" lang="en">
+<h2>Every place Omac's code can reach the network</h2>
+<p><b>Omac never sends anything without asking.</b> This list is generated from the one the build checks the code against: nothing in Omac opens a connection, or starts a program that can, outside these lines. <b>Gate</b> says what makes it run: the two opt-ins in <code>omac.toml</code> (<code>daily_ping</code>, <code>check_updates</code>, both off by default) are the only things that send without a request; <i>user action</i> is a menu row, a command, a key, or a bind or hook you wrote; <i>wrapper</i> lines run for their callers, which are listed with their own host.</p>
+<h3>Sends on its own, only when opted in</h3>
+<table><thead><tr><th>Where</th><th>Reaches</th><th>Gate</th><th>What</th></tr></thead><tbody>
+<tr><td><code>Telemetry.swift</code><br><small>Telemetry.productionEndpoint</small></td><td>t.ghostype.ca</td><td>daily_ping</td><td>The ping&#x27;s address; only the pinger&#x27;s sender posts to it</td></tr>
+<tr><td><code>TelemetryPinger.swift</code><br><small>TelemetryPinger.sender</small></td><td>t.ghostype.ca (the sender made in TelemetryPinger.init)</td><td>daily_ping</td><td>The pinger&#x27;s one sender</td></tr>
+<tr><td><code>TelemetryPinger.swift</code><br><small>TelemetryPinger.init</small></td><td>t.ghostype.ca (Telemetry.productionEndpoint; OMAC_TELEMETRY_URL can point it only at a loopback address, for tests)</td><td>daily_ping</td><td>The daily count: at most one POST a day, from a release build, only while daily_ping = true in the loaded file AND in the file on disk at send time (TelemetryCoordinator)</td></tr>
+<tr><td><code>TelemetryClient.swift</code><br><small>TelemetryHTTPSender</small></td><td>set by its one caller, TelemetryPinger</td><td>wrapper: TelemetryHTTPSender(</td><td>The one URLSession that sends pings: no redirects, no cookies, no cache, default TLS checks</td></tr>
+<tr><td><code>TelemetryClient.swift</code><br><small>TelemetryRequest.sessionConfiguration</small></td><td>none: the ephemeral configuration the sender uses</td><td>no network</td><td>Builds the sender&#x27;s session settings</td></tr>
+<tr><td><code>TelemetryClient.swift</code><br><small>URLSessionTask</small></td><td>none: lets the coordinator cancel a send</td><td>no network</td><td>Conformance of URLSession&#x27;s task to TelemetryTask</td></tr>
+<tr><td><code>Updater.swift</code><br><small>Updater.evaluate</small></td><td>omac.ghostype.ca (the appcast, Info.plist SUFeedURL, written only in a strict Developer ID build)</td><td>check_updates</td><td>Omac&#x27;s update scheduler, the only caller of checkForUpdatesInBackground(): at launch, when a reload turns check_updates on, and hourly, only when UpdateScheduler.decide says a check is due (once a day at most, from Sparkle&#x27;s last check). Sparkle&#x27;s mayPerform delegate (UpdateGate) refuses it again unless check_updates = true in the loaded file AND in the file on disk. Nothing downloads: a find shows a menu row</td></tr>
+</tbody></table>
+<h3>Only when the user asks</h3>
+<table><thead><tr><th>Where</th><th>Reaches</th><th>Gate</th><th>What</th></tr></thead><tbody>
+<tr><td><code>UpdateSource.swift</code><br><small>UpdateSource</small></td><td>none: compares Sparkle&#x27;s update archive address with these, fetches nothing; named only: omac.ghostype.ca (the production feed&#x27;s address) and github.com (where update archives must be)</td><td>no network</td><td>The update-source pin: the updater&#x27;s shouldProceedWithUpdate delegate refuses an update whose archive is not on github.com/cast3labs/omac&#x27;s releases (a staging build: not on its own feed&#x27;s origin), a delta, an informational item (its Learn More would open a page the unsigned feed names) and an item to install with no archive address</td></tr>
+<tr><td><code>ConsentText.swift</code><br><small>ConsentText.privacyPage</small></td><td>omac.ghostype.ca</td><td>user action</td><td>The privacy page&#x27;s address, opened only by the menu&#x27;s Privacy › &quot;Privacy policy…&quot; row (StatusItem.openPrivacy)</td></tr>
+<tr><td><code>StatusItem.swift</code><br><small>StatusItem.openPrivacy</small></td><td>omac.ghostype.ca (ConsentText.privacyPage, in the default browser)</td><td>user action</td><td>The menu&#x27;s Privacy › &quot;Privacy policy…&quot; row</td></tr>
+<tr><td><code>FirstRunWindow.swift</code><br><small>FirstRunWindow.openPrivacy</small></td><td>omac.ghostype.ca (ConsentText.privacyPage, in the default browser, once PrivacyPolicy.pageIsLive; until then the policy file inside the app)</td><td>user action</td><td>The first-run window&#x27;s &quot;What is sent?&quot; link (D14)</td></tr>
+<tr><td><code>ClipboardMonitor.swift</code><br><small>ClipboardMonitor.open</small></td><td>the web address in a clipboard entry, in the default browser; otherwise none (a private local text file)</td><td>user action</td><td>Opening an entry of the clipboard history</td></tr>
+<tr><td><code>Dispatcher.swift</code><br><small>Dispatcher.openApp</small></td><td>on a coding agent&#x27;s first launch, its installer&#x27;s host (AgentRegistry.builtins); otherwise none: the app opened is the user&#x27;s own</td><td>user action</td><td>Opens or focuses the app a key names; with arguments, the terminal that runs the coding agent</td></tr>
+<tr><td><code>Dispatcher.swift</code><br><small>Dispatcher.launchAgentTerminal</small></td><td>on a coding agent&#x27;s first launch, its installer&#x27;s host (AgentRegistry.builtins)</td><td>user action</td><td>The coding agent in Terminal.app or iTerm2 (AppleScript), after the one-time &quot;Launch &lt;agent&gt;?&quot; dialog</td></tr>
+<tr><td><code>Dispatcher.swift</code><br><small>Dispatcher.exec</small></td><td>whatever the user&#x27;s own command reaches</td><td>user action</td><td>An exec bind the user wrote, run by /bin/sh -c</td></tr>
+<tr><td><code>ThemeAppliers.swift</code><br><small>HooksSurface.apply</small></td><td>whatever the user&#x27;s own hook scripts reach</td><td>user action</td><td>The theme hooks the user put in the hooks folder, run as bash &lt;script&gt; &lt;theme&gt; at each theme change</td></tr>
+<tr><td><code>Updater.swift</code><br><small>Updater.checkNow</small></td><td>omac.ghostype.ca (the appcast); github.com (the update archive, on GitHub Releases, only when the user chooses to install)</td><td>user action</td><td>&quot;Check for Updates…&quot; in the menu, omac update, and an update_check bind the user wrote: checkForUpdates(), only when UpdateCheckOutcome.decide says this copy may check (a release build Sparkle may update)</td></tr>
+<tr><td><code>Updater.swift</code><br><small>Updater.showPendingUpdate</small></td><td>omac.ghostype.ca (the appcast); github.com (the update archive, only when the user chooses to install)</td><td>user action</td><td>The menu&#x27;s &quot;Update available: X.Y.Z…&quot; row: brings forward the update a background check found (checkForUpdates())</td></tr>
+<tr><td><code>ThemeManager.swift</code><br><small>ThemeManager.install</small></td><td>the repository URL the user gives (ThemeInstall.urlRefusal refuses git options and transport helpers)</td><td>user action</td><td>omac theme install &lt;url&gt;: git clone, with GIT_TERMINAL_PROMPT=0</td></tr>
+<tr><td><code>AppDelegate.swift</code><br><small>AppDelegate.confirmAndInstall</small></td><td>Homebrew&#x27;s servers and the cask&#x27;s download host</td><td>user action</td><td>The &quot;Install &lt;app&gt; with Homebrew?&quot; dialog (the menu&#x27;s not-installed apps); Install runs Installer.run</td></tr>
+<tr><td><code>Installer.swift</code><br><small>Installer.failure</small></td><td>Homebrew&#x27;s servers and the cask&#x27;s download host</td><td>user action</td><td>After a failed install, &quot;Finish in Terminal&quot; runs the same brew command there</td></tr>
+<tr><td><code>AgentRegistry.swift</code><br><small>AgentRegistry.builtins</small></td><td>claude.ai, opencode.ai, chatgpt.com, antigravity.google, gh.io, cursor.com, x.ai, hermes-agent.nousresearch.com, dev.meta.ai; github.com (the crush and omp Homebrew taps, with Homebrew&#x27;s own servers); registry.npmjs.org (pi)</td><td>user action</td><td>Each coding agent&#x27;s official installer, run only by `omac install &lt;agent&gt; --yes` or by an agent&#x27;s first launch after its one-time dialog</td></tr>
+<tr><td><code>main.swift</code><br><small>&quot;install&quot;</small></td><td>a coding agent&#x27;s installer host (AgentRegistry.builtins); Homebrew&#x27;s servers and the cask&#x27;s download host ; named only: brew.sh, in the message shown when Homebrew is missing</td><td>user action</td><td>omac install &lt;app|agent&gt; --yes (without --yes it only prints the command)</td></tr>
+<tr><td><code>ThemeExtras.swift</code><br><small>ThemeMediaSync.releaseAssetURL</small></td><td>github.com</td><td>user action</td><td>The release asset omac theme sync downloads first</td></tr>
+<tr><td><code>ThemeExtras.swift</code><br><small>ThemeMediaSync.releaseByTagURL</small></td><td>api.github.com</td><td>user action</td><td>The release API omac theme sync asks, with a token, on 401, 403 or 404</td></tr>
+<tr><td><code>main.swift</code><br><small>&quot;theme&quot;.&quot;sync&quot;</small></td><td>github.com, api.github.com, and the storage host GitHub redirects a release asset to</td><td>user action</td><td>omac theme sync: this version&#x27;s reviewed wallpapers (omac-theme-media.zip from the release); on 401, 403 or 404 the release API with a GitHub token; ditto unzips it locally</td></tr>
+</tbody></table>
+<h3>Wrappers: each call is listed with its caller</h3>
+<table><thead><tr><th>Where</th><th>Reaches</th><th>Gate</th><th>What</th></tr></thead><tbody>
+<tr><td><code>AppDelegate.swift</code><br><small>AppDelegate.runAppleScript</small></td><td>set by each caller</td><td>wrapper: runAppleScript(</td><td>Runs AppleScript source that Omac built</td></tr>
+<tr><td><code>AppDelegate.swift</code><br><small>AppDelegate.openInTerminal</small></td><td>set by each caller</td><td>wrapper: openInTerminal(</td><td>Opens Terminal running a command, through runAppleScript</td></tr>
+<tr><td><code>Installer.swift</code><br><small>Installer.run</small></td><td>set by each caller; named only: brew.sh, in the message shown when Homebrew is missing</td><td>wrapper: run(role:</td><td>brew install --cask &lt;cask&gt; with HOMEBREW_NO_AUTO_UPDATE=1, its progress in the menu</td></tr>
+<tr><td><code>Subprocess.swift</code><br><small>Subprocess.run</small></td><td>set by each caller</td><td>wrapper: Subprocess.run(</td><td>Runs a program with a deadline (theme appliers, theme install)</td></tr>
+<tr><td><code>main.swift</code><br><small>authSafeSession</small></td><td>set by each caller</td><td>wrapper: authSafeSession(</td><td>A URLSession whose redirects never carry the token to another host</td></tr>
+<tr><td><code>main.swift</code><br><small>downloadFile</small></td><td>set by each caller</td><td>wrapper: downloadFile(</td><td>Downloads a URL to a file (5 minute cap)</td></tr>
+<tr><td><code>main.swift</code><br><small>fetchJSON</small></td><td>set by each caller</td><td>wrapper: fetchJSON(</td><td>Fetches and decodes a JSON URL (60 s cap)</td></tr>
+<tr><td><code>main.swift</code><br><small>runProcess</small></td><td>set by each caller</td><td>wrapper: runProcess(</td><td>The CLI&#x27;s program runner (argv, no shell)</td></tr>
+</tbody></table>
+<h3>Stays on the Mac</h3>
+<table><thead><tr><th>Where</th><th>Reaches</th><th>Gate</th><th>What</th></tr></thead><tbody>
+<tr><td><code>FirstRunWindow.swift</code><br><small>FirstRunWindow.openAccessibilitySettings</small></td><td>none: System Settings, Accessibility</td><td>no network</td><td>The first-run window&#x27;s button (D14)</td></tr>
+<tr><td><code>StatusItem.swift</code><br><small>StatusItem.openAccessibility</small></td><td>none: System Settings, Accessibility</td><td>no network</td><td>The menu&#x27;s permission row</td></tr>
+<tr><td><code>StatusItem.swift</code><br><small>StatusItem.openSpec</small></td><td>none: the settings file, in the user&#x27;s editor, else TextEdit</td><td>no network</td><td>The menu&#x27;s &quot;Open omac.toml…&quot; row (TextEdit when no app opens .toml files)</td></tr>
+<tr><td><code>Installer.swift</code><br><small>Installer.process</small></td><td>none: holds the brew process Installer.run starts</td><td>no network</td><td>The install in flight, to stop it</td></tr>
+<tr><td><code>Installer.swift</code><br><small>Installer.findBrew</small></td><td>none: looks for the brew program</td><td>no network</td><td>Finds Homebrew&#x27;s path</td></tr>
+<tr><td><code>TextCapture.swift</code><br><small>TextCaptureController.selection</small></td><td>none: holds the screencapture process selectRegion starts</td><td>no network</td><td>The selection in flight, to reap it</td></tr>
+<tr><td><code>TextCapture.swift</code><br><small>TextCaptureController.selectRegion</small></td><td>none: /usr/sbin/screencapture</td><td>no network</td><td>omac ocr&#x27;s region selection</td></tr>
+<tr><td><code>SpeechController.swift</code><br><small>SpeechController.refreshVoices</small></td><td>none: /usr/bin/say lists the voices</td><td>no network</td><td>The read-aloud voice list</td></tr>
+<tr><td><code>SpeechController.swift</code><br><small>SpeechController.sayProcess</small></td><td>none: holds the say process speakWithSay starts</td><td>no network</td><td>Read-aloud in flight, to stop it</td></tr>
+<tr><td><code>SpeechController.swift</code><br><small>SpeechController.speakWithSay</small></td><td>none: /usr/bin/say</td><td>no network</td><td>Read-aloud through say</td></tr>
+<tr><td><code>ThemeAppliers.swift</code><br><small>OpencodeSurface.apply</small></td><td>none: pgrep and pkill -USR2 opencode</td><td>no network</td><td>Tells a running opencode to reload its theme</td></tr>
+<tr><td><code>ThemeAppliers.swift</code><br><small>TmuxSurface.tmux</small></td><td>none: tmux</td><td>no network</td><td>tmux&#x27;s theme reload</td></tr>
+<tr><td><code>ThemeAppliers.swift</code><br><small>AppearanceSurface.apply</small></td><td>none: osascript, through System Events</td><td>no network</td><td>Light or dark mode</td></tr>
+<tr><td><code>ThemeAppliers.swift</code><br><small>WallpaperSurface.restoreBackup</small></td><td>none: killall WallpaperAgent</td><td>no network</td><td>Makes macOS redraw the restored wallpaper</td></tr>
+<tr><td><code>ThemeAppliers.swift</code><br><small>BrowserSurface.refreshRunning</small></td><td>none: asks a running Chrome or Brave to re-read its local policy</td><td>no network</td><td>The browser colour, applied without a restart</td></tr>
+<tr><td><code>Screensaver.swift</code><br><small>Screensaver.installCommand</small></td><td>none: a command shown to the user, never run by Omac</td><td>no network</td><td>The screensaver&#x27;s remedy when its effects engine is missing</td></tr>
+<tr><td><code>Updates.swift</code><br><small>InstallChannel.tapUpgradeCommand</small></td><td>none: a command shown to the user, never run by Omac</td><td>no network</td><td>How a Homebrew copy updates, in the menu and omac status</td></tr>
+<tr><td><code>FirstRunWindowModel.swift</code><br><small>FirstRunChrome.localizedHint</small></td><td>none: InstallChannel.tapUpgradeHint in French, a command shown to the user, never run by Omac</td><td>no network</td><td>How a Homebrew copy updates, in the French first-run window (D14)</td></tr>
+<tr><td><code>ThemeExtras.swift</code><br><small>ThemeInstall.transports</small></td><td>none: the URL schemes a theme URL may use, checked before git runs</td><td>no network</td><td>Theme install&#x27;s URL check</td></tr>
+<tr><td><code>main.swift</code><br><small>CrossHostAuthStripper</small></td><td>none: drops the token when a redirect changes host</td><td>no network</td><td>The delegate of authSafeSession</td></tr>
+<tr><td><code>main.swift</code><br><small>ghAuthToken</small></td><td>none: gh prints the token it has stored</td><td>no network</td><td>theme sync&#x27;s last token source, `gh auth token`</td></tr>
+<tr><td><code>main.swift</code><br><small>findBrew</small></td><td>none: looks for the brew program</td><td>no network</td><td>Finds Homebrew&#x27;s path for omac install</td></tr>
+<tr><td><code>Dispatcher.swift</code><br><small>Dispatcher.systemDefaultURL</small></td><td>none: asks macOS which app opens web links; named only: example.com, never loaded</td><td>no network</td><td>The default browser, for the &quot;system-default&quot; role</td></tr>
+<tr><td><code>AgentSkill.swift</code><br><small>AgentSkill.markdown</small></td><td>none: the text of the skill Omac installs for coding agents; named only: github.com and omac.ghostype.ca, links in that text</td><td>no network</td><td>The agent skill&#x27;s text</td></tr>
+</tbody></table>
+<h3>Code this check does not read: the review is the entry</h3>
+<table><thead><tr><th>Where</th><th>Reaches</th><th>Gate</th><th>What</th></tr></thead><tbody>
+<tr><td><code>Package.swift</code><br><small>TOMLKit</small></td><td>none: parses omac.toml, with no network code (checked at 0.6.0); SwiftPM fetches it from github.com at build time, never Omac</td><td>no network</td><td>The TOML parser</td></tr>
+<tr><td><code>Package.swift</code><br><small>Sparkle</small></td><td>omac.ghostype.ca (the appcast, SUFeedURL, only in a strict Developer ID build) and github.com (the update archive, on GitHub Releases); SwiftPM fetches the framework from github.com at build time, never Omac</td><td>check_updates, user action</td><td>Sparkle 2.10.0, the updater, embedded by D12 and started by Updater (D13), whose SPU* lines have the entries below: the appcast only while check_updates = true (Omac schedules it; Info.plist turns Sparkle&#x27;s own checks, automatic installs and system profile off) or on the user&#x27;s request; the archive only when the user installs</td></tr>
+<tr><td><code>Updater.swift</code><br><small>(top level)</small></td><td>omac.ghostype.ca and github.com, only through Updater.evaluate, Updater.checkNow and Updater.showPendingUpdate; import Network reaches nothing (NWPathMonitor only reads whether the Mac is online)</td><td>check_updates, user action</td><td>import Sparkle: the updater&#x27;s module, used by Updater only; import Network: the path monitor that holds a background check until the Mac is online</td></tr>
+<tr><td><code>Updater.swift</code><br><small>Updater.startSparkle</small></td><td>omac.ghostype.ca and github.com, only through Updater.evaluate, Updater.checkNow and Updater.showPendingUpdate; starting sends nothing</td><td>check_updates, user action</td><td>Creates and starts SPUUpdater, only on a release build at a location Sparkle may update (InstallChannel.detect), after HTTP cookies are turned off for the app (Sparkle 2.10.0 uses the default session) and Accept-Language is fixed to en (UpdateCheck.httpHeaders). Info.plist turns Sparkle&#x27;s own scheduled checks, automatic installs and system profile off, so starting asks nothing</td></tr>
+<tr><td><code>Updater.swift</code><br><small>Updater</small></td><td>omac.ghostype.ca and github.com, only through Updater.evaluate, Updater.checkNow and Updater.showPendingUpdate; the rest makes no request; the NWPathMonitor lines only read whether the Mac is online, so a background check never runs offline; the Sparkle-typed delegate lines (found / not found an update) record that the feed answered</td><td>check_updates, user action</td><td>The class&#x27;s Sparkle types and Sparkle&#x27;s delegate callbacks: no permission prompt, no system profile key, the mayPerform gate (UpdateGate), the update-source pin that refuses an archive off Omac&#x27;s GitHub releases before it is shown or downloaded (UpdateSource, shouldProceedWithUpdate), the feed is Info.plist&#x27;s SUFeedURL whatever the defaults say (feedURLString), no cookie on the archive request, the gentle reminder that puts a find in the menu instead of taking focus (its version one line and capped), no Version History button on the up-to-date alert (it would open a release-notes link from the unsigned feed in the browser); the relaunch hook (updaterWillRelaunchApplication) that keeps a microphone Omac muted across an update, which sends nothing</td></tr>
+</tbody></table>
+</section>
+</main>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · <a href="../../terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
+</body>
+</html>
