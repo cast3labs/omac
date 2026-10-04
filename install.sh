@@ -3,7 +3,7 @@
 #
 #   curl -fsSL https://raw.githubusercontent.com/cast3labs/omac/main/install.sh | bash
 #
-# A specific version:  ... | bash -s -- v1.4.8
+# A specific version:  ... | bash -s -- vX.Y.Z  (a tag of the releases page)
 #
 # What this does: downloads the release, checks its SHA-256 and the app's
 # Developer ID signature, and runs the installer sealed inside that signed app.
@@ -45,8 +45,23 @@ main() {
   tmp=$(mktemp -d)
 
   printf 'Downloading Omac (%s)…\n' "$want"
-  curl -fL --progress-bar -o "$tmp/Omac-arm64.zip" "$base/Omac-arm64.zip" \
+  # The HTTP status, not curl -f: a 404 for the latest release means there is
+  # no public release at all (Omac is a private beta until its first one), and
+  # says so instead of a bare "download failed". A file:// URL (the tests) has
+  # no status: 000, with curl's own exit status telling a missing file.
+  local code
+  code=$(curl -L --progress-bar -o "$tmp/Omac-arm64.zip" -w '%{http_code}' "$base/Omac-arm64.zip") \
     || fail "the download failed. Check your connection and try again."
+  case "$code" in
+    2??|000) ;;
+    404)
+      if [ "$want" = latest ]; then
+        printf '\nOmac is in private beta: there is no public release yet. See https://omac.ghostype.ca\n' >&2
+        exit 1
+      fi
+      fail "there is no release $want. The releases: https://github.com/$repo/releases" ;;
+    *) fail "the download failed (HTTP $code). Check your connection and try again." ;;
+  esac
   curl -fsSL -o "$tmp/Omac-arm64.zip.sha256" "$base/Omac-arm64.zip.sha256" \
     || fail "could not download the checksum."
 
