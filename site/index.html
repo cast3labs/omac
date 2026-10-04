@@ -30,30 +30,57 @@
 
   <p>A tiling window manager for macOS. Your windows arrange themselves side by side
   instead of piling up, and you move between them with the keyboard.</p>
+  <p class="muted">For people whose fingers know Omarchy and who also work on a Mac, and for
+  anyone who would rather tile windows from the keyboard than drag them.</p>
 
-  <h2>Install</h2>
-  <pre><code data-cmd>curl -fsSL https://raw.githubusercontent.com/cast3labs/omac/main/install.sh | bash</code></pre>
-  <p class="muted">Paste it into Terminal. Needs a Mac with Apple silicon and macOS 14 or later —
-  nothing else. Then allow Omac under <b>System Settings → Privacy &amp; Security → Accessibility</b>.
-  <a href="install/">Every way to install</a>, or <a href="download/">download the app</a>.
-  Free to use, under <a href="terms/">these terms</a>.</p>
+  
+  <h2 id="private-beta">Omac is in private beta</h2>
+<p class="lede">Public downloads open with the first release. Until then there is nothing to install from this site or from GitHub.</p>
+<p>To follow along, watch <a href="https://github.com/cast3labs/omac">Omac's GitHub repository</a> for its releases (<b>Watch → Custom → Releases</b>), or come back to this site.</p>
 
-  <ul class="proof">
-    <li>One native Swift app</li>
-    <li>No change to System Integrity Protection</li>
-    <li>Nothing else installed</li>
-    <li>Signed by its developer, notarized by Apple</li>
+  <h2>Why Omac</h2>
+  <ul class="benefits">
+    <li>
+      <h3>The keys you already know</h3>
+      <p>Omarchy's keybindings, all four layers of them, on <kbd>Left ⌘</kbd>; the few that macOS
+      already uses move to another chord. Right ⌘ stays a normal ⌘, so ⌘C, ⌘S and ⌘Tab are
+      untouched. <kbd>Left ⌘</kbd> <kbd>K</kbd> shows every shortcut.</p>
+    </li>
+    <li>
+      <h3>Windows that tile themselves</h3>
+      <p>Each new window splits the space of the one you are in, or joins a scrolling row of
+      columns. Ten workspaces across your displays, and Omac follows when you plug one in.</p>
+    </li>
+    <li>
+      <h3>One app, nothing else</h3>
+      <p>No Homebrew, no developer tools, no change to System Integrity Protection. Signed with a
+      Developer ID and notarized by Apple.</p>
+    </li>
+    <li>
+      <h3>The everyday tools inside</h3>
+      <p>Omarchy's 22 colour themes, clipboard history, a command palette, reminders, and text
+      read off the screen, each on a key.</p>
+    </li>
   </ul>
-  <p class="muted"><a href="privacy/#network">Omac never sends anything without asking</a>: your settings, your windows and your clipboard history stay on your Mac.</p>
+  <p class="muted"><a href="privacy/#network">Omac never sends anything without asking</a>: your settings, your windows and your clipboard history stay on your Mac.
+  <a href="privacy/">The privacy policy</a> lists every connection Omac can make.</p>
+
+  <h2>Compared</h2>
+  <figure class="shot">
+    <a href="compare/"><img src="assets/compare.png" srcset="assets/compare-2x.png 2x" width="1200" height="675"
+      alt="Omac, Omacosy and AeroSpace side by side: what you install, developer tools, the Super key, configuration, signing, whether the source is public, and which Macs."></a>
+    <figcaption class="muted">Omac, Omacosy and AeroSpace, from the <a href="compare/">comparison page</a>,
+    where every cell links to its source, and where the others are ahead.</figcaption>
+  </figure>
 
   <h2>More</h2>
   <ul class="links">
     <li><a href="features/">What Omac does</a></li>
     <li><a href="docs/getting-started/">Getting started: the first keys to press</a></li>
-    <li><a href="compare/">Omac, Omacosy and AeroSpace</a></li>
+    <li><a href="docs/">Docs</a></li>
     <li><a href="config/">The omac.toml reference</a></li>
-    <li><a href="docs/">Docs: troubleshooting and known issues</a></li>
-    <li><a href="https://github.com/cast3labs/omac/releases/latest">Latest release</a></li>
+    <li><a href="privacy/">Privacy</a></li>
+    
   </ul>
 </main>
 <footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · <a href="terms/">Terms</a> · <a href="privacy/">Privacy</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>

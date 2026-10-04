@@ -26,7 +26,7 @@
 <tbody>
 <tr>
 <td>Left ⌘ shortcuts do nothing</td>
-<td>Omac needs the Accessibility permission (<a href="../../install/#permission">how</a>). <code>omac status</code> says <code>accessibility false</code> until it has it.</td>
+<td>Omac needs the Accessibility permission (<strong>System Settings → Privacy &amp; Security → Accessibility</strong>). <code>omac status</code> says <code>accessibility false</code> until it has it.</td>
 </tr>
 <tr>
 <td><code>omac: command not found</code></td>
@@ -82,26 +82,24 @@ example <code>Terminal, pid 812</code>), and the menu's hotkey row and the log l
 password field, or turn Secure Keyboard Entry off in the terminal's app menu; if it stays on, quit
 the app where you last typed a password (some apps leave it on until they quit).</p>
 <h2 id="the-keyboard-feels-slow">The keyboard feels slow</h2>
-<p>Omac asks each app where its windows are every 2 seconds, and a question to an app that stops
-answering (stopped at a debugger breakpoint, or showing the spinning wait cursor) would make every
-key on the Mac wait. So Omac leaves such an app out of those checks and asks again after 5 seconds,
-then after longer waits, up to 30 seconds, while it still does not answer; the first answer ends
-the wait. <code>omac status</code> lists those apps by process number under <code>quarantined_pids</code> (<code>ps -p &lt;number&gt;</code>
-names one), and <code>ax_timeouts</code> counts the requests that got no answer since Omac started. When a
-request to move or focus one of an app's windows gets no answer, Omac also stops moving that app's
-windows for 5 seconds, then tries again: <code>blocked_pids</code> lists those apps. An app that answers, but
-slowly, is never left out, and your keys wait while Omac waits for its answer. Each 2-second check
-asks it one question, then leaves it until the next check: while nothing changes, a check holds
-your keys for one of its answers at most, plus at most about an eighth of a second for the other
-apps (a check usually holds your keys for at most about 0.33 s beside an app that takes 0.2 s to
-answer; 0.23 s in Omac's simulation of a typical desk; an app that is usually quick but stalls only
-now and then can add one of its stalls, once; an app slower than 0.25 s counts as not answering). A window of it that moved costs
-a question or two more, and a new window of it that appeared without notice costs nine, once.
-Beside it, the apps that answer at once are still checked every few seconds on a desk of a handful
-of apps, less often on a crowded one. <code>omac stats</code> counts the slow answers under <code>slow reads</code>.
-<code>tap_reenabled</code> above 0 means macOS switched Omac's shortcuts off for a moment because Omac
-answered too slowly, and Omac switched them back on. <code>tap</code> is <code>true</code> only while macOS has them
-switched on; Omac checks every 5 seconds and switches them back on if they are off.</p>
+<p>Your keys never wait for Omac's window work. Omac reads every key on its own thread, which only
+decides whether a key is one of Omac's shortcuts and never asks an app anything, and the check of
+where each app's windows are, every 2 seconds, reads in the background. So typing does not lag
+while Omac waits for a slow app.</p>
+<p>What can still run late is a shortcut's action: moving, focusing or tiling a window happens after
+the key, and waits while Omac is busy, for example asking an app that answers slowly. The key
+itself is never held; the action follows when Omac gets to it, in the order you pressed the keys.</p>
+<p>An app that stops answering (stopped at a debugger breakpoint, or showing the spinning wait
+cursor) is left out of those checks, and asked again after 5 seconds, then after longer waits, up
+to 30 seconds; the first answer ends the wait. <code>omac status</code> lists those apps by process number
+under <code>quarantined_pids</code> (<code>ps -p &lt;number&gt;</code> names one), and <code>ax_timeouts</code> counts the requests that
+got no answer since Omac started. When a request to move or focus one of an app's windows gets no
+answer, Omac also stops moving that app's windows for 5 seconds, then tries again: <code>blocked_pids</code>
+lists those apps. <code>omac stats</code> counts the slow answers under <code>slow reads</code>.</p>
+<p>To check the shortcuts themselves, run <code>omac status</code>. <code>tap</code> is <code>true</code> only while macOS has Omac's
+shortcuts switched on; Omac checks every 5 seconds and switches them back on if they are off.
+<code>tap_reenabled</code> above 0 means macOS switched them off for a moment, and Omac switched them back on;
+a number that keeps growing is worth reporting, with <code>omac status</code>'s output.</p>
 <h2 id="a-window-you-cannot-reach">A window you cannot reach</h2>
 <p><code>omac rescue</code> moves any window that is off every display back onto one. <strong>Reorganize</strong> in
 Omac's menu (or <code>omac reorganize</code>) re-tiles every workspace: it evens out the split sizes and

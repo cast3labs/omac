@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Omac known issues</title>
+<meta name="description" content="What does not work yet in Omac, and what to do meanwhile.">
+<meta name="generator" content="scripts/build-site.py">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../style.css">
+<link rel="icon" href="../../favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<script defer src="../../copy.js"></script>
+</head>
+<body>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a href="../../install/">Install</a><a href="../../features/">Features</a><a href="../../compare/">Compare</a><a href="../../config/">omac.toml</a><a href="../../docs/" aria-current="page">Docs</a><a href="https://github.com/cast3labs/omac">GitHub</a></nav></header>
+<main class="narrow docs">
+<h1 id="known-issues">Known issues</h1>
+<p>What does not work yet, or works differently from what Omarchy does, in Omac 1.0.0. Each item
+says what to do meanwhile. Something else broken? Open an issue with the output of <code>omac status</code>
+and what you pressed: <a href="https://github.com/cast3labs/omac/issues/new/choose">https://github.com/cast3labs/omac/issues/new/choose</a></p>
+<h2 id="updating-from-an-earlier-preview">Updating from an earlier preview</h2>
+<ul>
+<li><strong>Grant Accessibility again.</strong> From 1.0.0 Omac has a new identifier, <code>com.cast3labs.omac</code>, so
+  macOS sees it as a new app. The preview's row in <strong>System Settings → Privacy &amp; Security →
+  Accessibility</strong> is also named Omac, may stay switched on, and does not count for the new app. If
+  Left ⌘ shortcuts do nothing after the update: select the old Omac row and click −, then click +,
+  add <code>~/Applications/Omac.app</code> and turn it on. <code>omac status</code> must then show <code>accessibility</code> and
+  <code>tap</code> both <code>true</code>. Do the same under Screen Recording, Microphone or Automation if you used them.</li>
+<li><strong>Coding agents ask once more.</strong> Approvals you gave a preview to launch a coding agent are not
+  carried over: Omac asks again the first time you launch each one.</li>
+<li><strong>A preview cannot update itself.</strong> Install the new version over it once, the way you installed
+  the preview; from then on, Check for Updates… in the Omac menu works. Your settings are kept.</li>
+<li><strong>The theme you are on shows its own pictures at the next theme switch or next background</strong>
+  (Left ⌘ Ctrl ⌥ Space): Omac does not repaint the desktop by itself after an update.</li>
+</ul>
+<h2 id="macs-and-macos">Macs and macOS</h2>
+<ul>
+<li><strong>Intel Macs are not supported.</strong> The installer stops on one. No plan to add them.</li>
+<li><strong>macOS 14 and 15 are allowed but not tested by hand.</strong> An automated check installs and
+  starts Omac on both; every hand test ran on macOS 26 on a MacBook Air M1. Report what
+  differs.</li>
+<li><strong>More than one external display on an M1 Air needs DisplayLink.</strong> The Mac drives one
+  external natively; the multi-display tests used DisplayLink adapters, which macOS treats a
+  little differently (no native full screen on those displays).</li>
+<li><strong>Stage Manager has not been tested</strong> with Omac.</li>
+</ul>
+<h2 id="windows">Windows</h2>
+<ul>
+<li><strong>"Pin" is not a true always-on-top.</strong> macOS lets only the active app's windows sit on top,
+  and the private way around that was measured to do nothing. A pinned floating window
+  instead reserves a band at a display edge, and Omac tiles the other windows around it. An
+  app Omac does not manage, a native full-screen Space, or a window you drag by hand can
+  still cover it.</li>
+<li><strong>Native full screen is macOS's own Space.</strong> Omac keeps track of it and puts the window
+  back when it leaves, but does not tile inside it. Use Left ⌘ ⌥ F (full width: fills the
+  usable area) for a tiled "big" window, Left ⌘ Ctrl F for native full screen.</li>
+<li><strong>A window that refuses its frame floats in place.</strong> Some apps set a minimum size larger
+  than their tile (Chrome about 500 px wide, Finder's sidebar layouts, small utility panels).
+  Omac floats such a window where it is; on a second refusal it leaves it unmanaged. Give the
+  tile more room, or float it on purpose with Left ⌘ Shift Space.</li>
+<li><strong>Hidden workspaces park windows as a 1-pixel sliver</strong> at the nearest screen edge (macOS has
+  no way to hide a window without minimising it). They still show in Mission Control and in
+  the app switcher. Quitting Omac puts every window back.</li>
+<li><strong>Dragging a tiled window with the mouse does not swap it</strong>: Omac puts it back in its tile.
+  Move tiles with the keys (Left ⌘ Shift ←, and the other arrows), or float the window first.</li>
+<li><strong>The layout survives an Omac restart only while the apps keep running</strong> (state kept 12
+  hours). Windows opened while Omac was not running are tiled fresh.</li>
+<li><strong>Two copies of Omac conflict.</strong> An older copy in <code>/Applications</code> and the current one in
+  <code>~/Applications</code> fight over the keys. <code>omac status</code> lists any other copy under
+  <code>other_copies</code>; the one-line installer removes the <code>/Applications</code> copy for you.</li>
+<li><strong>An app that stops answering is left out for a while.</strong> Omac stops asking it where its windows
+  are for 5 seconds, then up to 30, so a new window of it may wait to be tiled until it answers.
+  <code>omac status</code> lists such apps under <code>quarantined_pids</code>.</li>
+</ul>
+<h2 id="keys">Keys</h2>
+<ul>
+<li><strong>Some Omarchy chords are moved</strong>, because macOS or common apps own them: full screen is
+  Left ⌘ Ctrl F, macOS's own, where Omarchy has its tiled full screen (⌘F is Find; full width
+  stays Left ⌘ ⌥ F); the theme's next wallpaper is Left ⌘ Ctrl ⌥ Space (⌃⌘Space is the emoji
+  picker); column stacking is Left ⌘ Shift Ctrl ←/→ (⌘⌥←/→ switches Chrome tabs); text capture
+  is Left ⌘ Ctrl T (Macs have no Print Screen); dictation is held with left Ctrl and fn (no F9
+  hold on a Mac keyboard).
+  What each key does: <a href="https://omac.ghostype.ca/features/">https://omac.ghostype.ca/features/</a> (Left ⌘ K shows every key Omac binds).</li>
+<li><strong>Omac's key is always Left ⌘</strong>: there is no choice of another key yet. A browser's number
+  keys for its tabs work with Right ⌘.</li>
+<li><strong>Left ⌘ Space stays Spotlight</strong> (or Raycast): Omac has no launcher of its own on purpose.</li>
+<li><strong>⌥Esc reads the selection aloud</strong> only when Omac's read-aloud is on; off, macOS's own
+  "Speak selection" answers it. It ships off: turn it on with <strong>Read aloud</strong> in Omac's Speech
+  menu.</li>
+<li><strong>Right ⌘ keeps the Mac's ⌘ shortcuts</strong>, including zoom: only Left ⌘ is Omac's Super.</li>
+<li><strong>Shortcuts stop while Secure Input is on</strong> (a password field, or a terminal's Secure Keyboard
+  Entry): macOS keeps keys from every other app. <code>omac status</code> shows <code>secure_input true</code> and names
+  the app holding it when macOS reports it.</li>
+</ul>
+<h2 id="themes">Themes</h2>
+<ul>
+<li><strong>The wallpaper is painted on the desktop each display shows.</strong> macOS keeps a picture for every
+  desktop of every display; a desktop no display is showing keeps its older picture until you go to
+  it. A picture you chose yourself in System Settings, and "Show on all Spaces", are left as they
+  are. With "Displays have separate Spaces" off in Mission Control, only the main display is
+  checked.</li>
+<li><strong>A theme switch made from a full-screen app</strong> paints that display's desktop when you leave full
+  screen.</li>
+<li><strong>Chrome and Brave take a theme's frame colour on their next launch</strong>, not live (it is set
+  as a managed policy, and only once you ran <code>omac theme adopt</code>).</li>
+<li><strong><code>omac theme off</code> restores the wallpaper</strong>, not light/dark mode and not the colour files it
+  wrote into other apps' folders (they are listed in the privacy policy; delete them by hand).</li>
+<li><strong>The screensaver starts on its key only</strong> (Left ⌘ Ctrl ⌥ S), not when the Mac is idle.</li>
+</ul>
+<h2 id="speech">Speech</h2>
+<ul>
+<li><strong>Dictation needs macOS 26</strong> (Apple's on-device transcriber). On macOS 14 and 15 the
+  dictation row is greyed with the reason.</li>
+<li><strong>The read-aloud voices are macOS's</strong>: a voice you have not downloaded in System Settings →
+  Accessibility → Spoken Content is not available. Dictation's languages are macOS's too:
+  <code>omac speech asr list</code> shows which ones are installed.</li>
+</ul>
+<h2 id="updates-and-homebrew">Updates and Homebrew</h2>
+<ul>
+<li><strong>A copy installed with Homebrew updates itself too</strong>, as a downloaded one does: Check for
+  Updates… in the Omac menu. After a Homebrew upgrade, the old version keeps running until you
+  quit Omac and open it again.</li>
+<li><strong>Homebrew copies installed from the tap's old name</strong> (<code>evanscastonguay/tap</code>, before 2026-09-30)
+  update as the README's Update says: Homebrew follows the moved tap on its next update. Until such
+  a copy has been updated once, Homebrew refuses the new name to uninstall it: use
+  <code>brew uninstall --cask evanscastonguay/tap/omac</code>.</li>
+<li><strong>The privacy policy</strong> is on the website, <a href="https://omac.ghostype.ca/privacy/">https://omac.ghostype.ca/privacy/</a> (and in French,
+  /privacy/fr/); Privacy › Privacy policy… in the Omac menu opens it. An earlier preview carries
+  its own copy inside the app.</li>
+</ul>
+</main>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · <a href="../../terms/">Terms</a> · <a href="../../privacy/">Privacy</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
+</body>
+</html>
