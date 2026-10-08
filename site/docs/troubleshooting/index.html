@@ -96,6 +96,9 @@ under <code>quarantined_pids</code> (<code>ps -p &lt;number&gt;</code> names one
 got no answer since Omac started. When a request to move or focus one of an app's windows gets no
 answer, Omac also stops moving that app's windows for 5 seconds, then tries again: <code>blocked_pids</code>
 lists those apps. <code>omac stats</code> counts the slow answers under <code>slow reads</code>.</p>
+<p>When your Mac is short of memory, every app answers slowly. <code>omac status</code> shows <code>memory_pressure</code>
+(<code>normal</code>, <code>warning</code> or <code>critical</code>) and <code>ax_slow_reads</code>; at <code>warning</code> or <code>critical</code> Omac checks windows
+every 6 seconds instead of every 2, and quitting apps you do not use helps most.</p>
 <p>To check the shortcuts themselves, run <code>omac status</code>. <code>tap</code> is <code>true</code> only while macOS has Omac's
 shortcuts switched on; Omac checks every 5 seconds and switches them back on if they are off.
 <code>tap_reenabled</code> above 0 means macOS switched them off for a moment, and Omac switched them back on;
@@ -109,6 +112,13 @@ screen.</p>
 <p>If shortcuts do nothing after a macOS update, check the Accessibility permission first: open
 <strong>System Settings → Privacy &amp; Security → Accessibility</strong>, turn <strong>Omac</strong> off and on again, then
 check <code>omac status</code>.</p>
+<h2 id="a-claude-code-session-started-from-an-omac-terminal-saves-no-transcript">A Claude Code session started from an Omac terminal saves no transcript</h2>
+<p>Fixed: restart Omac once. When a Claude Code session installed or opened Omac, earlier versions kept
+that session's variables (<code>CLAUDECODE</code>, <code>CLAUDE_CODE_…</code>) and passed them to every terminal and coding
+agent they launched, so a <code>claude</code> started there took itself for part of that other session: it saved
+no transcript and did not appear in <code>/resume</code>. Omac now removes every variable named <code>CLAUDECODE</code> or
+starting with <code>CLAUDE_</code> from its own environment when it starts, and the installer opens it without
+them. Quit Omac and open it again from Finder or Spotlight, then open new terminals.</p>
 </main>
 <footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · <a href="../../terms/">Terms</a> · <a href="../../privacy/">Privacy</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
 </body>

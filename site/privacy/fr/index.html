@@ -16,8 +16,8 @@
 <header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a href="../../install/">Install</a><a href="../../features/">Features</a><a href="../../compare/">Compare</a><a href="../../config/">omac.toml</a><a href="../../docs/">Docs</a><a href="https://github.com/cast3labs/omac">GitHub</a></nav></header>
 <main class="narrow legal">
 <h1 id="politique-de-confidentialite-domac">Politique de confidentialité d'Omac</h1>
-<p><strong>Version :</strong> 1, 2026-10-03; approuvée par le mainteneur le 2026-10-03. Les ébauches qui l'ont précédée sont
-énumérées sous « Modifications de cette politique ».
+<p><strong>Version :</strong> 2, 2026-10-08; approuvée par le mainteneur le 2026-10-08. Les versions et ébauches qui l'ont
+précédée sont énumérées sous « Modifications de cette politique ».
 <strong>S'applique à :</strong> l'application Omac et son outil en ligne de commande <code>omac</code>, au serveur d'Omac
 <code>t.ghostype.ca</code> et au site Web <code>omac.ghostype.ca</code>.
 <strong>English version:</strong> <a href="../">PRIVACY.md</a>. Les deux disent la même chose.</p>
@@ -331,6 +331,11 @@ qui décide quand une version publiée graduellement parvient à votre Mac.</p>
 <td>Suivi du décompte quotidien</td>
 <td><code>~/.local/state/omac/telemetry.json</code></td>
 <td>Voir « Ce qui est conservé » plus haut</td>
+</tr>
+<tr>
+<td>Date du premier lancement</td>
+<td><code>~/.local/state/omac/first-run.json</code></td>
+<td>Le jour où Omac s'est lancé pour la première fois sur ce Mac (sur un Mac où une version antérieure d'Omac a fonctionné, la date la plus ancienne des fichiers et du dossier qu'elle a laissés), écrite une seule fois et jamais envoyée, pour que les copies installées avant la mise en vente d'Omac Pro gardent ce qui était gratuit. Lisible par vous seul.</td>
 </tr>
 <tr>
 <td>Thème actuel</td>
@@ -679,6 +684,8 @@ case : une nouvelle utilisation ne s'appuie jamais sur un ancien consentement.</
   compte comme le message de ce jour-là, et <code>telemetry.json</code> garde le jour de l'activation; les
   versions préliminaires antérieures d'Omac n'envoient jamais le décompte et ne vérifient jamais,
   ce que dit maintenant le résumé.</li>
+<li>Version 2, 2026-10-08 : approuvée le 2026-10-08. « Ce qui reste sur votre Mac » nomme la date du
+  premier lancement, <code>~/.local/state/omac/first-run.json</code>, qu'Omac écrit une seule fois et n'envoie jamais.</li>
 </ul>
 <h2 id="sources">Sources</h2>
 <ol>
@@ -750,6 +757,7 @@ case : une nouvelle utilisation ne s'appuie jamais sur un ancien consentement.</
 <tr><td><code>FirstRunWindow.swift</code><br><small>FirstRunWindow.openAccessibilitySettings</small></td><td>none: System Settings, Accessibility</td><td>no network</td><td>The first-run window&#x27;s button (D14)</td></tr>
 <tr><td><code>StatusItem.swift</code><br><small>StatusItem.openAccessibility</small></td><td>none: System Settings, Accessibility</td><td>no network</td><td>The menu&#x27;s permission row</td></tr>
 <tr><td><code>StatusItem.swift</code><br><small>StatusItem.openSpec</small></td><td>none: the settings file, in the user&#x27;s editor, else TextEdit</td><td>no network</td><td>The menu&#x27;s &quot;Open omac.toml…&quot; row (TextEdit when no app opens .toml files)</td></tr>
+<tr><td><code>AppDelegate.swift</code><br><small>AppDelegate.openScreensaverArt</small></td><td>none: opens the screensaver art file (a local file) in the app that opens text, or TextEdit</td><td>no network</td><td>Screensaver ▸ Edit art file…</td></tr>
 <tr><td><code>Installer.swift</code><br><small>Installer.process</small></td><td>none: holds the brew process Installer.run starts</td><td>no network</td><td>The install in flight, to stop it</td></tr>
 <tr><td><code>Installer.swift</code><br><small>Installer.findBrew</small></td><td>none: looks for the brew program</td><td>no network</td><td>Finds Homebrew&#x27;s path</td></tr>
 <tr><td><code>TextCapture.swift</code><br><small>TextCaptureController.selection</small></td><td>none: holds the screencapture process selectRegion starts</td><td>no network</td><td>The selection in flight, to reap it</td></tr>
@@ -762,7 +770,6 @@ case : une nouvelle utilisation ne s'appuie jamais sur un ancien consentement.</
 <tr><td><code>ThemeAppliers.swift</code><br><small>AppearanceSurface.apply</small></td><td>none: osascript, through System Events</td><td>no network</td><td>Light or dark mode</td></tr>
 <tr><td><code>ThemeAppliers.swift</code><br><small>WallpaperSurface.restoreBackup</small></td><td>none: killall WallpaperAgent</td><td>no network</td><td>Makes macOS redraw the restored wallpaper</td></tr>
 <tr><td><code>ThemeAppliers.swift</code><br><small>BrowserSurface.refreshRunning</small></td><td>none: asks a running Chrome or Brave to re-read its local policy</td><td>no network</td><td>The browser colour, applied without a restart</td></tr>
-<tr><td><code>Screensaver.swift</code><br><small>Screensaver.installCommand</small></td><td>none: a command shown to the user, never run by Omac</td><td>no network</td><td>The screensaver&#x27;s remedy when its effects engine is missing</td></tr>
 <tr><td><code>Updates.swift</code><br><small>InstallChannel.tapUpgradeCommand</small></td><td>none: a command shown to the user, never run by Omac</td><td>no network</td><td>How a Homebrew copy updates, in the menu and omac status</td></tr>
 <tr><td><code>FirstRunWindowModel.swift</code><br><small>FirstRunChrome.localizedHint</small></td><td>none: InstallChannel.tapUpgradeHint in French, a command shown to the user, never run by Omac</td><td>no network</td><td>How a Homebrew copy updates, in the French first-run window (D14)</td></tr>
 <tr><td><code>ThemeExtras.swift</code><br><small>ThemeInstall.transports</small></td><td>none: the URL schemes a theme URL may use, checked before git runs</td><td>no network</td><td>Theme install&#x27;s URL check</td></tr>
@@ -777,8 +784,11 @@ case : une nouvelle utilisation ne s'appuie jamais sur un ancien consentement.</
 <tr><td><code>Package.swift</code><br><small>TOMLKit</small></td><td>none: parses omac.toml, with no network code (checked at 0.6.0); SwiftPM fetches it from github.com at build time, never Omac</td><td>no network</td><td>The TOML parser</td></tr>
 <tr><td><code>Package.swift</code><br><small>Sparkle</small></td><td>omac.ghostype.ca (the appcast, SUFeedURL, only in a strict Developer ID build) and github.com (the update archive, on GitHub Releases); SwiftPM fetches the framework from github.com at build time, never Omac</td><td>check_updates, user action</td><td>Sparkle 2.10.0, the updater, embedded by D12 and started by Updater (D13), whose SPU* lines have the entries below: the appcast only while check_updates = true (Omac schedules it; Info.plist turns Sparkle&#x27;s own checks, automatic installs and system profile off) or on the user&#x27;s request; the archive only when the user installs</td></tr>
 <tr><td><code>Updater.swift</code><br><small>(top level)</small></td><td>omac.ghostype.ca and github.com, only through Updater.evaluate, Updater.checkNow and Updater.showPendingUpdate; import Network reaches nothing (NWPathMonitor only reads whether the Mac is online)</td><td>check_updates, user action</td><td>import Sparkle: the updater&#x27;s module, used by Updater only; import Network: the path monitor that holds a background check until the Mac is online</td></tr>
+<tr><td><code>ScreensaverImageArt.swift</code><br><small>(top level)</small></td><td>none: reads a picture the user chose on the Mac, through a file URL only (URL(fileURLWithPath:))</td><td>no network</td><td>import ImageIO: the screensaver&#x27;s image art reads the chosen PNG or JPG as a thumbnail</td></tr>
 <tr><td><code>Updater.swift</code><br><small>Updater.startSparkle</small></td><td>omac.ghostype.ca and github.com, only through Updater.evaluate, Updater.checkNow and Updater.showPendingUpdate; starting sends nothing</td><td>check_updates, user action</td><td>Creates and starts SPUUpdater, only on a release build at a location Sparkle may update (InstallChannel.detect), after HTTP cookies are turned off for the app (Sparkle 2.10.0 uses the default session) and Accept-Language is fixed to en (UpdateCheck.httpHeaders). Info.plist turns Sparkle&#x27;s own scheduled checks, automatic installs and system profile off, so starting asks nothing</td></tr>
 <tr><td><code>Updater.swift</code><br><small>Updater</small></td><td>omac.ghostype.ca and github.com, only through Updater.evaluate, Updater.checkNow and Updater.showPendingUpdate; the rest makes no request; the NWPathMonitor lines only read whether the Mac is online, so a background check never runs offline; the Sparkle-typed delegate lines (found / not found an update) record that the feed answered</td><td>check_updates, user action</td><td>The class&#x27;s Sparkle types and Sparkle&#x27;s delegate callbacks: no permission prompt, no system profile key, the mayPerform gate (UpdateGate), the update-source pin that refuses an archive off Omac&#x27;s GitHub releases before it is shown or downloaded (UpdateSource, shouldProceedWithUpdate), the feed is Info.plist&#x27;s SUFeedURL whatever the defaults say (feedURLString), no cookie on the archive request, the gentle reminder that puts a find in the menu instead of taking focus (its version one line and capped), no Version History button on the up-to-date alert (it would open a release-notes link from the unsigned feed in the browser); the relaunch hook (updaterWillRelaunchApplication) that keeps a microphone Omac muted across an update, which sends nothing</td></tr>
+<tr><td><code>ScreensaverEffect.swift</code><br><small>ScreensaverEffect.process</small></td><td>none: the screensaver&#x27;s effects engine, ttfx, built into the app (Contents/Helpers/ttfx), which only writes to a pty</td><td>no network</td><td>Holds the engine pass now running, so teardown stops it</td></tr>
+<tr><td><code>ScreensaverEffect.swift</code><br><small>ScreensaverEffect.startPass</small></td><td>none: runs the bundled ttfx (Contents/Helpers/ttfx; a dev run: a ttfx of the user&#x27;s own), which reads the art file and writes to a pty</td><td>no network</td><td>One screensaver pass on one display, started by the screensaver key or verb</td></tr>
 </tbody></table>
 </section>
 </main>

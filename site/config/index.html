@@ -18,7 +18,7 @@
 <h1><code>omac.toml</code> reference</h1>
 <p>Every setting lives in one file, <code>~/.config/omac/omac.toml</code>. Omac writes it on first launch with a comment on each setting, and applies a change when you save it. <code>omac default-spec</code> prints the whole default file.</p>
 <section class="config-reference">
-<p class="lede">81 keys in 12 tables. <em>Set</em> means the default omac.toml sets the key; <em>example</em> means it shows the key commented out. For a key the default file sets, the example is the shipped value.</p>
+<p class="lede">89 keys in 13 tables. <em>Set</em> means the default omac.toml sets the key; <em>example</em> means it shows the key commented out. For a key the default file sets, the example is the shipped value.</p>
 <nav class="toc"><ul>
 <li><a href="#table-top"><code>Top level (above the first table)</code></a></li>
 <li><a href="#table-settings"><code>[settings]</code></a></li>
@@ -27,6 +27,7 @@
 <li><a href="#table-clipboard"><code>[clipboard]</code></a></li>
 <li><a href="#table-privacy"><code>[privacy]</code></a></li>
 <li><a href="#table-speech-tts"><code>[speech.tts]</code></a></li>
+<li><a href="#table-screensaver"><code>[screensaver]</code></a></li>
 <li><a href="#table-speech-asr"><code>[speech.asr]</code></a></li>
 <li><a href="#table-speech-asr-engine"><code>[speech.asr.&lt;engine&gt;]</code></a></li>
 <li><a href="#table-ipc"><code>[ipc]</code></a></li>
@@ -121,6 +122,21 @@
 <tr class="key" id="speech-tts-engine"><td><code>engine</code></td><td>string</td><td><code>&quot;apple-av&quot;</code></td><td>example</td><td>a module in <code>omac speech tts list</code>; empty = the built-in</td></tr>
 <tr class="key" id="speech-tts-voice"><td><code>voice</code></td><td>string</td><td><code>&quot;&quot;</code></td><td>example</td><td>empty = your macOS default voice</td></tr>
 <tr class="key" id="speech-tts-rate"><td><code>rate</code></td><td>integer</td><td><code>0</code></td><td>example</td><td>words per minute, 100-850 (the measured band); 0 = follow the macOS Spoken Content slider. Omac ▸ Speech ▸ Speed</td></tr>
+</tbody></table></div>
+</section>
+<section id="table-screensaver">
+<h2><code>[screensaver]</code></h2>
+<div class="scroll"><table>
+<thead><tr><th>Key</th><th>Type</th><th>Example</th><th>Default file</th><th>Description</th></tr></thead>
+<tbody>
+<tr class="key" id="screensaver-show"><td><code>show</code></td><td>string</td><td><code>&quot;logo&quot;</code></td><td>example</td><td>logo (the art file above) | text | image</td></tr>
+<tr class="key" id="screensaver-text"><td><code>text</code></td><td>string</td><td><code>&quot;CAST3LABS&quot;</code></td><td>example</td><td>for show = &quot;text&quot;: block letters, 24 characters, &quot;|&quot; starts a second line</td></tr>
+<tr class="key" id="screensaver-image"><td><code>image</code></td><td>string</td><td><code>&quot;~/Pictures/logo.png&quot;</code></td><td>example</td><td>for show = &quot;image&quot;: a PNG or JPG, drawn in characters</td></tr>
+<tr class="key" id="screensaver-effects"><td><code>effects</code></td><td>array of strings</td><td><code>[&quot;matrix&quot;, &quot;rain&quot;, &quot;fireworks&quot;]</code></td><td>example</td><td>empty or absent = every effect, at random</td></tr>
+<tr class="key" id="screensaver-color"><td><code>color</code></td><td>string</td><td><code>&quot;theme&quot;</code></td><td>example</td><td>theme (the border colour) | white | &quot;#RRGGBB&quot;</td></tr>
+<tr class="key" id="screensaver-size"><td><code>size</code></td><td>string</td><td><code>&quot;medium&quot;</code></td><td>example</td><td>small | medium | large</td></tr>
+<tr class="key" id="screensaver-frame_rate"><td><code>frame_rate</code></td><td>integer</td><td><code>120</code></td><td>example</td><td>30 | 60 | 120 (lower saves power)</td></tr>
+<tr class="key" id="screensaver-displays"><td><code>displays</code></td><td>string</td><td><code>&quot;all&quot;</code></td><td>example</td><td>all | focused | main (the others go black)</td></tr>
 </tbody></table></div>
 </section>
 <section id="table-speech-asr">
