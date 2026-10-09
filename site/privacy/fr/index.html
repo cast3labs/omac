@@ -26,7 +26,7 @@
 <header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a class="beta" href="../../#founders">Beta</a><a class="nav" href="../../features/">Features</a><a class="nav" href="../../docs/">Docs</a><a class="nav" href="https://github.com/cast3labs/omac">GitHub</a><a class="button" href="../../#get">Download</a></nav></header>
 <main class="narrow legal">
 <h1 id="politique-de-confidentialite-domac">Politique de confidentialité d'Omac</h1>
-<p><strong>Version :</strong> 2, 2026-10-08; approuvée par le mainteneur le 2026-10-08. Les versions et ébauches qui l'ont
+<p><strong>Version :</strong> 3, 2026-10-09; approuvée par le mainteneur le 2026-10-09. Les versions et ébauches qui l'ont
 précédée sont énumérées sous « Modifications de cette politique ».
 <strong>S'applique à :</strong> l'application Omac et son outil en ligne de commande <code>omac</code>, au serveur d'Omac
 <code>t.ghostype.ca</code> et au site Web <code>omac.ghostype.ca</code>.
@@ -345,7 +345,7 @@ qui décide quand une version publiée graduellement parvient à votre Mac.</p>
 <tr>
 <td>Date du premier lancement</td>
 <td><code>~/.local/state/omac/first-run.json</code></td>
-<td>Le jour où Omac s'est lancé pour la première fois sur ce Mac (sur un Mac où une version antérieure d'Omac a fonctionné, la date la plus ancienne des fichiers et du dossier qu'elle a laissés), écrite une seule fois et jamais envoyée, pour que les copies installées avant la mise en vente d'Omac Pro gardent ce qui était gratuit. Lisible par vous seul.</td>
+<td>Le jour où Omac s'est lancé pour la première fois sur ce Mac (sur un Mac où une version antérieure d'Omac a fonctionné, la date la plus ancienne des fichiers et du dossier qu'elle a laissés), avec une empreinte de ce Mac (un hachage à sens unique de son identifiant matériel, jamais l'identifiant lui-même) et la date de compilation de la version d'Omac qui l'a écrite, pour qu'une copie du fichier sur un autre Mac n'y compte pas. Écrite une seule fois et jamais envoyée, pour que les copies installées avant la mise en vente d'Omac Pro gardent ce qui était gratuit ; un relevé copié d'un autre Mac est mis de côté dans <code>first-run.other-mac.json</code> et conservé. Lisible par vous seul.</td>
 </tr>
 <tr>
 <td>Thème actuel</td>
@@ -696,6 +696,10 @@ case : une nouvelle utilisation ne s'appuie jamais sur un ancien consentement.</
   ce que dit maintenant le résumé.</li>
 <li>Version 2, 2026-10-08 : approuvée le 2026-10-08. « Ce qui reste sur votre Mac » nomme la date du
   premier lancement, <code>~/.local/state/omac/first-run.json</code>, qu'Omac écrit une seule fois et n'envoie jamais.</li>
+<li>Version 3, 2026-10-09 : approuvée le 2026-10-09. La ligne de la date du premier lancement dit que le
+  fichier contient aussi une empreinte de ce Mac (un hachage à sens unique de son identifiant matériel) et la
+  date de compilation de la version d'Omac qui l'a écrit, pour qu'une copie sur un autre Mac n'y compte pas, et
+  qu'un relevé copié d'un autre Mac est mis de côté dans <code>first-run.other-mac.json</code> et conservé.</li>
 </ul>
 <h2 id="sources">Sources</h2>
 <ol>

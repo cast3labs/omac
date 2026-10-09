@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Install Omac</title>
-<meta name="description" content="Install Omac with one Terminal command or a download; the requirements, what signed and notarized mean, and how to update, switch or uninstall completely.">
+<meta name="description" content="Install Omac with one Terminal command, Homebrew or a download; the requirements, what signed and notarized mean, and how to update, switch or uninstall completely.">
 <meta name="generator" content="scripts/build-site.py">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
@@ -17,7 +17,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Omac">
 <meta property="og:title" content="Install Omac">
-<meta property="og:description" content="Install Omac with one Terminal command or a download; the requirements, what signed and notarized mean, and how to update, switch or uninstall completely.">
+<meta property="og:description" content="Install Omac with one Terminal command, Homebrew or a download; the requirements, what signed and notarized mean, and how to update, switch or uninstall completely.">
 <meta property="og:image" content="https://omac.ghostype.ca/assets/social.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +29,8 @@
 <p class="lede">One app. Nothing else to install. Needs a Mac with Apple silicon and macOS 14 or later — no Homebrew, no developer tools, no GitHub account.</p>
 <ul class="toc">
 <li><a href="#curl">1. Terminal (curl)</a></li>
-<li><a href="#download">2. Download</a></li>
+<li><a href="#homebrew">2. Homebrew</a></li>
+<li><a href="#download">3. Download</a></li>
 <li><a href="#permission">Let Omac control your windows</a></li>
 <li><a href="#requirements">Requirements</a></li>
 <li><a href="#signed">Signed and notarized</a></li>
@@ -47,13 +48,20 @@ less install.sh
 bash install.sh</code></pre>
 <p>The installer checks the app's Developer ID signature before installing it, and stops, changing nothing, on an Intel Mac or when another package manager installed Omac. If an old copy of Omac is in <code>/Applications</code>, Terminal may ask for your Mac password to remove it: two copies conflict. The terms of use are <a href="../terms/">here</a>; the installer prints their address too.</p>
 </section>
+<section id="homebrew">
+<h2>2. Homebrew</h2>
+<p><code data-cmd>brew install --cask cast3labs/tap/omac</code>, then <code data-cmd>open ~/Applications/Omac.app</code>; to have it start when you log in, turn on <strong>Launch at login</strong> in Omac&#x27;s menu. The cask does not start Omac or turn on start at login; <code data-cmd>omac login on</code> does that.</p>
+<pre><code data-cmd>brew install --cask cast3labs/tap/omac
+open ~/Applications/Omac.app</code></pre>
+</section>
 <section id="download">
-<h2>2. Download</h2>
+<h2>3. Download</h2>
 <p><code>Omac-arm64.zip</code> from the <a href="https://github.com/cast3labs/omac/releases/latest">latest release</a>; drag <code>Omac.app</code> into Applications. Then open it: macOS asks once whether to open an app downloaded from the internet — click <b>Open</b>. This way does not set up the <code>omac</code> command or start at login. <a href="../download/">The download page</a> walks through it.</p>
 </section>
 <section id="permission">
 <h2>Let Omac control your windows</h2>
-<p>Whatever the way, first grant <strong>System Settings → Privacy &amp; Security → Accessibility → Omac</strong>, then <code data-cmd>omac status</code> must show <code>accessibility</code> and <code>tap</code> both <code>true</code>. Only the curl way sets up the <code data-cmd>omac</code> command; the download does not.</p>
+<p>Installed with Homebrew from the tap&#x27;s old name, <code>evanscastonguay/tap</code>? Update it as above: Homebrew follows the tap to <code>cast3labs/tap</code>. Until it has been updated once, Homebrew refuses the new name to uninstall it: run <code data-cmd>omac login off</code>, then <code data-cmd>brew uninstall --cask evanscastonguay/tap/omac</code> (add <code>--zap</code> to remove its settings too).</p>
+<p>Whatever the way, first grant <strong>System Settings → Privacy &amp; Security → Accessibility → Omac</strong>, then <code data-cmd>omac status</code> must show <code>accessibility</code> and <code>tap</code> both <code>true</code>. Only the curl way and the tap set up the <code data-cmd>omac</code> command; the download does not.</p>
 <p>Downloaded the app? Omac's menu-bar menu shows <b>Grant Accessibility access…</b> until the permission is on, then <b>Hotkeys active</b>.</p>
 <pre><code data-cmd>omac status</code></pre>
 <p>Omac notices the permission within two seconds — no restart needed. Then press <kbd>Left ⌘</kbd> <kbd>K</kbd> for every shortcut, or read <a href="../docs/getting-started/">getting started</a>.</p>
@@ -75,6 +83,7 @@ bash install.sh</code></pre>
 <h2>Update</h2>
 <table><thead><tr><th>If you installed with</th><th>To update</th></tr></thead><tbody>
 <tr><th scope="row">Terminal (curl)</th><td>run the same command again; settings and the Accessibility permission are kept (from an earlier preview, macOS asks for Accessibility once more)</td></tr>
+<tr><th scope="row">Homebrew</th><td><code data-cmd>brew upgrade --cask cast3labs/tap/omac</code>, then quit Omac and open it again: <code data-cmd>omac quit; while pgrep -x -U &quot;$USER&quot; Omac &gt;/dev/null; do sleep 0.2; done; open ~/Applications/Omac.app</code></td></tr>
 <tr><th scope="row">Download</th><td>quit Omac, then download the new zip and replace <code>Omac.app</code></td></tr>
 </tbody></table>
 <p>Omac updates itself: choose Check for Updates… in the Omac menu, or tick “Check for updates automatically” there to have it check at most once a day. An earlier preview of Omac cannot: update it the way the table above shows. The release notes of each version are on <a href="https://github.com/cast3labs/omac/releases">GitHub</a>.</p>
@@ -82,6 +91,8 @@ bash install.sh</code></pre>
 <section id="switch">
 <h2>Switch to another way</h2>
 <table><thead><tr><th>From</th><th>How</th></tr></thead><tbody>
+<tr><th scope="row">Terminal (curl)</th><td>to Homebrew: uninstall, then <code data-cmd>brew install --cask cast3labs/tap/omac</code></td></tr>
+<tr><th scope="row">Homebrew</th><td>to curl: <code data-cmd>brew uninstall --cask cast3labs/tap/omac</code>, then the curl command</td></tr>
 <tr><th scope="row">Download</th><td>to curl: just run the curl command — the installer removes the <code>/Applications</code> copy for you; it does not turn on start at login: turn on <strong>Launch at login</strong> in Omac&#x27;s menu</td></tr>
 </tbody></table>
 </section>

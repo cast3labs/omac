@@ -26,7 +26,7 @@
 <header class="site-header"><nav aria-label="Site"><a class="brand" href="../">Omac</a><a class="beta" href="../#founders">Beta</a><a class="nav" href="../features/">Features</a><a class="nav" href="../docs/">Docs</a><a class="nav" href="https://github.com/cast3labs/omac">GitHub</a><a class="button" href="../#get">Download</a></nav></header>
 <main class="narrow legal">
 <h1 id="omac-privacy-policy">Omac privacy policy</h1>
-<p><strong>Version:</strong> 2, 2026-10-08; approved by the maintainer on 2026-10-08. The versions and drafts before it are
+<p><strong>Version:</strong> 3, 2026-10-09; approved by the maintainer on 2026-10-09. The versions and drafts before it are
 listed under "Changes to this policy".
 <strong>Applies to:</strong> the Omac app and its command-line tool <code>omac</code>, Omac's own server <code>t.ghostype.ca</code>,
 and the website <code>omac.ghostype.ca</code>.
@@ -320,7 +320,7 @@ a random number, never sent, that decides when a version released gradually reac
 <tr>
 <td>First-run date</td>
 <td><code>~/.local/state/omac/first-run.json</code></td>
-<td>The day Omac first ran on this Mac (on a Mac that ran an earlier Omac, the oldest date among the files and folder that copy left), written once and never sent, so that copies installed before Omac Pro goes on sale keep what was free. Readable only by you.</td>
+<td>The day Omac first ran on this Mac (on a Mac that ran an earlier Omac, the oldest date among the files and folder that copy left), with a fingerprint of this Mac (a one-way hash of its hardware identifier, never the identifier itself) and when the Omac version that wrote it was built, so that a copy of the file on another Mac does not count there. Written once and never sent, so that copies installed before Omac Pro goes on sale keep what was free; a record copied from another Mac is moved aside to <code>first-run.other-mac.json</code> and kept. Readable only by you.</td>
 </tr>
 <tr>
 <td>Current theme</td>
@@ -648,6 +648,10 @@ it asks you again, in a new box: a new use never rides on an old consent.</p>
   of Omac never send the count and never check, now said in the short version.</li>
 <li>Version 2, 2026-10-08: approved on 2026-10-08. "What stays on your Mac" names the first-run date,
   <code>~/.local/state/omac/first-run.json</code>, which Omac writes once and never sends.</li>
+<li>Version 3, 2026-10-09: approved on 2026-10-09. The first-run date row says the file also holds a
+  fingerprint of this Mac (a one-way hash of its hardware identifier) and when the Omac version that wrote it
+  was built, so that a copy on another Mac does not count there, and that a record copied from another Mac is
+  moved aside to <code>first-run.other-mac.json</code> and kept.</li>
 </ul>
 <h2 id="sources">Sources</h2>
 <ol>
