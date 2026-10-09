@@ -6,6 +6,20 @@
     <description>Omac updates</description>
     <language>en</language>
 <item xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <title>Omac 1.0.1</title>
+  <pubDate>Fri, 09 Oct 2026 22:10:42 +0000</pubDate>
+  <sparkle:version>1.0.1</sparkle:version>
+  <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+  <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+  <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+  <description sparkle:format="markdown"><![CDATA[
+A small update about the founder offer.
+
+- Your founder status now belongs to your Mac. Omac remembers, on this Mac only, that you started using it before 1 February 2027; a copy of that note on another Mac does not count there. Nothing is sent.
+- The website now shows Omac in motion, and the founder offer.]]></description>
+  <enclosure url="https://github.com/cast3labs/omac/releases/download/v1.0.1/Omac-arm64-update.zip" length="60644169" type="application/octet-stream" sparkle:edSignature="3o+vuunljXn3T4D2EDkEumZNOHC2qqSfzWSbNpn+OQgp7Se2UIhB12IrOjzhZWp4XDRenZ0PasJPJtALOMN5AQ=="/>
+</item>
+<item xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
   <title>Omac 1.0.0</title>
   <pubDate>Thu, 08 Oct 2026 22:39:19 +0000</pubDate>
   <sparkle:version>1.0.0</sparkle:version>
@@ -80,6 +94,6 @@ The installer and Omac's welcome window remind you of this when they find an ear
   </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 2g6qKSuGzPJ1K9W3iNXrgie50bq260Tv8Fcl2OUHHP/3NJwvChv+tJcW8BVZcgp2UF4bGm+yCUeqGp8HH+JKAw==
-length: 8349
+edSignature: ZJ95wFks7fq4XwKnNUnLC1ckctk9OwzavitH9ewE46tgHECPtp3VOEs/cTWhGijvUtV6TlHPKiv/z7UdLHN7Dg==
+length: 9398
 -->
