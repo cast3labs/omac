@@ -7,13 +7,23 @@
 <meta name="description" content="What to do when Omac&#x27;s shortcuts do nothing, the command is not found, a window is off screen, or a second copy runs.">
 <meta name="generator" content="scripts/build-site.py">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161616" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="../../style.css">
 <link rel="icon" href="../../favicon.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <script defer src="../../copy.js"></script>
+<script defer src="../../motion.js"></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Omac">
+<meta property="og:title" content="Omac troubleshooting">
+<meta property="og:description" content="What to do when Omac&#x27;s shortcuts do nothing, the command is not found, a window is off screen, or a second copy runs.">
+<meta property="og:image" content="https://omac.ghostype.ca/assets/social.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-<header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a href="../../install/">Install</a><a href="../../features/">Features</a><a href="../../compare/">Compare</a><a href="../../config/">omac.toml</a><a href="../../docs/" aria-current="page">Docs</a><a href="https://github.com/cast3labs/omac">GitHub</a></nav></header>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="../../">Omac</a><a class="beta" href="../../#founders">Beta</a><a class="nav" href="../../features/">Features</a><a class="nav" href="../../docs/" aria-current="page">Docs</a><a class="nav" href="https://github.com/cast3labs/omac">GitHub</a><a class="button" href="../../#get">Download</a></nav></header>
 <main class="narrow docs">
 <h1>Troubleshooting</h1>
 <table>
@@ -26,7 +36,7 @@
 <tbody>
 <tr>
 <td>Left ⌘ shortcuts do nothing</td>
-<td>Omac needs the Accessibility permission (<strong>System Settings → Privacy &amp; Security → Accessibility</strong>). <code>omac status</code> says <code>accessibility false</code> until it has it.</td>
+<td>Omac needs the Accessibility permission (<a href="../../install/#permission">how</a>). <code>omac status</code> says <code>accessibility false</code> until it has it.</td>
 </tr>
 <tr>
 <td><code>omac: command not found</code></td>
@@ -120,6 +130,6 @@ no transcript and did not appear in <code>/resume</code>. Omac now removes every
 starting with <code>CLAUDE_</code> from its own environment when it starts, and the installer opens it without
 them. Quit Omac and open it again from Finder or Spotlight, then open new terminals.</p>
 </main>
-<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · <a href="../../terms/">Terms</a> · <a href="../../privacy/">Privacy</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · Made by cast3labs · <a href="mailto:omac@ghostype.ca">omac@ghostype.ca</a> · <a href="https://github.com/cast3labs/omac/issues/new/choose">Report an issue</a></p><p class="links"><a href="../../install/">Install</a> · <a href="../../compare/">Compare</a> · <a href="../../config/">omac.toml</a> · <a href="../../docs/known-issues/">Known issues</a> · <a href="../../docs/troubleshooting/">Troubleshooting</a> · <a href="../../privacy/">Privacy</a> · <a href="../../terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
 </body>
 </html>

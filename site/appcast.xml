@@ -5,9 +5,81 @@
     <link>https://omac.ghostype.ca/appcast.xml</link>
     <description>Omac updates</description>
     <language>en</language>
+<item xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <title>Omac 1.0.0</title>
+  <pubDate>Thu, 08 Oct 2026 22:39:19 +0000</pubDate>
+  <sparkle:version>1.0.0</sparkle:version>
+  <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+  <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+  <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+  <description sparkle:format="markdown"><![CDATA[
+The first public release of Omac. It updates itself from now on, asks before it sends or checks anything, and fixes typing lag.
+
+**Free for founders.** Omac is in beta. Install it before 1 February 2027, or before the first 1,000 founders, and it stays free for you, for good: every feature and every update. After that, Omac will cost US$12 once, with a 30-day trial, and it never locks.
+
+**On an earlier preview of Omac? Run the install command once more.** A preview cannot update itself. Paste this into Terminal:
+
+    curl -fsSL https://raw.githubusercontent.com/cast3labs/omac/main/install.sh | bash
+
+Your settings are kept. From this version on, Omac updates itself. With Homebrew: `brew upgrade --cask cast3labs/tap/omac`, then quit Omac and open it again: `omac quit; while pgrep -x -U "$USER" Omac >/dev/null; do sleep 0.2; done; open ~/Applications/Omac.app`. A copy you dragged from a download: quit Omac, then download the new zip and replace `Omac.app`.
+
+### Updating from an earlier preview: turn Accessibility on again
+
+Omac's app id is now `com.cast3labs.omac`, so macOS treats this version as a new app. The Omac entry already in the Accessibility list belongs to the preview and does nothing for this version, even switched on. Once, after installing:
+
+1. Open System Settings › Privacy & Security › Accessibility.
+2. Select the old Omac entry and remove it with −.
+3. Click +, choose `~/Applications/Omac.app` (press ⌘⇧G and paste the path), and turn it on. Omac's keys work at once, with no restart.
+4. If you use dictation, allow the microphone again too, when macOS asks or under Privacy & Security › Microphone; the same for Screen Recording or Automation if you used them.
+
+The installer and Omac's welcome window remind you of this when they find an earlier copy's settings. Approve again any coding agent you let Omac launch: approvals given in a preview are not carried over.
+
+### New
+
+- **Updates.** Choose Check for Updates… in the Omac menu, or say yes to a daily check. An update is downloaded only when you choose Install, and installed only if it carries Omac's own signature. When one is waiting, the menu-bar icon shows a mark.
+- **Two questions, once.** The first time it opens, Omac asks with two unticked boxes whether to send a daily anonymous usage count and whether to check for updates by itself. Unticked means no. Change either answer at any time in the Omac menu, or under `[privacy]` in `omac.toml`.
+- **An optional daily usage count:** the Omac version, the macOS version, the number of displays and two yes/no flags, at most once a day. No identifier, no name, no window titles. `omac telemetry preview` prints exactly what would be sent.
+- **The privacy policy is online,** in English and French. Privacy › Privacy policy… in the Omac menu opens it.
+- **Every theme has its wallpapers,** and the next-background key cycles through the theme's own pictures.
+- **Dictation is a Labs feature.** The Omac menu and the features page call it "Dictation (Labs)". Labs features are free while in Labs.
+- **Omac notes the day it first ran on your Mac,** in a small file in its own folder on your Mac, written once and never sent. `omac status` shows it on the `first_run` line. On a Mac that ran an earlier Omac, the day is the oldest date among the files that copy left. The privacy policy names the file.
+- **Workspace bar:** Settings in the Omac menu shows or hides the strip of workspace numbers; click a number to switch.
+- **`omac status` says more:** whether updates are on, how Omac was installed, the last update check, the usage count, and any other copy of Omac on the Mac (the usual cause of "no hotkey works").
+
+### Changed
+
+- **Omac is made by cast3labs.** The licence terms and the privacy policy name cast3labs. Terms of use: free to use, under `EULA.md`.
+- **Version numbers start again at 1.0.0.** Omac counts 1.0.0 and every later version as newer than any preview.
+- **A yes given in an earlier version is asked again.** Omac does not act on an earlier yes to the usage count or to update checks: until you answer, nothing is sent and nothing is checked.
+- **Safer by default.** `omac dispatch exec`, `send_keys`, `dictate`, and prompts sent to your coding agent while it runs unattended are off for other programs until you allow them under `[ipc]` in `omac.toml`. Your own keys still run all of them.
+- **A shorter Omac menu.** Privacy has one place, settings you change rarely sit in submenus, and each row shows its shortcut.
+- **Reading aloud with ⌥Esc is off until you turn it on** (Omac ▸ Speech ▸ Read aloud). Until then ⌥Esc stays macOS's own Speak selection.
+- **The welcome window works from the keyboard and with VoiceOver,** and a key never answers a privacy question for you: click the button, or Tab to it and press Space.
+- **One copy at a time.** When a second copy of Omac opens, only one asks which copy to keep, and the alert says how to switch to a newer version you downloaded.
+- **The screensaver now uses the fast native text-effects engine built into Omac; nothing to install.** It animates the art with Omarchy's effects on every display; displays of the same size show the same effect, and a display of a third size shows the art still. The animation stops while the displays sleep or the Mac is locked, and if it ever stalls the art is shown still instead of a black screen.
+- **Make the screensaver your own** (Omac ▸ Screensaver): show your own words in big letters or a picture drawn in characters, pick the effects you like, its colour, size and speed, and whether it covers every display or only one. **Start now** is there too.
+- **The clipboard history** keeps a text up to 1 MB and an image up to 20 MB, 64 MB in all, and is left out of Time Machine backups.
+
+### Fixed
+
+- **Typing no longer lags or drops characters** while Omac is busy.
+- Omac does less work after clicks and while your Mac is short of memory, so windows respond faster.
+- An app that stops answering no longer freezes the keyboard. The Omac menu and `omac status` say when Secure Input is keeping keys from Omac.
+- A display that sleeps or reconnects (a dock, a hub) gets its windows, workspaces and split sizes back.
+- The theme's wallpaper reaches every desktop of every display, including ones added after a switch, and a picture you chose yourself stays as it is.
+- Quitting Omac unmutes only a microphone Omac muted, and brings back windows pushed past the edge of a display or left on an unplugged one.
+- The key that ends the screensaver goes to no app.
+- With two full-screen windows on one workspace, the one you focused is on top.
+- `omac` commands answer again after a second copy of Omac crashed, and many sent at once no longer hold each other up.
+- The command palette and the theme picker keep the highlighted row on screen, and VoiceOver reads their lists.
+- A reminder set while macOS is still asking about notifications shows once you allow them.
+- A Claude Code session started from a terminal Omac opened saves its transcript again. If Omac was installed or opened from a Claude Code session, quit Omac and open it again once.
+- The one-line installer runs only the installer covered by Omac's signature, and stops with the right command when Homebrew, MacPorts or Nix installed Omac.]]></description>
+  <enclosure url="https://github.com/cast3labs/omac/releases/download/v1.0.0/Omac-arm64-update.zip" length="60618438" type="application/octet-stream" sparkle:edSignature="JIVEhDpw+J7c1DxXkqXWSr8JifiH8EQNsaaYgvzzvXb9ZDrfZp3LLGiPlDBwUHKBx6CN+85i/2FfgHRcWZ0OAA=="/>
+</item>
   </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: wQ7ZVy8bSAY559iCqz8xQcUl/vpV3q4VPK2Db0gf4bSks52rcmYkKerYmJ6JHLWRYBmngSo6qn5GaLRx4D1JAw==
-length: 309
+edSignature: 2g6qKSuGzPJ1K9W3iNXrgie50bq260Tv8Fcl2OUHHP/3NJwvChv+tJcW8BVZcgp2UF4bGm+yCUeqGp8HH+JKAw==
+length: 8349
 -->
