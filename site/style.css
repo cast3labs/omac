@@ -4,7 +4,7 @@
   --bg: #fbfbfa; --fg: #1c1c1c; --muted: #5d5d5a; --line: #e3e2de;
   --code: #f1f0ec; --card: #ffffff; --accent: #2f6f4f; --key: #ffffff;
   --accent-fg: #fff; --media-bg: #15151d; --radius: 12px; --hero: 50rem;
-  --shadow: 0 20px 60px -30px rgba(0,0,0,.45);
+  --shadow: 0 12px 40px -24px rgba(0,0,0,.4);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -24,6 +24,8 @@ a:hover { color: var(--accent); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 code, kbd, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 code { font-size: .88em; background: var(--code); padding: .05em .3em; border-radius: 4px; }
+/* A long path in a sentence wraps rather than push the page sideways on a phone. */
+p code, li code, td code, p a, li a { overflow-wrap: anywhere; }
 pre { background: var(--code); border: 1px solid var(--line); border-radius: 8px;
       padding: .9rem 1rem; overflow-x: auto; margin: 0; }
 pre code { background: none; padding: 0; font-size: 14.5px; }
@@ -43,7 +45,12 @@ pre code { background: none; padding: 0; font-size: 14.5px; }
 .site-header .nav { text-decoration: none; color: var(--muted); }
 .site-header a[aria-current="page"] { color: var(--fg); font-weight: 600; }
 .site-header .button { margin: 0; padding: .35rem .9rem; font-size: 15px; }
-@media (max-width: 600px) { .site-header .nav { display: none; } }
+@media (max-width: 600px) {
+  .site-header nav { gap: .6rem; padding: 0 12px; }
+  .site-header .nav { font-size: 14px; }
+  .site-header .nav.wide { display: none; }
+  .site-header .button { padding: .3rem .7rem; font-size: 14px; }
+}
 main { max-width: 64rem; margin: 0 auto; padding: 2.2rem 16px 3rem; }
 main.narrow { max-width: 42rem; }
 .site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
@@ -65,7 +72,7 @@ a.button.big { height: 44px; padding: 0 1.4rem; margin: 0; }
 
 /* The home page: hero, clips, founder card, download, questions. */
 .home { padding-top: 40px; }
-.home section { margin: 0 auto 96px; }
+.home section { margin: 0 auto 72px; }
 .hero { max-width: var(--hero); text-align: center; }
 .pill { display: inline-block; font-size: 14px; color: var(--muted); text-decoration: none;
   border: 1px solid var(--line); border-radius: 99px; padding: .15rem .8rem; margin-bottom: 14px; }
@@ -87,17 +94,72 @@ video.m { display: block; width: 100%; height: auto; aspect-ratio: 16/10; border
   border-right: 0; margin-left: 14px; }
 .motion.big { right: calc(50% - 28px); bottom: calc(50% - 28px); width: 56px; height: 56px; }
 .motion.big::before { margin-left: 22px; }
-.clips { max-width: var(--hero); }
-.clip { margin: 0 0 72px; }
-.clip figcaption { margin-bottom: 12px; }
-.clip figcaption b { display: block; font-size: 20px; }
-.clip .keys { font-size: 15px; }
-.also { color: var(--muted); text-align: center; }
+/* The clips: text and media in equal halves, so every frame is the same size whichever side it is on;
+   on a phone the text sits above the media. */
+.feat { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin: 0 auto 56px; }
+.feat.right .text { order: 2; }
+.feat h2 { font-size: 28px; margin: 0 0 10px; letter-spacing: -0.01em; }
+.feat .line { color: var(--muted); }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+.media { min-width: 0; }
+.keys-strip { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+.keys-strip .k { white-space: nowrap; display: inline-block; }
+.hero .keys-strip { display: grid; grid-template-columns: repeat(4, auto); justify-content: center; gap: 8px 22px;
+  font-size: 15px; }
+.hero .keys-strip .sep { display: none; }
+@media (max-width: 700px) { .hero .keys-strip { grid-template-columns: repeat(2, auto); font-size: 14px; } }
+@media (max-width: 520px) { .hero .keys-strip { grid-template-columns: auto; } }
+.still { margin: 0; position: relative; aspect-ratio: 16/10; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line); background: var(--media-bg); box-shadow: var(--shadow); }
+.still img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* A key diagram: in the page's own colours (a dark box was a heavy block in light mode), and as tall as its
+   steps need, never cut by the 16:10 frame. */
+.still-keys { display: flex; align-items: center; justify-content: center; padding: 24px;
+  aspect-ratio: auto; min-height: 14rem; background: var(--code); box-shadow: none; }
+.flow { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; align-items: center;
+  color: var(--fg); font-size: 17px; text-align: center; }
+.flow li + li::before { content: "↓"; display: block; color: var(--accent); line-height: 1.3; }
+.flow kbd { font-size: 16px; }
+.strip { list-style: none; margin: 14px 0 0; padding: 0 0 6px; display: flex; gap: 10px; overflow-x: auto;
+  scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.strip li { flex: 0 0 9rem; scroll-snap-align: start; }
+/* Wide screens: four in a row and the link to the rest, no half-cut fifth. */
+@media (min-width: 701px) {
+  .strip { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; }
+  .strip li:nth-child(n+5):not(.more) { display: none; }
+  .strip .more { grid-column: 1 / -1; justify-content: flex-end; }
+}
+.strip img { display: block; width: 100%; height: auto; aspect-ratio: 16/10; border-radius: 8px; border: 1px solid var(--line); }
+.strip .more { display: flex; align-items: center; justify-content: center; flex-basis: 7rem; font-size: 15px; }
+.home .feat, .home .feat-group { margin-bottom: 56px; }
+.home .feat-group .feat { margin: 0; }
+.feat-group .tab-r { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.tab-labels { display: flex; gap: 8px; margin: 0 0 16px; }
+.tab-labels label { cursor: pointer; border: 1px solid var(--line); border-radius: 99px; padding: .2rem 1rem; color: var(--muted); }
+.feat-group .feat { display: none; margin: 0; }
+#voice-dictation-tab:checked ~ #voice-dictation, #voice-read-aloud-tab:checked ~ #voice-read-aloud { display: grid; }
+#voice-dictation-tab:checked ~ .tab-labels [for="voice-dictation-tab"],
+#voice-read-aloud-tab:checked ~ .tab-labels [for="voice-read-aloud-tab"] { color: var(--accent-fg); background: var(--accent); border-color: var(--accent); }
+.tab-r:focus-visible ~ .tab-labels label { outline: 1px dashed var(--line); }
+.chips { text-align: center; }
+.chips ul { list-style: none; padding: 0; margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+@media (max-width: 600px) { .chips ul { flex-direction: column; align-items: stretch; } .chips li a { display: block; } }
+.chips li a { display: inline-block; border: 1px solid var(--line); border-radius: 99px; padding: .25rem .8rem;
+  text-decoration: none; font-size: 15px; background: var(--card); }
+.leftcmd-fig { margin: 28px auto 0; max-width: 26rem; color: var(--muted); font-size: 14px; }
+.leftcmd { display: block; width: 100%; max-width: 20rem; height: auto; margin: 0 auto 8px; }
+.leftcmd .cap rect, .leftcmd rect.cap { fill: var(--key); stroke: var(--line); stroke-width: 2; }
+.leftcmd rect.on { stroke: var(--accent); stroke-width: 3; }
+.leftcmd text { font: 22px -apple-system, system-ui, sans-serif; text-anchor: middle; fill: var(--muted); }
+.leftcmd text.on { fill: var(--accent); font-size: 28px; font-weight: 700; }
+.card .cta.start { justify-content: flex-start; margin-top: 16px; }
 .card { max-width: 44rem; border: 1px solid var(--line); border-radius: 14px; padding: 32px; background: var(--card); }
 .card h2, .get h2 { font-size: 28px; margin: 0 0 12px; letter-spacing: -0.01em; }
 .counter { margin: 16px 0; font-weight: 600; }
+.counter progress { margin: 8px 0; }
 .counter:empty { display: none; }
 .counter p { margin: 0 0 6px; }
+.counter p:empty { display: none; }
 .counter .small { font-weight: 400; }
 progress { display: block; width: 100%; height: 6px; border: 0; border-radius: 3px; background: var(--line);
   accent-color: var(--accent); -webkit-appearance: none; appearance: none; }
@@ -111,7 +173,11 @@ progress::-moz-progress-bar { background: var(--accent); }
 .steps li::before { content: counter(s) "  "; font-weight: 700; color: var(--accent); }
 .faq { max-width: 44rem; border-top: 1px solid var(--line); }
 .faq details { border-bottom: 1px solid var(--line); }
-.faq summary { cursor: pointer; padding: 12px 0; min-height: 44px; font-weight: 600; }
+.faq summary { cursor: pointer; padding: 12px 0 12px 1.2em; min-height: 44px; font-weight: 600; list-style: none;
+  position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::before { content: "▸"; position: absolute; left: 0; color: var(--muted); }
+.faq details[open] summary::before { content: "▾"; }
 .faq details p { margin: 0 0 14px; }
 
 /* Keys: each key a cap, in the README's notation (Left ⌘ Shift ←). */
@@ -127,6 +193,28 @@ kbd { display: inline-block; min-width: 1.5em; padding: .05em .4em; margin: .1em
 .features { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: .8rem; }
 .feature { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: .9rem 1rem; }
 .feature p { margin: 0; }
+.feature[data-wide] { grid-column: 1 / -1; }
+.feature .frame { margin-bottom: .8rem; }
+.feature .more { margin-top: .4rem; font-size: .95rem; }
+.keys-list { list-style: none; padding: 0; }
+.keys-list li { margin: .15rem 0; }
+.what { color: var(--muted); }
+.start-with { list-style: none; padding: 0; margin: 0 0 1.6rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .8rem; }
+.start-with > li { border: 1px solid var(--line); border-radius: 10px; padding: .6rem; background: var(--card); }
+.start-with a { text-decoration: none; display: block; }
+.sw-media { display: flex; align-items: center; justify-content: center; aspect-ratio: 16/10; overflow: hidden;
+  border-radius: 8px; background: var(--media-bg); margin-bottom: .5rem; }
+.sw-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sw-media { background: var(--code); }
+.sw-media .flow { font-size: 13px; gap: 2px; padding: 8px; }
+.sw-media .flow kbd { font-size: 13px; }
+.start-with .keys-strip { font-size: 13px; margin-top: .3rem; }
+/* Docs index and the wallpapers page. */
+.doc-cards { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: .8rem; }
+.doc-cards p { margin: .2rem 0 0; }
+.walls { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 12px; }
+.walls img { display: block; width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); }
+.wallpapers .theme h2 { margin-top: 2rem; }
 .left-to-macos { padding-left: 1.2rem; }
 .left-to-macos li { margin: .35rem 0; }
 
@@ -181,6 +269,9 @@ pre .copy:hover { border-color: var(--accent); color: var(--accent); }
   .home h1 { font-size: 32px; }
   .hero .sub { font-size: 17px; }
   .home section { margin-bottom: 64px; }
+  .feat { grid-template-columns: 1fr; gap: 16px; }
+  .feat.right .text { order: 0; }
+  .feat h2 { font-size: 24px; }
   .steps { flex-direction: column; }
   .card { padding: 22px; }
   .card h2, .get h2 { font-size: 24px; }

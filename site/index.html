@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Omac · keyboard tiling for your Mac, with Omarchy's keybindings</title>
-<meta name="description" content="Windows tile themselves. Omac is a native menu-bar app with Omarchy's keybindings on the left ⌘: ten workspaces, a scrolling layout, 22 themes. Notarized by Apple, no account. Founders who install now keep it free for good.">
+<meta name="description" content="Omarchy's keys on your Mac, on the left ⌘: one key opens your terminal, browser, coding agent or Finder, and every window tiles itself. 22 themes with all 92 wallpapers, ten workspaces, clipboard history, text from the screen, dictation. Notarized by Apple, no account. Free in beta; founders who start now keep it free for good.">
 <link rel="canonical" href="https://omac.ghostype.ca/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Omac">
 <meta property="og:title" content="Keyboard tiling for your Mac, with Omarchy's keybindings">
-<meta property="og:description" content="Windows tile themselves. Omac is a native menu-bar app with Omarchy's keybindings on the left ⌘: ten workspaces, a scrolling layout, 22 themes. Notarized by Apple, no account. Founders who install now keep it free for good.">
+<meta property="og:description" content="Omarchy's keys on your Mac, on the left ⌘: one key opens your terminal, browser, coding agent or Finder, and every window tiles itself. 22 themes with all 92 wallpapers, ten workspaces, clipboard history, text from the screen, dictation. Notarized by Apple, no account. Free in beta; founders who start now keep it free for good.">
 <meta property="og:url" content="https://omac.ghostype.ca/">
 <meta property="og:image" content="https://omac.ghostype.ca/assets/social.jpg">
 <meta property="og:image:width" content="1200">
@@ -28,82 +28,177 @@
 <script defer src="motion.js"></script>
 </head>
 <body>
-<header class="site-header"><nav aria-label="Site"><a class="brand" href="./">Omac</a><a class="beta" href="./#founders">Beta</a><a class="nav" href="features/">Features</a><a class="nav" href="docs/">Docs</a><a class="nav" href="https://github.com/cast3labs/omac">GitHub</a><a class="button" href="./#get">Download</a></nav></header>
+<header class="site-header"><nav aria-label="Site"><a class="brand" href="./">Omac</a><a class="beta" href="./#founders" title="Free during the beta. Founders keep it free.">Beta</a><a class="nav" href="features/">Features</a><a class="nav" href="wallpapers/">Wallpapers</a><a class="nav wide" href="docs/">Docs</a><a class="nav wide" href="https://github.com/cast3labs/omac">GitHub</a><a class="button" href="./#get">Download</a></nav></header>
 <main class="home">
 
-<section class="hero">
-  <a class="pill" href="#founders">Free for founders →</a>
+<section class="hero" id="hero-four-keys" data-clip="hero-four-keys">
+  <a class="pill" href="#founders">Free for founders who open it before 1 February 2027 →</a>
   <h1>Windows tile themselves.</h1>
-  <p class="sub">Keyboard tiling for macOS with Omarchy's keybindings, all on the left ⌘ key.</p>
+  <p class="sub">One key opens an app, and it takes its own place beside the others. Omarchy's keys, on the left ⌘.</p>
   <div class="cta">
     <a class="button big" href="https://github.com/cast3labs/omac/releases/latest/download/Omac-arm64.zip" data-share>Download for Mac</a>
     
   </div>
-  <p class="micro" data-touch="Omac runs on a Mac with Apple silicon and macOS 14+.">Free · Apple silicon · macOS 14+ · Notarized by Apple · No account</p>
+  <p class="micro" data-touch="Omac runs on a Mac with Apple silicon and macOS 14+.">Free in beta · Apple silicon · macOS 14+ · Notarized by Apple · No account</p>
   
   <div class="frame">
-    <video class="m hero-v" muted loop playsinline controls preload="auto" width="1440" height="900"
-           poster="assets/hero-poster.webp"
-           aria-label="Left ⌘ Return, twice: each new window tiles itself, from one window to three.">
-      <source src="assets/hero-960.mp4" type="video/mp4" media="(max-width: 960px)">
-      <source src="assets/hero-1440.mp4" type="video/mp4">
-    </video>
-    <button class="motion" type="button" aria-label="Pause" hidden></button>
-  </div>
+<video class="m hero-v" muted loop playsinline controls preload="auto" width="1440" height="900" poster="assets/hero-poster.webp" aria-label="Left ⌘ Return, twice: each new window tiles itself, from one window to three.">
+<source src="assets/hero-960.mp4" type="video/mp4" media="(max-width: 960px)">
+<source src="assets/hero-1440.mp4" type="video/mp4">
+</video>
+<button class="motion" type="button" aria-label="Pause" hidden></button>
+</div>
+<p class="keys-strip"><span class="k"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Return</kbd></span> <span class="what">Terminal</span></span><span class="sep"> · </span><span class="k"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Return</kbd></span> <span class="what">Browser</span></span><span class="sep"> · </span><span class="k"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Ctrl</kbd> <kbd>A</kbd></span> <span class="what">Coding agent</span></span><span class="sep"> · </span><span class="k"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>F</kbd></span> <span class="what">Finder</span></span></p>
+<figure class="leftcmd-fig">
+<svg class="leftcmd" viewBox="0 0 330 74" role="img" aria-labelledby="leftcmd-t"><title id="leftcmd-t">The bottom-left keys of a Mac keyboard: fn, Control, Option, and the left Command key, which is Omac's.</title><g class="cap"><rect x="2" y="2" width="62" height="62" rx="9"/><rect x="72" y="2" width="62" height="62" rx="9"/><rect x="142" y="2" width="62" height="62" rx="9"/></g><rect class="cap on" x="212" y="2" width="114" height="62" rx="9"/><g class="lbl"><text x="33" y="40">fn</text><text x="103" y="40">⌃</text><text x="173" y="40">⌥</text></g><text class="lbl on" x="269" y="42">⌘</text></svg>
+<figcaption>Only the left ⌘ is Omac's. The right ⌘ works as always.</figcaption></figure>
 </section>
 
-<section class="clips" aria-label="Omac in motion">
-  <figure class="clip">
-    <figcaption><b>Ten workspaces. Send windows anywhere.</b></figcaption>
-    <div class="frame">
-      <video class="m" muted loop playsinline controls preload="none" width="1440" height="900"
-             poster="assets/clip-workspaces-poster.webp"
-             aria-label="Left ⌘ 8 and Left ⌘ 7 switch workspaces; Left ⌘ Shift 8 sends a window to workspace 8.">
-        <source src="assets/clip-workspaces-960.mp4" type="video/mp4" media="(max-width: 960px)">
-        <source src="assets/clip-workspaces-1440.mp4" type="video/mp4">
-      </video>
-      <button class="motion" type="button" aria-label="Pause" hidden></button>
-    </div>
-  </figure>
-  <figure class="clip">
-    <figcaption><b>Scroll a row of windows.</b></figcaption>
-    <div class="frame">
-      <video class="m" muted loop playsinline controls preload="none" width="1440" height="900"
-             poster="assets/clip-scroll-poster.webp"
-             aria-label="Left ⌘ Shift L turns on the scrolling layout; Left ⌘ → moves the focus and the row follows.">
-        <source src="assets/clip-scroll-960.mp4" type="video/mp4" media="(max-width: 960px)">
-        <source src="assets/clip-scroll-1440.mp4" type="video/mp4">
-      </video>
-      <button class="motion" type="button" aria-label="Pause" hidden></button>
-    </div>
-  </figure>
-  <p class="also">Also one key away: Omarchy's 22 themes, a command palette, clipboard history, a screensaver with your
-  own words. <kbd>Left ⌘</kbd><kbd>K</kbd> shows every key. <a href="features/">All features →</a></p>
+<section class="feat left" id="themes-wallpapers" data-clip="themes-wallpapers">
+<div class="text">
+<p class="eyebrow">Themes</p>
+<h2>Omarchy&#x27;s 22 themes, all 92 wallpapers</h2>
+<p class="line">One key: a new theme, its wallpaper, your window border and light or dark mode. Ghostty, iTerm2, VS Code and Chrome can follow it too, if you choose.</p>
+</div>
+<div class="media">
+<figure class="still still-wallpaper"><img src="assets/wallpapers/tokyo-night-1-1600.webp" loading="lazy" decoding="async" width="1600" height="900" alt="Tokyo Night wallpaper 1"></figure>
+<p class="keys-strip"><span class="k"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>Ctrl</kbd> <kbd>Space</kbd></span> <span class="what">Theme menu</span></span><span class="sep"> · </span><span class="k"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>⌥</kbd> <kbd>Space</kbd></span> <span class="what">Next wallpaper</span></span></p>
+<ul class="strip" aria-label="Wallpapers from 12 themes"><li><a href="wallpapers/#tokyo-night" aria-label="Tokyo Night wallpapers"><img src="assets/wallpapers/tokyo-night-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Tokyo Night wallpaper 1"></a></li><li><a href="wallpapers/#catppuccin" aria-label="Catppuccin wallpapers"><img src="assets/wallpapers/catppuccin-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Catppuccin wallpaper 1"></a></li><li><a href="wallpapers/#gruvbox" aria-label="Gruvbox wallpapers"><img src="assets/wallpapers/gruvbox-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Gruvbox wallpaper 1"></a></li><li><a href="wallpapers/#kanagawa" aria-label="Kanagawa wallpapers"><img src="assets/wallpapers/kanagawa-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Kanagawa wallpaper 1"></a></li><li><a href="wallpapers/#rose-pine" aria-label="Rose Pine wallpapers"><img src="assets/wallpapers/rose-pine-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Rose Pine wallpaper 1"></a></li><li><a href="wallpapers/#nord" aria-label="Nord wallpapers"><img src="assets/wallpapers/nord-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Nord wallpaper 1"></a></li><li><a href="wallpapers/#everforest" aria-label="Everforest wallpapers"><img src="assets/wallpapers/everforest-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Everforest wallpaper 1"></a></li><li><a href="wallpapers/#osaka-jade" aria-label="Osaka Jade wallpapers"><img src="assets/wallpapers/osaka-jade-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Osaka Jade wallpaper 1"></a></li><li><a href="wallpapers/#ristretto" aria-label="Ristretto wallpapers"><img src="assets/wallpapers/ristretto-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Ristretto wallpaper 1"></a></li><li><a href="wallpapers/#ethereal" aria-label="Ethereal wallpapers"><img src="assets/wallpapers/ethereal-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Ethereal wallpaper 1"></a></li><li><a href="wallpapers/#retro-82" aria-label="Retro 82 wallpapers"><img src="assets/wallpapers/retro-82-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Retro 82 wallpaper 1"></a></li><li><a href="wallpapers/#lumon" aria-label="Lumon wallpapers"><img src="assets/wallpapers/lumon-1-480.webp" loading="lazy" decoding="async" width="480" height="300" alt="Lumon wallpaper 1"></a></li><li class="more"><a href="wallpapers/">See all 92 →</a></li></ul>
+</div>
 </section>
+<section class="feat-group" id="voice" aria-label="Voice">
+<input class="tab-r" type="radio" name="voice-tab" id="voice-dictation-tab" checked><input class="tab-r" type="radio" name="voice-tab" id="voice-read-aloud-tab">
+<div class="tab-labels"><label for="voice-dictation-tab">Speak</label><label for="voice-read-aloud-tab">Listen</label></div>
+<div class="feat right" id="voice-dictation" data-clip="voice-dictation" role="group">
+<div class="text">
+<p class="eyebrow">Voice</p>
+<h2>Speak. It types.</h2>
+<p class="line">Hold Left Ctrl and fn, talk, let go: your words are typed where you are, recognised on your Mac. macOS 26; off until you turn it on.</p>
+</div>
+<div class="media">
+<figure class="still still-keys"><ol class="flow"><li><span class="chord"><kbd>Left Ctrl</kbd> <kbd>fn</kbd></span></li><li>talk, let go</li><li>typed</li></ol></figure>
+
+
+</div>
+</div>
+<div class="feat right" id="voice-read-aloud" data-clip="voice-read-aloud" role="group">
+<div class="text">
+<p class="eyebrow">Voice</p>
+<h2>Select it. Hear it.</h2>
+<p class="line">Select text and press ⌥ Esc: your Mac reads it aloud. Press again to stop. Off until you turn it on.</p>
+</div>
+<div class="media">
+<figure class="still still-keys"><ol class="flow"><li>select text</li><li><span class="chord"><kbd>⌥</kbd> <kbd>Esc</kbd></span></li><li>read aloud</li></ol></figure>
+
+
+</div>
+</div>
+</section>
+<section class="feat left" id="ocr-copy" data-clip="ocr-copy">
+<div class="text">
+<p class="eyebrow">Text from the screen</p>
+<h2>Copy text out of any image</h2>
+<p class="line">Drag over any part of the screen and its text is on your clipboard, read on your Mac.</p>
+<p class="small muted">Asks once for Screen Recording.</p>
+</div>
+<div class="media">
+<figure class="still still-keys"><ol class="flow"><li><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>T</kbd></span></li><li>drag over text</li><li>on your clipboard</li></ol></figure>
+
+
+</div>
+</section>
+<section class="feat right" id="workspaces-send" data-clip="workspaces-send">
+<div class="text">
+<p class="eyebrow">Ten workspaces</p>
+<h2>Send any window to any workspace</h2>
+<p class="line">Like macOS Spaces, one key each. Shift and the number takes the window there, and you with it.</p>
+</div>
+<div class="media">
+<div class="frame">
+<video class="m" muted loop playsinline controls preload="none" width="1440" height="900" poster="assets/clip-workspaces-poster.webp" aria-label="Left ⌘ 8 and Left ⌘ 7 switch workspaces; Left ⌘ Shift 8 sends a window to workspace 8.">
+<source src="assets/clip-workspaces-960.mp4" type="video/mp4" media="(max-width: 960px)">
+<source src="assets/clip-workspaces-1440.mp4" type="video/mp4">
+</video>
+<button class="motion" type="button" aria-label="Pause" hidden></button>
+</div>
+<p class="keys-strip"><span class="k"><span class="chord"><kbd>Left ⌘</kbd> <kbd>1</kbd> … <kbd>0</kbd></span> <span class="what">Go to a workspace</span></span><span class="sep"> · </span><span class="k"><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>1</kbd> … <kbd>0</kbd></span> <span class="what">Take the window there</span></span></p>
+
+</div>
+</section>
+<section class="feat left" id="screensaver" data-clip="screensaver">
+<div class="text">
+<p class="eyebrow">Screensaver</p>
+<h2>A screensaver in your theme</h2>
+<p class="line">Moving art in your theme&#x27;s colour, or your own words. Any key brings your windows back.</p>
+</div>
+<div class="media">
+<figure class="still still-keys"><ol class="flow"><li><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>⌥</kbd> <kbd>S</kbd></span></li><li>art in your theme&#x27;s colour</li><li>any key: back</li></ol></figure>
+
+
+</div>
+</section>
+<section class="feat right" id="fullscreen-in-out" data-clip="fullscreen-in-out">
+<div class="text">
+<p class="eyebrow">One window</p>
+<h2>Full screen. Same key back.</h2>
+<p class="line">macOS&#x27;s own full screen; the same key puts the window back in its place.</p>
+</div>
+<div class="media">
+<figure class="still still-keys"><ol class="flow"><li><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>F</kbd></span></li><li>full screen</li><li>same key: back</li></ol></figure>
+
+
+</div>
+</section>
+<section class="feat left" id="clipboard-history" data-clip="clipboard-history">
+<div class="text">
+<p class="eyebrow">Clipboard</p>
+<h2>Everything you copied, one key away</h2>
+<p class="line">Text and images. Type to filter, Return pastes. Password-manager copies are never kept.</p>
+</div>
+<div class="media">
+<figure class="still still-keys"><ol class="flow"><li><span class="chord"><kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>V</kbd></span></li><li>type to filter</li><li><span class="chord"><kbd>Return</kbd></span></li><li>pasted</li></ol></figure>
+
+
+</div>
+</section>
+<section class="feat right" id="focus-swap" data-clip="focus-swap">
+<div class="text">
+<p class="eyebrow">Arrows</p>
+<h2>Arrows move focus. Shift moves windows.</h2>
+<p class="line">Left ⌘ and an arrow picks the window beside this one; add Shift and the window itself trades places.</p>
+</div>
+<div class="media">
+<figure class="still still-keys"><ol class="flow"><li><span class="chord"><kbd>Left ⌘</kbd> <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd></span></li><li><span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd></span></li></ol></figure>
+
+
+</div>
+</section>
+
+<section class="chips" aria-label="More keys"><ul><li><a href="features/#cheatsheet">See every key <span class="chord"><kbd>Left ⌘</kbd> <kbd>K</kbd></span></a></li><li><a href="features/#scroll">Scroll windows sideways <span class="chord"><kbd>Left ⌘</kbd> <kbd>Shift</kbd> <kbd>L</kbd></span></a></li><li><a href="features/#palette">Search every command <span class="chord"><kbd>Left ⌘</kbd> <kbd>⌥</kbd> <kbd>Space</kbd></span></a></li></ul><p><a href="features/">All 47 features →</a></p></section>
 
 <section id="founders" class="card">
   <h2>Free for founders. For good.</h2>
-  <p class="f1">Omac is in beta. Install it before 1 February 2027 and it's yours, free, forever: every feature and every update.</p>
-  <div class="counter" data-closes="2027-02-01T11:59:59Z" data-closed="Founder spots closed on 1 February 2027. Thank you, founders."><p>About 6 of 1,000 founder spots taken.</p><p class="small muted">Counted from release downloads on 9 October 2026, less our own and automated ones.</p></div>
-  <p class="f2">After that, Omac will cost US$12 once, with a 30-day trial. Founders never pay. Nothing ever locks.</p>
-  <p class="f3 small muted">If 1,000 founders join first, the offer closes early, announced here a week ahead.</p>
+  <p class="f1">Free while in beta. Open Omac for the first time before 1 February 2027 and it stays free for you, for good: every feature and every update.</p>
+  <p>No sign-up: the day Omac first opens on your Mac is your founder pass.</p>
+  <div class="counter" data-closes="2027-02-01T11:59:59Z" data-closed="Founder spots closed on 1 February 2027. Thank you, founders."><p data-days></p><p class="small muted">If 1,000 founders join first, the offer closes early, announced here a week ahead.</p></div>
+  <p class="f2">After that, Omac will cost US$12 once, with a 30-day trial. Nothing ever locks.</p>
+  <div class="cta start"><a class="button" href="https://github.com/cast3labs/omac/releases/latest/download/Omac-arm64.zip" data-share>Download for Mac</a></div>
 </section>
 
 <section id="get" class="get">
   
-  <h2>Keep your hands on the keys.</h2>
+  <h2>Install in a minute.</h2>
   <div class="cta">
     <a class="button big" href="https://github.com/cast3labs/omac/releases/latest/download/Omac-arm64.zip" data-share>Download for Mac</a>
   </div>
   <pre class="brew"><code data-cmd>brew install --cask cast3labs/tap/omac</code></pre>
-  <p class="muted">Omac 1.0 · beta · Apple silicon (not Intel) · macOS 14 or later · Free to use under <a href="terms/">these terms</a></p>
-  <p class="muted"><a href="install/">The one-line installer, or read the script first →</a></p>
+  <p class="muted"><a href="install/">Other ways to install →</a></p>
   <ol class="steps">
-    <li>Unzip and drag Omac into Applications, then open it.</li>
+    <li>Unzip it, drag Omac into Applications and open it.</li>
     <li>Allow Accessibility once, when macOS asks.</li>
-    <li>Press <kbd>Left ⌘</kbd><kbd>K</kbd> to see every key.</li>
+    <li>Press <span class="chord"><kbd>Left ⌘</kbd><kbd>Return</kbd>.</span> Then <span class="chord"><kbd>Left ⌘</kbd><kbd>K</kbd></span> shows every key.</li>
   </ol>
-  <p class="muted">Closed source, notarized by Apple · No account · <a href="privacy/#network">Omac never sends anything without asking</a></p>
+  <p class="small muted trust">Omac 1.0 · beta · <a href="terms/">Terms</a></p>
   
   
 </section>
@@ -111,9 +206,9 @@
 <section class="faq" aria-label="Questions">
   <details>
     <summary>Why does Omac need Accessibility? Is it safe?</summary>
-    <p>macOS lets an app move other apps' windows only through Accessibility, so every window manager asks for it.
-    You allow it once. Omac is closed source, signed with a Developer ID and notarized by Apple, which macOS checks
-    before it opens. It changes nothing in System Integrity Protection and runs nothing as root.</p>
+    <p>macOS lets an app move other apps' windows only through Accessibility, so every window manager asks for
+    it, once. Omac is signed and notarized by Apple, which macOS checks before it opens, and
+    the app runs nothing as root. <a href="install/#requirements">More on what it needs</a>.</p>
   </details>
   <details>
     <summary>Does it send anything?</summary>
@@ -121,10 +216,20 @@
     no identifier, and update checks. Your windows, settings and clipboard history stay on your Mac. <a href="privacy/#network">Every connection Omac can make</a>.</p>
   </details>
   <details>
-    <summary>How do I become a founder?</summary>
-    <p>Install Omac and open it. There is no sign-up: Omac notes the day it first opens on your Mac, and that date is
-    your founder pass. Nothing is sent. In return, tell us what breaks: <a href="mailto:omac@ghostype.ca">omac@ghostype.ca</a>
-    or <a href="https://github.com/cast3labs/omac/issues/new/choose">an issue</a>.</p>
+    <summary>How does it update?</summary>
+    <p>Choose Check for Updates… in Omac's menu, or say yes to a daily check the first time it opens. An update
+    installs only when you choose Install, and only if it carries Omac's signature.</p>
+  </details>
+  <details>
+    <summary>How do I become a founder, and what if I'm late?</summary>
+    <p>Open Omac for the first time before 1 February 2027, or before 1,000 founders have joined. There
+    is no sign-up: Omac notes the day it first opens on your Mac, and nothing is sent. After that, Omac will cost
+    US$12 once, with a 30-day trial, and nothing will lock. In return, tell us what breaks:
+    <a href="mailto:omac@ghostype.ca">omac@ghostype.ca</a> or <a href="https://github.com/cast3labs/omac/issues/new/choose">an issue</a>.</p>
+  </details>
+  <details>
+    <summary>Does it run on Intel Macs?</summary>
+    <p>No. Omac needs Apple silicon and macOS 14 or later.</p>
   </details>
   <details>
     <summary>Do my usual shortcuts still work? Do I need Omarchy?</summary>
@@ -140,6 +245,6 @@
 </section>
 
 </main>
-<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · Made by cast3labs · <a href="mailto:omac@ghostype.ca">omac@ghostype.ca</a> · <a href="https://github.com/cast3labs/omac/issues/new/choose">Report an issue</a></p><p class="links"><a href="install/">Install</a> · <a href="compare/">Compare</a> · <a href="config/">omac.toml</a> · <a href="docs/known-issues/">Known issues</a> · <a href="docs/troubleshooting/">Troubleshooting</a> · <a href="privacy/">Privacy</a> · <a href="terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
+<footer class="site-footer"><div><p>Omac is an independent, unofficial project. It is not affiliated with or endorsed by Omarchy, its creators, 37signals LLC or the Omacom Foundation. Omarchy and the Omarchy trademark belong to 37signals LLC and the creators of Omarchy.</p><p>© 2026 cast3labs. All rights reserved. · Made by cast3labs · <a href="mailto:omac@ghostype.ca">omac@ghostype.ca</a> · <a href="https://github.com/cast3labs/omac/issues/new/choose">Report an issue</a></p><p class="links"><a href="docs/">Docs</a> · <a href="install/">Install</a> · <a href="wallpapers/">Wallpapers</a> · <a href="changelog/">What's new</a> · <a href="compare/">Compare</a> · <a href="config/">omac.toml</a> · <a href="docs/known-issues/">Known issues</a> · <a href="docs/troubleshooting/">Troubleshooting</a> · <a href="privacy/">Privacy</a> · <a href="terms/">Terms</a> · <a href="https://github.com/cast3labs/omac">GitHub</a></p></div></footer>
 </body>
 </html>

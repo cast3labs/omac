@@ -45,7 +45,9 @@
 
   // The founder period may end between deploys.
   d.querySelectorAll("[data-closes]").forEach(function (c) {
-    if (Date.now() > Date.parse(c.dataset.closes)) c.innerHTML = "<p></p>", c.firstChild.textContent = c.dataset.closed;
+    var left = Math.ceil((Date.parse(c.dataset.closes) - Date.now()) / 864e5), p = c.querySelector("[data-days]");
+    if (left < 1) c.innerHTML = "<p></p>", c.firstChild.textContent = c.dataset.closed;
+    else if (p) p.textContent += " " + left + (left > 1 ? " days" : " day") + " left to become a founder.";
   });
 
   // A phone: send the link to a Mac.
