@@ -37,7 +37,14 @@ main() {
   [ "$(uname -s)" = Darwin ] || fail "Omac runs on macOS only."
   # The hardware, not the process: under Rosetta, `uname -m` says x86_64 even on
   # Apple silicon, and a Terminal opened that way would be wrongly refused.
-  [ "$(sysctl -n hw.optional.arm64 2>/dev/null)" = 1 ] || fail "Omac needs a Mac with Apple silicon."
+  local arch
+  if [ "$(sysctl -n hw.optional.arm64 2>/dev/null)" = 1 ]; then
+    arch=arm64
+  elif [ "$(uname -m)" = x86_64 ]; then
+    arch=x86_64
+  else
+    fail "Omac supports Apple silicon and Intel Macs."
+  fi
   local os major
   os=$(sw_vers -productVersion); major=${os%%.*}
   [ "$major" -ge 14 ] || fail "Omac needs macOS 14 or later (this Mac has $os)."
@@ -50,27 +57,27 @@ main() {
   # says so instead of a bare "download failed". A file:// URL (the tests) has
   # no status: 000, with curl's own exit status telling a missing file.
   local code
-  code=$(curl -L --progress-bar -o "$tmp/Omac-arm64.zip" -w '%{http_code}' "$base/Omac-arm64.zip") \
+  code=$(curl -L --progress-bar -o "$tmp/Omac-$arch.zip" -w '%{http_code}' "$base/Omac-$arch.zip") \
     || fail "the download failed. Check your connection and try again."
   case "$code" in
     2??|000) ;;
     404)
       if [ "$want" = latest ]; then
-        printf '\nOmac is in private beta: there is no public release yet. See https://omac.ghostype.ca\n' >&2
+        printf '\nNo %s download is available in the latest release. See https://omac.ghostype.ca\n' "$arch" >&2
         exit 1
       fi
-      fail "there is no release $want. The releases: https://github.com/$repo/releases" ;;
+      fail "there is no $arch download for release $want. The releases: https://github.com/$repo/releases" ;;
     *) fail "the download failed (HTTP $code). Check your connection and try again." ;;
   esac
-  curl -fsSL -o "$tmp/Omac-arm64.zip.sha256" "$base/Omac-arm64.zip.sha256" \
+  curl -fsSL -o "$tmp/Omac-$arch.zip.sha256" "$base/Omac-$arch.zip.sha256" \
     || fail "could not download the checksum."
 
   # Proves the download is complete and uncorrupted. Authenticity is checked by
   # the next step, against the app's Developer ID signature.
-  ( cd "$tmp" && shasum -a 256 -c Omac-arm64.zip.sha256 >/dev/null 2>&1 ) \
+  ( cd "$tmp" && shasum -a 256 -c Omac-$arch.zip.sha256 >/dev/null 2>&1 ) \
     || fail "the download is corrupted (checksum mismatch). Try again."
 
-  ditto -x -k "$tmp/Omac-arm64.zip" "$tmp/x"
+  ditto -x -k "$tmp/Omac-$arch.zip" "$tmp/x"
 
   # Check the app's identity HERE as well as in the installer inside the zip.
   # Older releases' installers matched text that whoever built the zip controls,
