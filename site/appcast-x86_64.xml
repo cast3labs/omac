@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Omac</title>
+    <link>https://omac.ghostype.ca/appcast-x86_64.xml</link>
+    <description>Omac updates</description>
+    <language>en</language>
+  </channel>
+</rss>
+<!-- sparkle-signatures:
+edSignature: DWA4HepWXiWUA4WYvkObr6lpuBNVuHF/AibHllE6E1GlQOVJoxkgeR5u7QtTVGJKv8Xtt/Rd/ysuduG1nipiAw==
+length: 316
+-->

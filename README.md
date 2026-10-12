@@ -7,7 +7,7 @@ with [Omarchy](https://omarchy.org)'s keybindings. Website:
 
 ## Install
 
-**Needs** a Mac with Apple silicon and macOS 14 or later. Nothing else — no
+**Needs** an Apple silicon or Intel Mac with macOS 14 or later. Nothing else — no
 Homebrew, no developer tools, no GitHub account.
 
 **1. Paste this into Terminal** (⌘ Space, type *Terminal*, press Return):
@@ -97,7 +97,7 @@ Then do step 2 above. The cask does not start Omac or turn on start at login;
 
 **Without Terminal:**
 
-1. Download **`Omac-arm64.zip`** from the
+1. Download **`Omac-arm64.zip`** for Apple silicon or **`Omac-x86_64.zip`** for Intel (when available) from the
    [latest release](https://github.com/cast3labs/omac/releases/latest) and open it.
 2. Drag **`Omac.app`** from the folder that appears into **Applications**.
 3. Open Omac. macOS asks once whether to open an app downloaded from the
@@ -115,7 +115,7 @@ at login** from Omac's menu-bar icon for that.
 |---|---|---|---|---|
 | **Terminal (curl)** | `curl -fsSL https://raw.githubusercontent.com/cast3labs/omac/main/install.sh \| bash` | choose **Check for Updates…** in Omac's menu, or run the same command again; settings and the Accessibility permission are kept (from an earlier preview, macOS asks for Accessibility once more) | with Omac running: `omac login off; omac quit; rm -rf ~/Applications/Omac.app ~/.local/bin/omac` (unless it prints “launch at login: off”, also remove Omac in **System Settings → General → Login Items**) | to Homebrew: uninstall, then `brew install --cask cast3labs/tap/omac` |
 | **Homebrew** | `brew install --cask cast3labs/tap/omac`, then `open ~/Applications/Omac.app`; to have it start when you log in, turn on **Launch at login** in Omac's menu | `brew upgrade --cask cast3labs/tap/omac`, then quit Omac and open it again: `omac quit; while pgrep -x -U "$USER" Omac >/dev/null; do sleep 0.2; done; open ~/Applications/Omac.app` | with Omac running: `omac login off; brew uninstall --cask --zap cast3labs/tap/omac` (unless it prints “launch at login: off”, also remove Omac in **System Settings → General → Login Items**; `--zap` also removes settings and state — among them the copy of your own wallpaper that `omac theme off` puts back, so run that first if you used a theme — but not the theme media in `~/.local/share/omac`) | to curl: `brew uninstall --cask cast3labs/tap/omac`, then the curl command |
-| **Download** | `Omac-arm64.zip` from the [latest release](https://github.com/cast3labs/omac/releases/latest); drag `Omac.app` into Applications | choose **Check for Updates…** in Omac's menu; by hand: quit Omac, then download the new zip and replace `Omac.app` | turn off **Launch at login** in Omac's menu (or in **System Settings → General → Login Items**) if it is on, quit Omac, then drag `Omac.app` to the Trash | to curl: just run the curl command — the installer removes the `/Applications` copy for you; it does not turn on start at login: turn on **Launch at login** in Omac's menu |
+| **Download** | `Omac-arm64.zip` (Apple silicon) or `Omac-x86_64.zip` (Intel, when available) from the [latest release](https://github.com/cast3labs/omac/releases/latest); drag `Omac.app` into Applications | choose **Check for Updates…** in Omac's menu; by hand: quit Omac, then download the new zip and replace `Omac.app` | turn off **Launch at login** in Omac's menu (or in **System Settings → General → Login Items**) if it is on, quit Omac, then drag `Omac.app` to the Trash | to curl: just run the curl command — the installer removes the `/Applications` copy for you; it does not turn on start at login: turn on **Launch at login** in Omac's menu |
 
 Installed with Homebrew from the tap's old name, `evanscastonguay/tap`? Update it as above: Homebrew follows the tap to `cast3labs/tap`. Until it has been updated once, Homebrew refuses the new name to uninstall it: run `omac login off`, then `brew uninstall --cask evanscastonguay/tap/omac` (add `--zap` to remove its settings too).
 

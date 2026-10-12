@@ -26,7 +26,7 @@
 <header class="site-header"><nav aria-label="Site"><a class="brand" href="../">Omac</a><a class="beta" href="../#founders" title="Free during the beta. Founders keep it free.">Beta</a><a class="nav" href="../features/">Features</a><a class="nav" href="../wallpapers/">Wallpapers</a><a class="nav wide" href="../docs/">Docs</a><a class="nav wide" href="https://github.com/cast3labs/omac">GitHub</a><a class="button" href="../#get">Download</a></nav></header>
 <main class="narrow install">
 <h1>Install Omac</h1>
-<p class="lede">Pick one way. Most people: Download. Needs a Mac with Apple silicon and macOS 14 or later; no developer tools, no GitHub account.</p>
+<p class="lede">Pick one way. Most people: Download. Needs an Apple silicon or Intel Mac with macOS 14 or later; no developer tools, no GitHub account.</p>
 <ul class="toc">
 <li><a href="#download">1. Download</a></li>
 <li><a href="#homebrew">2. Homebrew</a></li>
@@ -40,8 +40,8 @@
 </ul>
 <section id="download">
 <h2>1. Download</h2>
-<p class="cta start"><a class="button" href="https://github.com/cast3labs/omac/releases/latest/download/Omac-arm64.zip" data-share>Download for Mac</a></p>
-<p><code>Omac-arm64.zip</code> from the <a href="https://github.com/cast3labs/omac/releases/latest">latest release</a>; drag <code>Omac.app</code> into Applications. Then open it: macOS asks once whether to open an app downloaded from the internet — click <b>Open</b>. This way does not set up the <code>omac</code> command or start at login. <a href="../download/">The download page</a> walks through it.</p>
+<p class="cta start"><a class="button" href="../download/" data-share>Choose your Mac</a></p>
+<p><code>Omac-arm64.zip</code> (Apple silicon) or <code>Omac-x86_64.zip</code> (Intel, when available) from the <a href="https://github.com/cast3labs/omac/releases/latest">latest release</a>; drag <code>Omac.app</code> into Applications. Then open it: macOS asks once whether to open an app downloaded from the internet — click <b>Open</b>. This way does not set up the <code>omac</code> command or start at login. <a href="../download/">The download page</a> walks through it.</p>
 </section>
 <section id="homebrew">
 <h2>2. Homebrew</h2>
@@ -58,7 +58,7 @@ open ~/Applications/Omac.app</code></pre>
 <pre><code data-cmd>curl -fsSL https://raw.githubusercontent.com/cast3labs/omac/main/install.sh -o install.sh
 less install.sh
 bash install.sh</code></pre>
-<p>The installer checks the app's Developer ID signature before installing it, and stops, changing nothing, on an Intel Mac or when another package manager installed Omac. If an old copy of Omac is in <code>/Applications</code>, Terminal may ask for your Mac password to remove it: two copies conflict. The terms of use are <a href="../terms/">here</a>; the installer prints their address too.</p>
+<p>The installer checks the app's Developer ID signature before installing it, and stops, changing nothing, when another package manager installed Omac. If an old copy of Omac is in <code>/Applications</code>, Terminal may ask for your Mac password to remove it: two copies conflict. The terms of use are <a href="../terms/">here</a>; the installer prints their address too.</p>
 </section>
 <section id="permission">
 <h2>Let Omac control your windows</h2>
@@ -71,7 +71,7 @@ bash install.sh</code></pre>
 <section id="requirements">
 <h2>Requirements</h2>
 <ul>
-<li>A Mac with Apple silicon (M1 or later). Intel Macs are not supported; the installer stops on one.</li>
+<li>An Apple silicon (M1 or later) or Intel Mac. Choose its matching download.</li>
 <li>macOS 14 or later. Tested on macOS 26; macOS 14 and 15 are allowed but not yet tested.</li>
 <li>The Accessibility permission, which you grant once (above). Omac needs no change to System Integrity Protection and installs nothing else.</li>
 <li>Optional, asked only when you first use the feature: Microphone for dictation (macOS 26), Screen Recording to copy text from the screen (<kbd>Left ⌘</kbd> <kbd>Ctrl</kbd> <kbd>T</kbd>), Automation to open your coding agent's terminal and to switch light or dark mode with a theme.</li>
